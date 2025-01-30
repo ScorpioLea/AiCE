@@ -1,0 +1,194 @@
+.. _get_started
+
+==================
+Getting Started
+==================
+
+Running a complete SCA analysis consists of five steps: 
+  1) constructing an alignment 
+  2) alignment pre-processing and conditioning
+  3) calculation of the conservation and co-evolution statisticts
+  4) identifying statistically significant correlations
+  5) interpretation of the results
+The core SCA calculations (steps 2,3, and 4) are each associated with a particular python
+analysis script (scaProcessMSA.py, scaCore.py and scaSectorID.py,
+respectively) . Sequential execution of each python analysis script
+stores the results in a pickle database. This means the core SCA calculations
+can be run from the command line, or multiple proteins can be analyzed
+using a shell script (for an example, see runAllNBCalcs.sh).  Following
+execution of the scripts, the pickle database can be loaded in an
+ipython notebook for visualizing the results and interpreting the
+data. Alternatively, the output of the analysis scripts can be saved
+as a Matlab workspace, and results plotted/analyzed in Matlab. Below we describe the
+five main analysis steps in more detail. 
+
+
+Getting oriented... a quick note on file and directory structure:
+=================================================================
+The pySCA distribution contains the following files and directories:
+
+  **Inputs/** 
+    Contains the input sequence alignments (\*.fasta, \*.an) and
+    structures (\*.pdb) for the analysis. The \*.an files correspond
+    to fasta-formatted sequence files with taxonomic annotations. The
+    inputs needed for all tutorials are here.
+  **Outputs/** 
+    Contains the output of the analysis. Accordingly, it is
+    an empty directory in a newly installed pySCA distribution. Running
+    the scripts below will output a processed alignment (\*.fasta or
+    \*.an file) and pickle database (\*.db file) to Outputs/. Similarly, if you
+    choose to output results to a Matlab workspace, the resulting \*.mat
+    file will write to this directory. 
+  **figs/**
+    Contains a few figures that are loaded into the tutorials
+    for illustration purposes. 
+  **html_docs/**
+    Contains this documentation.
+  **LICENSE**
+    This work is distributed under the standard BSD 3-clause open
+    source software license.
+  **README**
+    Very basic introduction to the toolbox.
+  **SCA_DHFR.ipynb**
+    ipython notebook tutorial for the Dihydrolate reductase enzyme
+    family.
+  **SCA_G.ipynb**
+    ipython notebook tutorial for the small G proteins
+  **SCA_betalactamase.ipynb**
+    ipython notebook tutorial for the Beta-lactamase enzyme family
+  **SCA_S1A.ipynb**
+    ipython notebook tutorial for the S1A serine protease enzyme
+    family
+  **alnFilterSeqSize.py, alnParseGI.py, alnReplaceHeaders.py**
+    These aren't essential to the main SCA utilities/package, but are
+    little scripts that we often find useful in alignment
+    construction.
+  **annotate_MSA.py**
+    A script for adding taxonomic annotations to fasta-formatted
+    sequence alignments
+  **scaProcessMSA.py**
+    The script that conducts alignment pre-processing and
+    conditioning. This constitutes trimming the alignment for gaps,
+    and removing low identity sequences. 
+  **scaCore.py**
+    The script that computes SCA conservation and co-evolution values.
+  **scaSectorID.py**
+    The script that defines positions that show a statistically
+    significant correlation.
+  **scaTools.py**
+    Contains the pySCA library... the functions that implement all of
+    the SCA calculations.
+  **runAllNBCalcs.sh**
+    A shell script that runs all of the calculations needed for the
+    tutorials. This script also serves as an example for how to call the
+    pySCA scripts from the command line.
+
+
+1. Constructing and annotating a multiple sequence alignment
+=============================================================
+
+The SCA method operates on a multiple sequence alignment of homologous
+protein sequences. You can begin the analysis by obtaining an
+alignment for your protein of interest from a curated database (for example PFAM:
+http://pfam.xfam.org/ ) or by constructing your own alignment. The
+details of alignment construction aren't covered here, but we may add
+a tutorial in future versions of this documentation. The critical
+thing is that the alignment contain on the order of 100 or more
+effective sequences.
+
+Once you have an alignment, it is helpful to add taxonomic annotations
+to the headers. These annnotations are used in SCA to examine the relationship
+between sector positions and phylogenetic divergence (i.e. in the
+mapping between independent components and sequence space). The annotate_MSA script contains two
+utilities to automate sequence annotation: one which uses the NCBI
+Entrez tools in BioPython, and one which uses PFAM database
+annotations (PFAM alignment specific). Please note that the annotation
+step can be slow (on the order of hours), but only needs to be done
+once per alignment. For further details
+please see the `annotate_MSA`_ documentation. 
+
+.. _annotate_MSA: annotate_MSA.html
+
+2. Alignment pre-processing and conditioning
+=============================================
+
+Following alignment construction and annotation, the alignment is
+processed to: (1) remove highly gapped or low homology sequences, (2) remove
+highly gapped positions, (3) calculate sequence weights (as in section
+1A of the supplementary information) and (4) to create a mapping of alignment positions to a reference
+structure or sequence numbering system. This process is handled by the script
+scaProcessMSA_ . Please see the script documentation for a complete
+list of optional arguments and notes on usage.  The resulting output can be stored as either a python
+pickle database or matlab workspace for further analysis.
+
+.. _scaProcessMSA: scaProcessMSA.html
+
+
+3. Calculation of the conservation and co-evolution statistics
+===============================================================
+
+The processed alignment and sequence weights computed in step 2 are
+then used in the calculation of evolutionary statistics by the script
+scaCore_ . This script handles the core calculations for: 
+
+    1. Pairwise sequence correlations/sequence similarity
+    2. Single-site positional conservation (the Kullback-Leibler
+       relative entropy, :math:`D_i^a`, eq. 1 and supplemental section
+       1B) and position weights
+       (:math:`\frac{\partial{D_i^a}}{\partial{f_i^a}}`,
+       Supplemental section 1D)
+    3. The SCA matrix :math:`\tilde{C_{ij}}` (eq. 4)
+    4. The projected alignment (eq. 10-11), and the projector (supplemental section 1H)
+    5. N trials (default N=10) of the randomized SCA matrix and
+       associated eigenvectors and eigenvalues; used to choose the
+       number of significant eigenmodes.
+
+The calculations and optional executation flags are further described in the
+script documentation. As for scaProcessMSA, the output can be stored
+as either a python pickle database or matlab workspace for further analysis.
+
+.. _scaCore: scaCore.html
+
+4. Identifying significant evolutionary correlations
+=====================================================
+
+After the core calculations are complete, the next step is to define
+the significant number of eigenmodes/indepedent components for
+analysis (:math:`k_{max}`) and to select sector positions by their
+contributions to the top :math:`k_{max}` independent components. This
+is handled by the script scaSectorID_.  This script also computes the
+sequence-to-position space mapping as in eq.10-11 and fig. 7. As for scaProcessMSA and sca
+Core, the output can be stored as either a  python shelve database or
+matlab workspace for further analysis.
+
+.. _scaSectorID: scaSectorID.html
+
+5. Interpretation of the results and sector definition 
+========================================================
+
+Execution of annotate_MSA, scaProcessMSA, scaCore, and scaSectorID
+completes the calculation of SCA terms and results in a single pickle
+database (\*.db file, and optionally, a matlab workspace) containing
+the collected results. The final step is to interpret these calculations and
+evaluate the (non-)independence of the amino acid positions associated
+with each independent component (as in Fig. 4).
+
+The tutorials_ are designed to provide examples of this process, and
+to illustrate different aspects of SCA usage (please see the
+individual tutorial headers for more information).  
+
+.. _tutorials: tutorials.html
+
+
+**Further Reading/References:**
+
+*Halabi N, Rivoire O, Leibler S, and Ranganathan R.  "Protein
+sectors: evolutionary unis of three-dimensional
+structure". Cell. 2009 v.138 p.774*
+
+*Smock RG, Rivoire O, Russ WP, Swain JF, Leibler S, Ranganathan R,
+Gierasch LM.  "An interdomain sector mediating allostery in Hsp70
+molecular chaperones". MSB. 2010 v.6 p.414*
+
+*Reynolds KA, Russ WP, Socolich M, Ranganathan R.  "Evolution-based
+design of proteins". Methods Enzymol. 2013 v.523 p.213*

@@ -1,0 +1,315 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Getting Started &mdash; pySCA 1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="pySCA 1 documentation" href="index.html" />
+    <link rel="next" title="Tutorials - Usage:" href="tutorials.html" />
+    <link rel="prev" title="Installation" href="install.html" /> 
+  </head>
+  <body>
+
+<div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
+<a href="index.html"><img src="_static/logo.png" border="0" alt="py4sci"/></a>
+</div>
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="tutorials.html" title="Tutorials - Usage:"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="install.html" title="Installation"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">home</a>|&nbsp;</li>
+        <li><a href="search.html">search</a>|&nbsp;</li>
+ 
+      </ul>
+    </div>
+
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Getting Started</a><ul>
+<li><a class="reference internal" href="#getting-oriented-a-quick-note-on-file-and-directory-structure">Getting oriented... a quick note on file and directory structure:</a></li>
+<li><a class="reference internal" href="#constructing-and-annotating-a-multiple-sequence-alignment">1. Constructing and annotating a multiple sequence alignment</a></li>
+<li><a class="reference internal" href="#alignment-pre-processing-and-conditioning">2. Alignment pre-processing and conditioning</a></li>
+<li><a class="reference internal" href="#calculation-of-the-conservation-and-co-evolution-statistics">3. Calculation of the conservation and co-evolution statistics</a></li>
+<li><a class="reference internal" href="#identifying-significant-evolutionary-correlations">4. Identifying significant evolutionary correlations</a></li>
+<li><a class="reference internal" href="#interpretation-of-the-results-and-sector-definition">5. Interpretation of the results and sector definition</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="install.html"
+                        title="previous chapter">Installation</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="tutorials.html"
+                        title="next chapter">Tutorials - Usage:</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/get_started.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="getting-started">
+<h1>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h1>
+<dl class="docutils">
+<dt>Running a complete SCA analysis consists of five steps:</dt>
+<dd><ol class="first last arabic simple">
+<li>constructing an alignment</li>
+<li>alignment pre-processing and conditioning</li>
+<li>calculation of the conservation and co-evolution statisticts</li>
+<li>identifying statistically significant correlations</li>
+<li>interpretation of the results</li>
+</ol>
+</dd>
+</dl>
+<p>The core SCA calculations (steps 2,3, and 4) are each associated with a particular python
+analysis script (scaProcessMSA.py, scaCore.py and scaSectorID.py,
+respectively) . Sequential execution of each python analysis script
+stores the results in a pickle database. This means the core SCA calculations
+can be run from the command line, or multiple proteins can be analyzed
+using a shell script (for an example, see runAllNBCalcs.sh).  Following
+execution of the scripts, the pickle database can be loaded in an
+ipython notebook for visualizing the results and interpreting the
+data. Alternatively, the output of the analysis scripts can be saved
+as a Matlab workspace, and results plotted/analyzed in Matlab. Below we describe the
+five main analysis steps in more detail.</p>
+<div class="section" id="getting-oriented-a-quick-note-on-file-and-directory-structure">
+<h2>Getting oriented... a quick note on file and directory structure:<a class="headerlink" href="#getting-oriented-a-quick-note-on-file-and-directory-structure" title="Permalink to this headline">¶</a></h2>
+<p>The pySCA distribution contains the following files and directories:</p>
+<blockquote>
+<div><dl class="docutils">
+<dt><strong>Inputs/</strong></dt>
+<dd>Contains the input sequence alignments (*.fasta, *.an) and
+structures (*.pdb) for the analysis. The *.an files correspond
+to fasta-formatted sequence files with taxonomic annotations. The
+inputs needed for all tutorials are here.</dd>
+<dt><strong>Outputs/</strong></dt>
+<dd>Contains the output of the analysis. Accordingly, it is
+an empty directory in a newly installed pySCA distribution. Running
+the scripts below will output a processed alignment (*.fasta or
+*.an file) and pickle database (*.db file) to Outputs/. Similarly, if you
+choose to output results to a Matlab workspace, the resulting *.mat
+file will write to this directory.</dd>
+<dt><strong>figs/</strong></dt>
+<dd>Contains a few figures that are loaded into the tutorials
+for illustration purposes.</dd>
+<dt><strong>html_docs/</strong></dt>
+<dd>Contains this documentation.</dd>
+<dt><strong>LICENSE</strong></dt>
+<dd>This work is distributed under the standard BSD 3-clause open
+source software license.</dd>
+<dt><strong>README</strong></dt>
+<dd>Very basic introduction to the toolbox.</dd>
+<dt><strong>SCA_DHFR.ipynb</strong></dt>
+<dd>ipython notebook tutorial for the Dihydrolate reductase enzyme
+family.</dd>
+<dt><strong>SCA_G.ipynb</strong></dt>
+<dd>ipython notebook tutorial for the small G proteins</dd>
+<dt><strong>SCA_betalactamase.ipynb</strong></dt>
+<dd>ipython notebook tutorial for the Beta-lactamase enzyme family</dd>
+<dt><strong>SCA_S1A.ipynb</strong></dt>
+<dd>ipython notebook tutorial for the S1A serine protease enzyme
+family</dd>
+<dt><strong>alnFilterSeqSize.py, alnParseGI.py, alnReplaceHeaders.py</strong></dt>
+<dd>These aren&#8217;t essential to the main SCA utilities/package, but are
+little scripts that we often find useful in alignment
+construction.</dd>
+<dt><strong>annotate_MSA.py</strong></dt>
+<dd>A script for adding taxonomic annotations to fasta-formatted
+sequence alignments</dd>
+<dt><strong>scaProcessMSA.py</strong></dt>
+<dd>The script that conducts alignment pre-processing and
+conditioning. This constitutes trimming the alignment for gaps,
+and removing low identity sequences.</dd>
+<dt><strong>scaCore.py</strong></dt>
+<dd>The script that computes SCA conservation and co-evolution values.</dd>
+<dt><strong>scaSectorID.py</strong></dt>
+<dd>The script that defines positions that show a statistically
+significant correlation.</dd>
+<dt><strong>scaTools.py</strong></dt>
+<dd>Contains the pySCA library... the functions that implement all of
+the SCA calculations.</dd>
+<dt><strong>runAllNBCalcs.sh</strong></dt>
+<dd>A shell script that runs all of the calculations needed for the
+tutorials. This script also serves as an example for how to call the
+pySCA scripts from the command line.</dd>
+</dl>
+</div></blockquote>
+</div>
+<div class="section" id="constructing-and-annotating-a-multiple-sequence-alignment">
+<h2>1. Constructing and annotating a multiple sequence alignment<a class="headerlink" href="#constructing-and-annotating-a-multiple-sequence-alignment" title="Permalink to this headline">¶</a></h2>
+<p>The SCA method operates on a multiple sequence alignment of homologous
+protein sequences. You can begin the analysis by obtaining an
+alignment for your protein of interest from a curated database (for example PFAM:
+<a class="reference external" href="http://pfam.xfam.org/">http://pfam.xfam.org/</a> ) or by constructing your own alignment. The
+details of alignment construction aren&#8217;t covered here, but we may add
+a tutorial in future versions of this documentation. The critical
+thing is that the alignment contain on the order of 100 or more
+effective sequences.</p>
+<p>Once you have an alignment, it is helpful to add taxonomic annotations
+to the headers. These annnotations are used in SCA to examine the relationship
+between sector positions and phylogenetic divergence (i.e. in the
+mapping between independent components and sequence space). The annotate_MSA script contains two
+utilities to automate sequence annotation: one which uses the NCBI
+Entrez tools in BioPython, and one which uses PFAM database
+annotations (PFAM alignment specific). Please note that the annotation
+step can be slow (on the order of hours), but only needs to be done
+once per alignment. For further details
+please see the <a class="reference external" href="annotate_MSA.html">annotate_MSA</a> documentation.</p>
+</div>
+<div class="section" id="alignment-pre-processing-and-conditioning">
+<h2>2. Alignment pre-processing and conditioning<a class="headerlink" href="#alignment-pre-processing-and-conditioning" title="Permalink to this headline">¶</a></h2>
+<p>Following alignment construction and annotation, the alignment is
+processed to: (1) remove highly gapped or low homology sequences, (2) remove
+highly gapped positions, (3) calculate sequence weights (as in section
+1A of the supplementary information) and (4) to create a mapping of alignment positions to a reference
+structure or sequence numbering system. This process is handled by the script
+<a class="reference external" href="scaProcessMSA.html">scaProcessMSA</a> . Please see the script documentation for a complete
+list of optional arguments and notes on usage.  The resulting output can be stored as either a python
+pickle database or matlab workspace for further analysis.</p>
+</div>
+<div class="section" id="calculation-of-the-conservation-and-co-evolution-statistics">
+<h2>3. Calculation of the conservation and co-evolution statistics<a class="headerlink" href="#calculation-of-the-conservation-and-co-evolution-statistics" title="Permalink to this headline">¶</a></h2>
+<p>The processed alignment and sequence weights computed in step 2 are
+then used in the calculation of evolutionary statistics by the script
+<a class="reference external" href="scaCore.html">scaCore</a> . This script handles the core calculations for:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>Pairwise sequence correlations/sequence similarity</li>
+<li>Single-site positional conservation (the Kullback-Leibler
+relative entropy, <span class="math">\(D_i^a\)</span>, eq. 1 and supplemental section
+1B) and position weights
+(<span class="math">\(\frac{\partial{D_i^a}}{\partial{f_i^a}}\)</span>,
+Supplemental section 1D)</li>
+<li>The SCA matrix <span class="math">\(\tilde{C_{ij}}\)</span> (eq. 4)</li>
+<li>The projected alignment (eq. 10-11), and the projector (supplemental section 1H)</li>
+<li>N trials (default N=10) of the randomized SCA matrix and
+associated eigenvectors and eigenvalues; used to choose the
+number of significant eigenmodes.</li>
+</ol>
+</div></blockquote>
+<p>The calculations and optional executation flags are further described in the
+script documentation. As for scaProcessMSA, the output can be stored
+as either a python pickle database or matlab workspace for further analysis.</p>
+</div>
+<div class="section" id="identifying-significant-evolutionary-correlations">
+<h2>4. Identifying significant evolutionary correlations<a class="headerlink" href="#identifying-significant-evolutionary-correlations" title="Permalink to this headline">¶</a></h2>
+<p>After the core calculations are complete, the next step is to define
+the significant number of eigenmodes/indepedent components for
+analysis (<span class="math">\(k_{max}\)</span>) and to select sector positions by their
+contributions to the top <span class="math">\(k_{max}\)</span> independent components. This
+is handled by the script <a class="reference external" href="scaSectorID.html">scaSectorID</a>.  This script also computes the
+sequence-to-position space mapping as in eq.10-11 and fig. 7. As for scaProcessMSA and sca
+Core, the output can be stored as either a  python shelve database or
+matlab workspace for further analysis.</p>
+</div>
+<div class="section" id="interpretation-of-the-results-and-sector-definition">
+<h2>5. Interpretation of the results and sector definition<a class="headerlink" href="#interpretation-of-the-results-and-sector-definition" title="Permalink to this headline">¶</a></h2>
+<p>Execution of annotate_MSA, scaProcessMSA, scaCore, and scaSectorID
+completes the calculation of SCA terms and results in a single pickle
+database (*.db file, and optionally, a matlab workspace) containing
+the collected results. The final step is to interpret these calculations and
+evaluate the (non-)independence of the amino acid positions associated
+with each independent component (as in Fig. 4).</p>
+<p>The <a class="reference external" href="tutorials.html">tutorials</a> are designed to provide examples of this process, and
+to illustrate different aspects of SCA usage (please see the
+individual tutorial headers for more information).</p>
+<p><strong>Further Reading/References:</strong></p>
+<p><em>Halabi N, Rivoire O, Leibler S, and Ranganathan R.  &#8220;Protein
+sectors: evolutionary unis of three-dimensional
+structure&#8221;. Cell. 2009 v.138 p.774</em></p>
+<p><em>Smock RG, Rivoire O, Russ WP, Swain JF, Leibler S, Ranganathan R,
+Gierasch LM.  &#8220;An interdomain sector mediating allostery in Hsp70
+molecular chaperones&#8221;. MSB. 2010 v.6 p.414</em></p>
+<p><em>Reynolds KA, Russ WP, Socolich M, Ranganathan R.  &#8220;Evolution-based
+design of proteins&#8221;. Methods Enzymol. 2013 v.523 p.213</em></p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="tutorials.html" title="Tutorials - Usage:"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="install.html" title="Installation"
+             >previous</a> |</li>
+        <li><a href="index.html">home</a>|&nbsp;</li>
+        <li><a href="search.html">search</a>|&nbsp;</li>
+ 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2014, Olivier Rivoire, Kim Reynolds, Rama Ranganathan.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

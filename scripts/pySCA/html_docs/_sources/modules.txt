@@ -1,0 +1,11 @@
+The pySCA code
+======================
+
+.. toctree::
+   :maxdepth: 4
+
+   annotate_MSA
+   scaProcessMSA
+   scaCore
+   scaSectorID
+   scaTools

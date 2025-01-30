@@ -1,0 +1,42 @@
+.. _tutorials
+
+Tutorials - Usage:
+==================
+
+We provide tutorials that walk through the process of sector
+identification for three protein families: the Ras-like small G-proteins,
+the metabolic enzyme Dihydrofolate Reductase (DHFR), and the
+antibiotic resistance enzyme Beta-lactamase. 
+
+To run the SCA calculations for all three examples, you can execute the
+following shell script:
+
+>>> ./runAllNBCalcs.sh
+
+For each example, this will generate the following outputs in the
+Outputs/ directory:
+
+  1.  A pickle database (\*.db file) that contains the results of the
+      calculations (these are then read in and analyzed in the ipython
+      notebooks - \*.ipynb)
+  2.  A \*.log file that provides some information about the analysis 
+  3.  A processed alignment (\*.fasta file) resulting from the
+      scaProcessMSA script. 
+
+Following this step, you can begin the tutorial as
+an interactive ipython notebook from the command line as follows:
+
+ >>> ipython notebook SCA_G.ipynb  
+
+This should open the notebook in a browser window, where you can run
+the code, and examine the SCA results.
+
+Tutorials - Examples:
+=====================
+.. toctree::
+   :maxdepth: 1
+   
+   SCA_G
+   SCA_S1A
+   SCA_DHFR
+   SCA_betalactamase

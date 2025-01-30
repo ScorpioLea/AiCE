@@ -1,0 +1,1325 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>scaTools Module &mdash; pySCA 1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="pySCA 1 documentation" href="index.html" />
+    <link rel="up" title="The pySCA code" href="modules.html" />
+    <link rel="prev" title="scaSectorID Module" href="scaSectorID.html" /> 
+  </head>
+  <body>
+
+<div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
+<a href="index.html"><img src="_static/logo.png" border="0" alt="py4sci"/></a>
+</div>
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="scaSectorID.html" title="scaSectorID Module"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">home</a>|&nbsp;</li>
+        <li><a href="search.html">search</a>|&nbsp;</li>
+
+          <li><a href="modules.html" accesskey="U">The pySCA code</a> &raquo;</li> 
+      </ul>
+    </div>
+
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="scaSectorID.html"
+                        title="previous chapter">scaSectorID Module</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/scaTools.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="module-scaTools">
+<span id="scatools-module"></span><h1>scaTools Module<a class="headerlink" href="#module-scaTools" title="Permalink to this headline">¶</a></h1>
+<p>pySCA - A SCA toolbox in Python</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">By:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line">Olivier Rivoire (<a class="reference external" href="mailto:olivier&#46;rivoire&#37;&#52;&#48;ujf-grenoble&#46;fr">olivier<span>&#46;</span>rivoire<span>&#64;</span>ujf-grenoble<span>&#46;</span>fr</a>)</div>
+<div class="line">Kimberly Reynolds (<a class="reference external" href="mailto:kimberly&#46;reynolds&#37;&#52;&#48;utsouthwestern&#46;edu">kimberly<span>&#46;</span>reynolds<span>&#64;</span>utsouthwestern<span>&#46;</span>edu</a>)</div>
+<div class="line">Rama Ranganathan (<a class="reference external" href="mailto:rama&#46;ranganathan&#37;&#52;&#48;utsouthwestern&#46;edu">rama<span>&#46;</span>ranganathan<span>&#64;</span>utsouthwestern<span>&#46;</span>edu</a>)</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">On:</th><td class="field-body">August 2014</td>
+</tr>
+<tr class="field-even field"><th class="field-name">version:</th><td class="field-body">6.1 beta</td>
+</tr>
+</tbody>
+</table>
+<p>Copyright (C) 2015 Olivier Rivoire, Rama Ranganathan, Kimberly Reynolds
+This program is free software distributed under the BSD 3-clause
+license, please see the file LICENSE for details.</p>
+<dl class="class">
+<dt id="scaTools.Annot">
+<em class="property">class </em><tt class="descclassname">scaTools.</tt><tt class="descname">Annot</tt><big>(</big><em>descr</em>, <em>species</em>, <em>taxo</em>, <em>seq=''</em><big>)</big><a class="headerlink" href="#scaTools.Annot" title="Permalink to this definition">¶</a></dt>
+<dd><p>A class for annotating sequences</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Attributes :</th><td class="field-body"><ul class="first last simple">
+<li><cite>descr</cite> = description (often the sequence header)</li>
+<li><cite>species</cite> = species string</li>
+<li><cite>taxo</cite> = taxonomy string</li>
+<li><cite>seq</cite> = sequence</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="scaTools.AnnotPfam">
+<tt class="descclassname">scaTools.</tt><tt class="descname">AnnotPfam</tt><big>(</big><em>pfam_in</em>, <em>pfam_out</em>, <em>pfam_seq='~/Documents/Packages/pfamseq.txt'</em><big>)</big><a class="headerlink" href="#scaTools.AnnotPfam" title="Permalink to this definition">¶</a></dt>
+<dd><p>Phylogenetic annotation of a Pfam alignment (in fasta format) using information from pfamseq.txt (<a class="reference external" href="ftp://ftp.sanger.ac.uk/pub/databases/Pfam/current_release/database_files/">ftp://ftp.sanger.ac.uk/pub/databases/Pfam/current_release/database_files/</a>). The output is a fasta file containing phylogenetic annotations in the header (to be parsed with &#8216;|&#8217; as a delimiter).</p>
+<p>Note: the headers for the original alignment take the form &gt;AAA/x-y.  If two entries have same AAA but correspond to different sequences only one of the two sequences will be represented (twice) in the output - this should however not practically be an issue.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Arguments :</th><td class="field-body"><ul class="first simple">
+<li>input PFAM sequence alignment</li>
+<li>output file name for the annotated PFAM alignment</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Keyword Arguments:</th></tr>
+<tr class="field-even field"><td>&nbsp;</td><td class="field-body"><ul class="first last simple">
+<li><cite>pfam_seq</cite> = path to the file pfamseq.txt</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="scaTools.MSAsearch">
+<tt class="descclassname">scaTools.</tt><tt class="descname">MSAsearch</tt><big>(</big><em>hd</em>, <em>algn</em>, <em>seq</em>, <em>species=None</em>, <em>path2_algprog='/usr/local/bin/'</em><big>)</big><a class="headerlink" href="#scaTools.MSAsearch" title="Permalink to this definition">¶</a></dt>
+<dd><p>Identify the sequence in the alignment that most closely corresponds to the species of the reference sequence, and return its index.</p>
+<dl class="docutils">
+<dt><strong>Arguments:</strong></dt>
+<dd><ul class="first last simple">
+<li>sequence alignment headers</li>
+<li>alignment sequences</li>
+<li>selected reference sequence (often from a PDB file)</li>
+</ul>
+</dd>
+<dt><strong>Keyword Arguments:</strong></dt>
+<dd><ul class="first last simple">
+<li><cite>species</cite> =  species of the reference sequence (Used to speed up alignment searching when possible)</li>
+<li><cite>path2_algprog</cite> =  path to an alignment program</li>
+</ul>
+</dd>
+<dt><strong>Example:</strong></dt>
+<dd><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">strseqnum</span> <span class="o">=</span> <span class="n">MSASearch</span><span class="p">(</span><span class="n">hd</span><span class="p">,</span> <span class="n">alg0</span><span class="p">,</span> <span class="n">pdbseq</span><span class="p">,</span> <span class="s">&#39;Homo sapiens&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="scaTools.MultiBar">
+<tt class="descclassname">scaTools.</tt><tt class="descname">MultiBar</tt><big>(</big><em>x</em>, <em>colors='wbrgymc'</em>, <em>width=0.5</em><big>)</big><a class="headerlink" href="#scaTools.MultiBar" title="Permalink to this definition">¶</a></dt>
+<dd><p>Multiple bar diagram (plots contributions to each bar from different elements in x as different colors). This can be useful if you&#8217;d like to inspect how sector positions are distributed among independent components/eigenmodes. The argument x is a tuple, specifying the number of elements in each bar to be each color. The example below makes a graph with four bars, where the first bar has 99 white elements, 1 blue element and 1 red element.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Example :</th><td class="field-body"><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">99</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">13</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">5</span><span class="p">]]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sca</span><span class="o">.</span><span class="n">MultiBar</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="class">
+<dt id="scaTools.Pair">
+<em class="property">class </em><tt class="descclassname">scaTools.</tt><tt class="descname">Pair</tt><big>(</big><em>p</em>, <em>x</em>, <em>d</em><big>)</big><a class="headerlink" href="#scaTools.Pair" title="Permalink to this definition">¶</a></dt>
+<dd><p>A class for a pair of positions. 
+:Attributes:</p>
+<blockquote>
+<div><ul class="simple">
+<li><cite>pos</cite> = a pair of amino acid positions (ex: [1,3], supplied as argument p)</li>
+<li><cite>DI</cite>  = the direct information between the two positions (argument x)</li>
+<li><cite>dist</cite> = the physical distance between the positions (argument d)</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="class">
+<dt id="scaTools.Secton">
+<em class="property">class </em><tt class="descclassname">scaTools.</tt><tt class="descname">Secton</tt><big>(</big><em>positions</em><big>)</big><a class="headerlink" href="#scaTools.Secton" title="Permalink to this definition">¶</a></dt>
+<dd><p>A class for sectons.</p>
+<dl class="docutils">
+<dt><strong>Attributes:</strong></dt>
+<dd><ul class="first last simple">
+<li><cite>pos</cite> = a list of positions</li>
+<li><cite>num</cite> = number of positions in the secton</li>
+</ul>
+</dd>
+</dl>
+<dl class="method">
+<dt id="scaTools.Secton.connected">
+<tt class="descname">connected</tt><big>(</big><em>distmat</em>, <em>threshold</em><big>)</big><a class="headerlink" href="#scaTools.Secton.connected" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check the structural connectivity based on the principle that if <span class="math">\(M_{ij}\)</span> is the adjacency matrix of a graph, <span class="math">\(M^n_{ij}\)</span> is the number of paths of length <span class="math">\(n\)</span> between i and j, which must be &gt; 0 for <span class="math">\(n\)</span> = number of nodes when i and j are in the same connected component.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="scaTools.Secton.dist">
+<tt class="descname">dist</tt><big>(</big><em>distmat</em><big>)</big><a class="headerlink" href="#scaTools.Secton.dist" title="Permalink to this definition">¶</a></dt>
+<dd><p>returns the distance between the position pair</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="scaTools.Unit">
+<em class="property">class </em><tt class="descclassname">scaTools.</tt><tt class="descname">Unit</tt><a class="headerlink" href="#scaTools.Unit" title="Permalink to this definition">¶</a></dt>
+<dd><p>A class for units (sectors, sequence families, etc.)</p>
+<dl class="docutils">
+<dt><strong>Attributes:</strong> </dt>
+<dd><ul class="first last simple">
+<li><cite>name</cite>  = string describing the unit (ex: &#8216;firmicutes&#8217;)</li>
+<li><cite>items</cite> = set of member items (ex: indices for all firmicutes sequences in an alignment)</li>
+<li><cite>col</cite>   = color code associated to the unit (for plotting)</li>
+<li><cite>vect</cite>  = an additional vector describing the member items (ex: a list of sequence weights)</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="scaTools.alg2bin">
+<tt class="descclassname">scaTools.</tt><tt class="descname">alg2bin</tt><big>(</big><em>alg</em>, <em>N_aa=20</em><big>)</big><a class="headerlink" href="#scaTools.alg2bin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Translate an alignment of size M x L where the amino acids are represented 
+by numbers between 0 and N_aa (obtained using lett2num) to a sparse binary 
+array of size M x (N_aa x L).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Example :</th><td class="field-body"><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">Abin</span> <span class="o">=</span> <span class="n">alg2bin</span><span class="p">(</span><span class="n">alg</span><span class="p">,</span> <span class="n">N_aa</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span> 
+</pre></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="scaTools.basicICA">
+<tt class="descclassname">scaTools.</tt><tt class="descname">basicICA</tt><big>(</big><em>x</em>, <em>r</em>, <em>Niter</em><big>)</big><a class="headerlink" href="#scaTools.basicICA" title="Permalink to this definition">¶</a></dt>
+<dd><p>Basic ICA algorithm, based on work by Bell &amp; Sejnowski (infomax). The input data should preferentially be sphered, i.e., x.T.dot(x) = 1</p>
+<dl class="docutils">
+<dt><strong>Arguments:</strong></dt>
+<dd><ul class="first last simple">
+<li><cite>x</cite> = LxM input matrix where L = # features and M = # samples</li>
+<li><cite>r</cite> = learning rate / relaxation parameter (e.g. r=.0001)</li>
+<li><cite>Niter</cite> =  number of iterations (e.g. 1000)</li>
+</ul>
+</dd>
+<dt><strong>Returns:</strong></dt>
+<dd><ul class="first last simple">
+<li><cite>w</cite> = unmixing matrix</li>
+<li><cite>change</cite> = record of incremental changes during the iterations.</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Note:</strong> r and Niter should be adjusted to achieve convergence, which should be assessed by visualizing &#8216;change&#8217; with plot(range(iter) ,change)</p>
+<dl class="docutils">
+<dt><strong>Example:</strong></dt>
+<dd><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="p">[</span><span class="n">w</span><span class="p">,</span> <span class="n">change</span><span class="p">]</span> <span class="o">=</span> <span class="n">basicICA</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">Niter</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="scaTools.chooseKpos">
+<tt class="descclassname">scaTools.</tt><tt class="descname">chooseKpos</tt><big>(</big><em>Lsca</em>, <em>Lrand</em><big>)</big><a class="headerlink" href="#scaTools.chooseKpos" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given the eigenvalues of the sca matrix (Lsca), and the eigenvalues for the set of randomized matrices (Lrand), return the number of significant eigenmodes.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="scaTools.chooseRefSeq">
+<tt class="descclassname">scaTools.</tt><tt class="descname">chooseRefSeq</tt><big>(</big><em>alg</em><big>)</big><a class="headerlink" href="#scaTools.chooseRefSeq" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function chooses a default reference sequence if none is given by taking the
+sequence which has the mean pairwise sequence identity closest to that of the entire alignment.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Example :</th><td class="field-body"><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">i_ref</span> <span class="o">=</span> <span class="n">chooseRefSeq</span><span class="p">(</span><span class="n">msa_num</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="scaTools.clean_al">
+<tt class="descclassname">scaTools.</tt><tt class="descname">clean_al</tt><big>(</big><em>alg</em>, <em>code='ACDEFGHIKLMNPQRSTVWY'</em>, <em>gap='-'</em><big>)</big><a class="headerlink" href="#scaTools.clean_al" title="Permalink to this definition">¶</a></dt>
+<dd><p>Replaces any character that is not a valid amino acid by a gap.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Arguments :</th><td class="field-body"><p class="first">amino acid sequence alignment</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Keyword Arguments:</th></tr>
+<tr class="field-even field"><td>&nbsp;</td><td class="field-body"><ul class="first last simple">
+<li><cite>code</cite> = list of valid amino acid characters (case sensitive)</li>
+<li><cite>gap</cite> =  gap character for replacement</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="scaTools.cytoscapeOut">
+<tt class="descclassname">scaTools.</tt><tt class="descname">cytoscapeOut</tt><big>(</big><em>ats</em>, <em>cutoff</em>, <em>Csca</em>, <em>Di</em>, <em>sectors</em>, <em>Vp</em>, <em>outfilename</em><big>)</big><a class="headerlink" href="#scaTools.cytoscapeOut" title="Permalink to this definition">¶</a></dt>
+<dd><p>Output tab-delimited text that can be read in by cytoscape. The goal is to enable
+graph representations of the SCA couplings, where residues are nodes, and couplings are edges.
+Within cytoscape, the graph can be color-coded or weighted by Csca, Di, sector definition or Vp.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Example :</th><td class="field-body"><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">cytoscapeOut</span><span class="p">(</span><span class="n">ats</span><span class="p">,</span> <span class="n">cutoff</span><span class="p">,</span> <span class="n">Csca</span><span class="p">,</span> <span class="n">Di</span><span class="p">,</span> <span class="n">sectors</span><span class="p">,</span> <span class="n">Vp</span><span class="p">,</span> <span class="n">outfilename</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="scaTools.dirInfoFromJ">
+<tt class="descclassname">scaTools.</tt><tt class="descname">dirInfoFromJ</tt><big>(</big><em>i</em>, <em>j</em>, <em>Jmat</em>, <em>frq</em>, <em>Naa=20</em>, <em>epsilon=0.0001</em><big>)</big><a class="headerlink" href="#scaTools.dirInfoFromJ" title="Permalink to this definition">¶</a></dt>
+<dd><p>Direct information from the matrix of couplings <span class="math">\(J_{ij}\)</span> (called by <a class="reference external" href="scaTools.html#scaTools.directInfo">directInfo</a>). Ref: Marcos et al, PNAS 2011, 108: E1293-E1301</p>
+<dl class="docutils">
+<dt><strong>Arguments:</strong></dt>
+<dd><ul class="first last simple">
+<li><cite>i</cite> = position 1</li>
+<li><cite>j</cite> = position 2</li>
+<li><cite>Jmat</cite> = coupling matrix</li>
+<li><cite>frq</cite> = frequency</li>
+<li><cite>Naa</cite> = number of amino acids</li>
+</ul>
+</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Example :</th><td class="field-body"><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">DI</span> <span class="o">=</span> <span class="n">dirInfoFromJ</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">Jmat</span><span class="p">,</span> <span class="n">frq</span><span class="p">,</span> <span class="n">Naa</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">epsilon</span><span class="o">=</span><span class="mf">1e-4</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<tt class="descname">directInfo(freq1, freq2, lbda=0.5, freq0=array([ 0.04761905,  0.04761905,  0.04761905,  0.04761905,  0.04761905,</tt></dt>
+<dt>
+<tt class="descname">0.04761905,  0.04761905,  0.04761905,  0.04761905,  0.04761905,</tt></dt>
+<dt>
+<tt class="descname">0.04761905,  0.04761905,  0.04761905,  0.04761905,  0.04761905,</tt></dt>
+<dt>
+<tt class="descname">0.04761905,  0.04761905,  0.04761905,  0.04761905,  0.04761905]), Naa=20)</tt></dt>
+<dd><p>Calculate direct information as in the Direct Coupling Analysis (DCA) method proposed by 
+M. Weigt et collaborators (Ref: Marcos et al, PNAS 2011, 108: E1293-E1301).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Example :</th><td class="field-body"><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">DI</span> <span class="o">=</span> <span class="n">directInfo</span><span class="p">(</span><span class="n">freq1</span><span class="p">,</span> <span class="n">freq2</span><span class="p">,</span> <span class="n">lbda</span><span class="o">=.</span><span class="mi">5</span><span class="p">,</span> <span class="n">freq0</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span><span class="o">/</span><span class="mi">21</span><span class="p">,</span> <span class="n">Naa</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="scaTools.eigenVect">
+<tt class="descclassname">scaTools.</tt><tt class="descname">eigenVect</tt><big>(</big><em>M</em><big>)</big><a class="headerlink" href="#scaTools.eigenVect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the eigenvectors and eigenvalues, ordered by decreasing values of the 
+eigenvalues, for a real symmetric matrix M. The sign of the eigenvectors is fixed
+so that the mean of its components is non-negative.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Example :</th><td class="field-body"><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">eigenVectors</span><span class="p">,</span> <span class="n">eigenValues</span> <span class="o">=</span> <span class="n">eigenVect</span><span class="p">(</span><span class="n">M</span><span class="p">)</span> 
+</pre></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="scaTools.figColors">
+<tt class="descclassname">scaTools.</tt><tt class="descname">figColors</tt><big>(</big><big>)</big><a class="headerlink" href="#scaTools.figColors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Color code for <a class="reference external" href="scaTools.html#scaTools.figUnits">figUnits</a>.</p>
+<blockquote>
+<div><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">figColors</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="scaTools.figMapping">
+<tt class="descclassname">scaTools.</tt><tt class="descname">figMapping</tt><big>(</big><em>Csca</em>, <em>tX</em>, <em>kpos</em>, <em>sectors</em>, <em>subfam</em><big>)</big><a class="headerlink" href="#scaTools.figMapping" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function that automates finding the top <span class="math">\(k_{pos}\)</span> independent components, projection, and plotting.
+Useful to get a representation of the sectors/subfamilies mapping for a given kpos.
+<strong>Arguments:</strong></p>
+<blockquote>
+<div><ul class="simple">
+<li><cite>Csca</cite> = the sca matrix</li>
+<li><cite>tX</cite> = the projected alignment</li>
+<li><cite>kpos</cite> = the number of independent components to consider</li>
+<li><cite>sectors</cite> = list of <a class="reference external" href="scaTools.html#scaTools.Unit">Unit</a> elements for each sector</li>
+<li><cite>subfam</cite> = list of <a class="reference external" href="scaTools.html#scaTools.Unit">Unit</a> elements for each sequence family</li>
+</ul>
+</div></blockquote>
+<dl class="docutils">
+<dt><strong>Returns:</strong></dt>
+<dd><ul class="first last simple">
+<li><cite>Vpica</cite> = the independent components of Csca</li>
+</ul>
+</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Example :</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">Vpica</span> <span class="o">=</span> <span class="n">figMapping</span><span class="p">(</span><span class="n">Csca</span><span class="p">,</span> <span class="n">tX</span><span class="p">,</span> <span class="n">kpos</span><span class="p">,</span> <span class="n">sectors</span><span class="p">,</span> <span class="n">subfam</span><span class="p">)</span> 
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="scaTools.figStruct">
+<tt class="descclassname">scaTools.</tt><tt class="descname">figStruct</tt><big>(</big><em>pdbid</em>, <em>sectors</em>, <em>ats</em>, <em>chainid='A'</em>, <em>outfile='Outputs/sectors.pml'</em>, <em>quit=1</em>, <em>pymol='/Applications/MacPyMOL.app/Contents/MacOS/MacPyMOL'</em><big>)</big><a class="headerlink" href="#scaTools.figStruct" title="Permalink to this definition">¶</a></dt>
+<dd><p>Make and display an image of the sectors (within a python notebook). By default quit PyMol after running it,
+unless the option &#8216;quit=0&#8217; is given. The default name and location of the output can 
+also be changed.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Example :</th><td class="field-body"><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">figStruct</span><span class="p">(</span><span class="n">pdbid</span><span class="p">,</span> <span class="n">sectors</span><span class="p">,</span> <span class="n">ats</span><span class="p">,</span> <span class="n">chainid</span><span class="o">=</span><span class="s">&#39;A&#39;</span><span class="p">,</span> <span class="n">outfile</span> <span class="o">=</span> <span class="s">&#39;Outputs/sectors.pml&#39;</span><span class="p">,</span>              <span class="n">quit</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">pymol</span> <span class="o">=</span> <span class="n">path2pymol</span><span class="p">)</span> 
+</pre></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="scaTools.figUnits">
+<tt class="descclassname">scaTools.</tt><tt class="descname">figUnits</tt><big>(</big><em>v1</em>, <em>v2</em>, <em>units</em>, <em>marker='o'</em>, <em>dotsize=9</em>, <em>notinunits=1</em><big>)</big><a class="headerlink" href="#scaTools.figUnits" title="Permalink to this definition">¶</a></dt>
+<dd><p>2d scatter plot specified by &#8216;units&#8217;, which must be a list of elements
+in the class <a class="reference external" href="scaTools.html#scaTools.Unit">Unit</a>. See <a class="reference external" href="scaTools.html#scaTools.figColors">figColors</a> for the color code. Admissible color codes are in [0 1] 
+(light/dark gray can also be obtained by using -1/+1).
+For instance: 0-&gt;red, 1/3-&gt;green, 2/3-&gt; blue.</p>
+<dl class="docutils">
+<dt><strong>Arguments:</strong></dt>
+<dd><ul class="first last simple">
+<li><cite>v1</cite> = xvals</li>
+<li><cite>v2</cite> = yvals</li>
+<li><cite>units</cite> = list of elements in units</li>
+</ul>
+</dd>
+<dt><strong>Keyword Arguments</strong></dt>
+<dd><ul class="first last">
+<li><p class="first"><cite>marker</cite> = plot marker symbol</p>
+</li>
+<li><p class="first"><cite>dotsize</cite> = specify marker/dotsize</p>
+</li>
+<li><dl class="first docutils">
+<dt><cite>notinunits</cite> = if set to 1 <span class="classifier-delimiter">:</span> <span class="classifier">the elements not in a unit are represented in white, if set to 0 </span></dt>
+<dd><p class="first last">these elements are not represented, if set to [w1,w2] : elements with coordinates 
+w1,w2 are represented in white in the background.</p>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Example :</th><td class="field-body"><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">figUnits</span><span class="p">(</span><span class="n">v1</span><span class="p">,</span> <span class="n">v2</span><span class="p">,</span> <span class="n">units</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s">&#39;o&#39;</span><span class="p">,</span> <span class="n">gradcol</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">dotsize</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span> <span class="n">notinunits</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="scaTools.figWeights">
+<tt class="descclassname">scaTools.</tt><tt class="descname">figWeights</tt><big>(</big><em>U1</em>, <em>U2</em>, <em>weight</em><big>)</big><a class="headerlink" href="#scaTools.figWeights" title="Permalink to this definition">¶</a></dt>
+<dd><p>A 2d scatter plot with color indicating weight.</p>
+<blockquote>
+<div><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">figWeights</span><span class="p">(</span><span class="n">U1</span><span class="p">,</span> <span class="n">U2</span><span class="p">,</span> <span class="n">weight</span><span class="p">)</span> 
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="scaTools.filterPos">
+<tt class="descclassname">scaTools.</tt><tt class="descname">filterPos</tt><big>(</big><em>alg, seqw=[1], max_fracgaps=0.2</em><big>)</big><a class="headerlink" href="#scaTools.filterPos" title="Permalink to this definition">¶</a></dt>
+<dd><p>Truncate the positions of an input alignment to reduce gaps, taking into account sequence weights.</p>
+<dl class="docutils">
+<dt><strong>Arguments:</strong></dt>
+<dd><ul class="first last simple">
+<li><cite>alg</cite> = An MxL list of sequences</li>
+</ul>
+</dd>
+<dt><strong>Keyword Arguments:</strong></dt>
+<dd><ul class="first last simple">
+<li><cite>seqw</cite> = vector of sequence weights (default is uniform weights)</li>
+<li><cite>max_fracgaps</cite> = maximum fraction of gaps allowed at a position</li>
+</ul>
+</dd>
+<dt><strong>Returns:</strong></dt>
+<dd><ul class="first last simple">
+<li><cite>alg_tr</cite> = the truncated alignment</li>
+<li><cite>selpos</cite> = the index of retained positions (indices start at 0 for the first position)</li>
+</ul>
+</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Example :</th><td class="field-body"><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">alg_tr</span><span class="p">,</span> <span class="n">selpos</span> <span class="o">=</span> <span class="n">filterPos</span><span class="p">(</span><span class="n">alg</span><span class="p">,</span> <span class="n">seqw</span><span class="p">,</span> <span class="n">max_fracgaps</span><span class="o">=.</span><span class="mi">2</span><span class="p">)</span> 
+</pre></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="scaTools.filterSeq">
+<tt class="descclassname">scaTools.</tt><tt class="descname">filterSeq</tt><big>(</big><em>alg0</em>, <em>sref=0.5</em>, <em>max_fracgaps=0.2</em>, <em>min_seqid=0.2</em>, <em>max_seqid=0.8</em><big>)</big><a class="headerlink" href="#scaTools.filterSeq" title="Permalink to this definition">¶</a></dt>
+<dd><p>Take in an alignment (alg0, assumed to be filtered to remove highly gapped positions),
+a reference sequence, the maximum fraction of gaps allowed per sequence (max_fracgaps),
+the minimum and maximum sequence identities to the reference sequence (min_seqid 
+and max_seqid), and return (1) alg, the alignment filtered to remove sequences with 
+more than max_fracgaps (i.e. partial seqs), (2) seqw, a vector of weights for each 
+sequence, (3) seqkeep, the indices of the original alignment (alg0) retained in alg:</p>
+<dl class="docutils">
+<dt><strong>Note:</strong> if sref is set to 0.5, filterSeq calls <a class="reference external" href="scaTools.html#scaTools.chooseRefSeq">chooseRefSeq</a> to automatically select a</dt>
+<dd>reference sequence.</dd>
+</dl>
+<dl class="docutils">
+<dt><strong>Example:</strong></dt>
+<dd><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">alg</span><span class="p">,</span> <span class="n">seqw</span><span class="p">,</span> <span class="n">seqkeep</span> <span class="o">=</span> <span class="n">filterSeq</span><span class="p">(</span><span class="n">alg0</span><span class="p">,</span> <span class="n">iref</span><span class="p">,</span> <span class="n">max_fracgaps</span><span class="o">=.</span><span class="mi">2</span><span class="p">,</span> <span class="n">min_seqid</span><span class="o">=.</span><span class="mi">2</span><span class="p">,</span> <span class="n">max_seqid</span><span class="o">=.</span><span class="mi">8</span><span class="p">)</span> 
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<tt class="descname">freq(alg, seqw=1, Naa=20, lbda=0, freq0=array([ 0.04761905,  0.04761905,  0.04761905,  0.04761905,  0.04761905,</tt></dt>
+<dt>
+<tt class="descname">0.04761905,  0.04761905,  0.04761905,  0.04761905,  0.04761905,</tt></dt>
+<dt>
+<tt class="descname">0.04761905,  0.04761905,  0.04761905,  0.04761905,  0.04761905,</tt></dt>
+<dt>
+<tt class="descname">0.04761905,  0.04761905,  0.04761905,  0.04761905,  0.04761905]))</tt></dt>
+<dd><p>Compute amino acid frequencies for a given alignment.</p>
+<dl class="docutils">
+<dt><strong>Arguments:</strong></dt>
+<dd><ul class="first last simple">
+<li><cite>alg</cite> = a MxL sequence alignment (converted using <a class="reference external" href="scaTools.html#scaTools.lett2num">lett2num</a>)</li>
+</ul>
+</dd>
+</dl>
+<dl class="docutils">
+<dt><strong>Keyword Arguments:</strong></dt>
+<dd><ul class="first last simple">
+<li><cite>seqw</cite> = a vector of sequence weights (1xM)</li>
+<li><cite>Naa</cite> = the number of amino acids</li>
+<li><cite>lbda</cite> = lambda parameter for setting the frequency of pseudo-counts (0 for no pseudo counts)</li>
+<li><cite>freq0</cite> = expected average frequency of amino acids at all positions</li>
+</ul>
+</dd>
+<dt><strong>Returns:</strong></dt>
+<dd><ul class="first last simple">
+<li><cite>freq1</cite> = the frequencies of amino acids at each position taken independently (Naa*L)</li>
+<li><cite>freq2</cite> = the joint frequencies of amino acids at pairs of positions (freq2, Naa*L * Naa*L)</li>
+<li><cite>freq0</cite> = the average frequency of amino acids at all positions (Naa)</li>
+</ul>
+</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Example :</th><td class="field-body"><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">freq1</span><span class="p">,</span> <span class="n">freq2</span><span class="p">,</span> <span class="n">freq0</span> <span class="o">=</span> <span class="n">freq</span><span class="p">(</span><span class="n">alg</span><span class="p">,</span> <span class="n">seqw</span><span class="p">,</span> <span class="n">lbda</span><span class="o">=</span><span class="n">lbda</span><span class="p">)</span> 
+</pre></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="scaTools.icList">
+<tt class="descclassname">scaTools.</tt><tt class="descname">icList</tt><big>(</big><em>Vpica</em>, <em>kpos</em>, <em>Csca</em>, <em>p_cut=0.95</em><big>)</big><a class="headerlink" href="#scaTools.icList" title="Permalink to this definition">¶</a></dt>
+<dd><p>Produces a list of positions contributing to each independent component (IC) above
+a defined statistical cutoff (p_cut, the cutoff on the CDF of the t-distribution
+fit to the histogram of each IC).  Any position above the cutoff on more than one IC 
+are assigned to one IC based on which group of positions to which it shows a higher
+degree of coevolution. Additionally returns the numeric value of the cutoff for each IC, and the
+pdf fit, which can be used for plotting/evaluation.
+icList, icsize, sortedpos, cutoff, pd  = icList(Vsca,Lsca,Lrand)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="scaTools.lett2num">
+<tt class="descclassname">scaTools.</tt><tt class="descname">lett2num</tt><big>(</big><em>msa_lett</em>, <em>code='ACDEFGHIKLMNPQRSTVWY'</em><big>)</big><a class="headerlink" href="#scaTools.lett2num" title="Permalink to this definition">¶</a></dt>
+<dd><p>Translate an alignment from a representation where the 20 natural amino
+acids are represented by letters to a representation where they are
+represented by the numbers 1,...,20, with any symbol not corresponding to an
+amino acid represented by 0.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Example :</th><td class="field-body"><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">msa_num</span> <span class="o">=</span> <span class="n">lett2num</span><span class="p">(</span><span class="n">msa_lett</span><span class="p">,</span> <span class="n">code</span><span class="o">=</span><span class="s">&#39;ACDEFGHIKLMNPQRSTVWY&#39;</span><span class="p">)</span> 
+</pre></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="scaTools.makeATS">
+<tt class="descclassname">scaTools.</tt><tt class="descname">makeATS</tt><big>(</big><em>sequences</em>, <em>refpos</em>, <em>refseq</em>, <em>iref=0</em>, <em>truncate=False</em><big>)</big><a class="headerlink" href="#scaTools.makeATS" title="Permalink to this definition">¶</a></dt>
+<dd><p>If specified, truncate the alignment to the structure (assumes <a class="reference external" href="scaTools.html#scaTools.MSAsearch">MSAsearch</a> has already been run
+to identify the reference sequence (iref)) and produce a mapping (ats) between alignment positions and the positions in the reference sequence (refpos).</p>
+<blockquote>
+<div><dl class="docutils">
+<dt><strong>Arguments:</strong></dt>
+<dd><ul class="first last simple">
+<li>sequences</li>
+<li>reference positions</li>
+<li>reference sequence</li>
+<li>iref, the index of the sequence in the alignment with the highest identity to the reference</li>
+</ul>
+</dd>
+</dl>
+</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name" colspan="2">Keyword Arguments:</th></tr>
+<tr class="field-odd field"><td>&nbsp;</td><td class="field-body"><p class="first">truncate  &#8211; truncate the alignment to positions that align to the reference sequence.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Example :</th><td class="field-body"><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">sequences_trun</span><span class="p">,</span> <span class="n">ats_new</span> <span class="o">=</span> <span class="n">sca</span><span class="o">.</span><span class="n">makeATS</span><span class="p">(</span><span class="n">sequences_full</span><span class="p">,</span> <span class="n">ats_pdb</span><span class="p">,</span> <span class="n">seq_pdb</span><span class="p">,</span> <span class="n">i_ref</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<tt class="descname">numConnected(Vp, k, distmat, eps_list=array([ 0.5 ,  0.49,  0.48,  0.47,  0.46,  0.45,  0.44,  0.43,  0.42,</tt></dt>
+<dt>
+<tt class="descname">0.41,  0.4 ,  0.39,  0.38,  0.37,  0.36,  0.35,  0.34,  0.33,</tt></dt>
+<dt>
+<tt class="descname">0.32,  0.31,  0.3 ,  0.29,  0.28,  0.27,  0.26,  0.25,  0.24,</tt></dt>
+<dt>
+<tt class="descname">0.23,  0.22,  0.21,  0.2 ,  0.19,  0.18,  0.17,  0.16,  0.15,</tt></dt>
+<dt>
+<tt class="descname">0.14,  0.13,  0.12,  0.11,  0.1 ,  0.09,  0.08,  0.07,  0.06,</tt></dt>
+<dt>
+<tt class="descname">0.05,  0.04,  0.03,  0.02,  0.01]), dcontact=5)</tt></dt>
+<dd><p>Calculates the number of positions in the largest connected component for groups of positions i
+with <span class="math">\(V_p[i,k] &gt; eps\)</span> and <span class="math">\(V_p[i,k] &gt; V_p[i,kk]\)</span>, for <span class="math">\(kk != k\)</span> and eps in eps_list. Useful for looking evaluating the physical connectivity of different sectors or sub-sectors.</p>
+<dl class="docutils">
+<dt><strong>Arguments</strong>: </dt>
+<dd><ul class="first last simple">
+<li><cite>Vp</cite> = A set of eigenvectors or independent components</li>
+<li><cite>k</cite>  = The eigenvector or independent component to consider</li>
+<li><cite>distmat</cite> = Distance matrix (computed by <a class="reference external" href="scaTools.html#scaTools.pdbSeq">pdbSeq</a>)</li>
+</ul>
+</dd>
+</dl>
+<dl class="docutils">
+<dt><strong>Keyword Arguments:</strong></dt>
+<dd><ul class="first last simple">
+<li><cite>eps_list</cite> = the range of values of eps for which the group is non-empty</li>
+<li><cite>dcontact</cite> = the distance cutoff for defining contacts</li>
+</ul>
+</dd>
+<dt><strong>Example:</strong></dt>
+<dd><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">eps_range</span><span class="p">,</span> <span class="n">num_co</span><span class="p">,</span> <span class="n">num_tot</span> <span class="o">=</span> <span class="n">numConnected</span><span class="p">(</span><span class="n">Vp</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">distmat</span><span class="p">,</span> <span class="n">eps_list</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">.</span><span class="mi">5</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="o">-.</span><span class="mo">01</span><span class="p">),</span> <span class="n">dcontact</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="scaTools.pdbSeq">
+<tt class="descclassname">scaTools.</tt><tt class="descname">pdbSeq</tt><big>(</big><em>pdbid</em>, <em>chain='A'</em>, <em>path2pdb='Inputs/'</em>, <em>calcDist=1</em><big>)</big><a class="headerlink" href="#scaTools.pdbSeq" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extract sequence, position labels and matrix of distances from a PDB file.</p>
+<dl class="docutils">
+<dt><strong>Arguments:</strong></dt>
+<dd><ul class="first last simple">
+<li><cite>pdbid</cite> = PDB identifier (four letters/numbers)</li>
+<li><cite>chain</cite> = PDB chain identifier</li>
+<li><cite>path2pdb</cite> = location of the PDB file</li>
+<li><cite>calcDist</cite> = calculate a distance matrix between all pairs of positions, default is 1</li>
+</ul>
+</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Example :</th><td class="field-body"><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">sequence</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="n">dist</span> <span class="o">=</span> <span class="n">pdbSeq</span><span class="p">(</span><span class="n">pdbid</span><span class="p">,</span> <span class="n">chain</span><span class="o">=</span><span class="s">&#39;A&#39;</span><span class="p">,</span> <span class="n">path2pdb</span><span class="o">=</span><span class="n">path2structures</span><span class="p">)</span> 
+</pre></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<tt class="descname">posWeights(alg, seqw=1, lbda=0, freq0=array([ 0.073,  0.025,  0.05 ,  0.061,  0.042,  0.072,  0.023,  0.053,</tt></dt>
+<dt>
+<tt class="descname">0.064,  0.089,  0.023,  0.043,  0.052,  0.04 ,  0.052,  0.073,</tt></dt>
+<dt>
+<tt class="descname">0.056,  0.063,  0.013,  0.033]))</tt></dt>
+<dd><p>Compute single-site measures of conservation, and the sca position weights, <span class="math">\(\frac {\partial {D_i^a}}{\partial {f_i^a}}\)</span></p>
+<dl class="docutils">
+<dt><strong>Arguments:</strong></dt>
+<dd><ul class="first last simple">
+<li><cite>alg</cite> =  MSA, dimensions MxL, converted to numerical representation with <a class="reference external" href="scaTools.html#scaTools.lett2num">lett2num</a></li>
+<li><cite>seqw</cite> = a vector of M sequence weights (default is uniform weighting)</li>
+<li><cite>lbda</cite> = pseudo-counting frequencies, default is no pseudocounts</li>
+<li><cite>freq0</cite> =  background amino acid frequencies <span class="math">\(q_i^a\)</span></li>
+</ul>
+</dd>
+<dt><strong>Returns:</strong></dt>
+<dd><ul class="first last simple">
+<li><cite>Wia</cite> = positional weights from the derivation of a relative entropy, <span class="math">\(\frac {\partial {D_i^a}}{\partial {f_i^a}}\)</span> (Lx20)</li>
+<li><cite>Dia</cite> = the relative entropy per position and amino acid (Lx20)</li>
+<li><cite>Di</cite> = the relative entropy per position (L)</li>
+</ul>
+</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Example :</th><td class="field-body"><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">Wia</span><span class="p">,</span> <span class="n">Dia</span><span class="p">,</span> <span class="n">Di</span> <span class="o">=</span> <span class="n">posWeights</span><span class="p">(</span><span class="n">alg</span><span class="p">,</span> <span class="n">seqw</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">freq0</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="scaTools.projAlg">
+<tt class="descclassname">scaTools.</tt><tt class="descname">projAlg</tt><big>(</big><em>alg</em>, <em>Proj</em><big>)</big><a class="headerlink" href="#scaTools.projAlg" title="Permalink to this definition">¶</a></dt>
+<dd><p>Projection of an alignment (alg) based on a projector (Proj). The input alignment should already be converted to numeric representation using <a class="reference external" href="scaTools.html#scaTools.lett2num">lett2num</a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Example :</th><td class="field-body"><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">tX</span> <span class="o">=</span> <span class="n">projAlg</span><span class="p">(</span><span class="n">msa_num</span><span class="p">,</span> <span class="n">Proj</span><span class="p">)</span> 
+</pre></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="scaTools.projUica">
+<tt class="descclassname">scaTools.</tt><tt class="descname">projUica</tt><big>(</big><em>msa_ann</em>, <em>msa_num</em>, <em>seqw</em>, <em>kica=6</em><big>)</big><a class="headerlink" href="#scaTools.projUica" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the projection of an alignment (msa_ann) on the kpos ICA components
+of the sequence space of another (msa_num, seqw).This is useful to compare the sequence space of one alignment to another.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Example :</th><td class="field-body"><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">Uica_ann</span><span class="p">,</span> <span class="n">Uica</span> <span class="o">=</span> <span class="n">projUpica</span><span class="p">(</span><span class="n">msa_ann</span><span class="p">,</span> <span class="n">msa_num_</span> <span class="n">seqw</span><span class="p">,</span> <span class="n">kica</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span> 
+</pre></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="scaTools.projUpica">
+<tt class="descclassname">scaTools.</tt><tt class="descname">projUpica</tt><big>(</big><em>msa_ann</em>, <em>msa_num</em>, <em>seqw</em>, <em>kpos</em><big>)</big><a class="headerlink" href="#scaTools.projUpica" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the projection of an alignment (msa_ann) on the kpos ICA components
+of the SCA matrix of another (msa_num, seqw). This is useful to compare the sequence space (as projected by the positional correlations) of one alignment to another.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Example :</th><td class="field-body"><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">Upica_ann</span><span class="p">,</span> <span class="n">Upica</span> <span class="o">=</span> <span class="n">projUpica</span><span class="p">(</span><span class="n">msa_ann</span><span class="p">,</span> <span class="n">msa_num_</span> <span class="n">seqw</span><span class="p">,</span> <span class="n">kpos</span><span class="p">)</span> 
+</pre></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="scaTools.randAlg">
+<tt class="descclassname">scaTools.</tt><tt class="descname">randAlg</tt><big>(</big><em>frq</em>, <em>Mseq</em><big>)</big><a class="headerlink" href="#scaTools.randAlg" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate a random alignment with Mseq sequences based on the
+frequencies frq[i,a] of amino acids with a = 0,1,...,Naa (0 for gaps).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Example :</th><td class="field-body"><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">msa_rand</span> <span class="o">=</span> <span class="n">randAlg</span><span class="p">(</span><span class="n">frq</span><span class="p">,</span> <span class="n">Mseq</span><span class="p">)</span> 
+</pre></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="scaTools.randSel">
+<tt class="descclassname">scaTools.</tt><tt class="descname">randSel</tt><big>(</big><em>seqw</em>, <em>Mtot</em>, <em>keepSeq=</em><span class="optional">[</span><span class="optional">]</span><big>)</big><a class="headerlink" href="#scaTools.randSel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Random selection of Mtot sequences, drawn with weights and without replacement.
+The seed for the random number generator is fixed to ensure reproducibility.</p>
+<blockquote>
+<div><dl class="docutils">
+<dt><strong>Arguments:</strong></dt>
+<dd><ul class="first last simple">
+<li><cite>seqw</cite> = the sequence weights</li>
+<li><cite>Mtot</cite> = the total number of sequences for selection</li>
+</ul>
+</dd>
+<dt><strong>Keyword Arguments:</strong></dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt><cite>keepSeq</cite> = an (optional) list of sequnces to keep. This can be useful if you would like to </dt>
+<dd><p class="first last">retain the reference sequence for example.</p>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">selection</span> <span class="o">=</span> <span class="n">randSel</span><span class="p">(</span><span class="n">seqw</span><span class="p">,</span> <span class="n">Mtot</span><span class="p">,</span> <span class="p">[</span><span class="n">iref</span><span class="p">])</span> 
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="scaTools.randomize">
+<tt class="descclassname">scaTools.</tt><tt class="descname">randomize</tt><big>(</big><em>msa_num</em>, <em>Ntrials</em>, <em>seqw=1</em>, <em>norm='frob'</em>, <em>lbda=0</em>, <em>Naa=20</em>, <em>kmax=6</em><big>)</big><a class="headerlink" href="#scaTools.randomize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Randomize the alignment while preserving the frequencies of amino acids at each 
+position and compute the resulting spectrum of the SCA matrix.</p>
+<dl class="docutils">
+<dt><strong>Arguments:</strong></dt>
+<dd><ul class="first last simple">
+<li><cite>msa_num</cite> = a MxL sequence alignment (converted to numerical representation using <a class="reference external" href="scaTools.html#scaTools.lett2num">lett2num</a>)</li>
+<li><cite>Ntrials</cite> = number of trials</li>
+<li><cite>seqw</cite> = vector of sequence weights (default is to assume equal weighting)</li>
+<li><cite>norm</cite> = either &#8216;frob&#8217; (frobenius) or &#8216;spec&#8217; (spectral)</li>
+<li><cite>lbda</cite> = lambda parameter for setting the frequency of pseudo-counts (0 for no pseudo counts)</li>
+<li><cite>Naa</cite> = number of amino acids</li>
+<li><cite>kmax</cite> = number of eigenvectors to keep for each randomized trial</li>
+</ul>
+</dd>
+<dt><strong>Returns:</strong></dt>
+<dd><ul class="first last simple">
+<li><cite>Vrand</cite> =  eigenvectors for the <span class="math">\(\tilde {C_{ij}^{ab}}\)</span> matrix of the randomized alignment (dimensions: Ntrials*Npos*kmax)</li>
+<li><cite>Lrand</cite> =  eigenvalues for the <span class="math">\(\tilde {C_{ij}^{ab}}\)</span> matrix of the randomized alignment  (dimensions: Ntrials*Npos)</li>
+</ul>
+</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Example :</th><td class="field-body"><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">Vrand</span><span class="p">,</span> <span class="n">Lrand</span><span class="p">,</span> <span class="n">Crand</span> <span class="o">=</span> <span class="n">randomize</span><span class="p">(</span><span class="n">msa_num</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">seqw</span><span class="p">,</span> <span class="n">Naa</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">kmax</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="scaTools.readAlg">
+<tt class="descclassname">scaTools.</tt><tt class="descname">readAlg</tt><big>(</big><em>filename</em><big>)</big><a class="headerlink" href="#scaTools.readAlg" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read in a multiple sequence alignment in fasta format, and return the 
+headers and sequences.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">headers</span><span class="p">,</span> <span class="n">sequences</span> <span class="o">=</span> <span class="n">readAlg</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span> 
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="scaTools.rotICA">
+<tt class="descclassname">scaTools.</tt><tt class="descname">rotICA</tt><big>(</big><em>V</em>, <em>kmax=6</em>, <em>learnrate=0.0001</em>, <em>iterations=10000</em><big>)</big><a class="headerlink" href="#scaTools.rotICA" title="Permalink to this definition">¶</a></dt>
+<dd><p>ICA rotation (using basicICA) with default parameters and normalization of 
+outputs.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Example :</th><td class="field-body"><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">Vica</span><span class="p">,</span> <span class="n">W</span> <span class="o">=</span> <span class="n">rotICA</span><span class="p">(</span><span class="n">V</span><span class="p">,</span> <span class="n">kmax</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">learnrate</span><span class="o">=.</span><span class="mo">0001</span><span class="p">,</span> <span class="n">iterations</span><span class="o">=</span><span class="mi">10000</span><span class="p">)</span> 
+</pre></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<tt class="descname">scaMat(alg, seqw=1, norm='frob', lbda=0, freq0=array([ 0.04761905,  0.04761905,  0.04761905,  0.04761905,  0.04761905,</tt></dt>
+<dt>
+<tt class="descname">0.04761905,  0.04761905,  0.04761905,  0.04761905,  0.04761905,</tt></dt>
+<dt>
+<tt class="descname">0.04761905,  0.04761905,  0.04761905,  0.04761905,  0.04761905,</tt></dt>
+<dt>
+<tt class="descname">0.04761905,  0.04761905,  0.04761905,  0.04761905,  0.04761905]))</tt></dt>
+<dd><p>Computes the SCA matrix.</p>
+<dl class="docutils">
+<dt><strong>Arguments:</strong></dt>
+<dd><ul class="first last simple">
+<li><cite>alg</cite> =  A MxL multiple sequence alignment, converted to numeric representation with <a class="reference external" href="scaTools.html#scaTools.lett2num">lett2num</a></li>
+</ul>
+</dd>
+<dt><strong>Keyword Arguments:</strong></dt>
+<dd><ul class="first last">
+<li><p class="first"><cite>seqw</cite> =  A vector of sequence weights (default: uniform weights)</p>
+</li>
+<li><dl class="first docutils">
+<dt><cite>norm</cite> =   The type of matrix norm used for dimension reduction of the</dt>
+<dd><p class="first last">SCA correlation tensor to a positional correlation matrix.
+Use &#8216;spec&#8217; for spectral norm and &#8216;frob&#8217; for Frobenius
+norm.  The frobenius norm is the default.</p>
+</dd>
+</dl>
+</li>
+<li><p class="first"><cite>lbda</cite> =  lambda parameter for setting the frequency of pseudo-counts (0 for no pseudo counts)</p>
+</li>
+<li><p class="first"><cite>freq0</cite> = background expectation for amino acid frequencies</p>
+</li>
+</ul>
+</dd>
+<dt><strong>Returns:</strong></dt>
+<dd><ul class="first last simple">
+<li><cite>Cp</cite> = the LxL SCA positional correlation matrix</li>
+<li><cite>tX</cite> = the projected MxL alignment</li>
+<li><cite>projMat</cite> = the projector</li>
+</ul>
+</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Example :</th><td class="field-body"><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">Csca</span><span class="p">,</span> <span class="n">tX</span><span class="p">,</span> <span class="n">projMat</span> <span class="o">=</span> <span class="n">scaMat</span><span class="p">(</span><span class="n">alg</span><span class="p">,</span> <span class="n">seqw</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="s">&#39;frob&#39;</span><span class="p">,</span> <span class="n">lbda</span><span class="o">=</span><span class="mf">0.03</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="scaTools.seqProj">
+<tt class="descclassname">scaTools.</tt><tt class="descname">seqProj</tt><big>(</big><em>msa_num</em>, <em>seqw</em>, <em>kseq=15</em>, <em>kica=6</em><big>)</big><a class="headerlink" href="#scaTools.seqProj" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute three different projections of the sequences based on eigenvectors of the sequence similarity matrix.</p>
+<dl class="docutils">
+<dt><strong>Arguments:</strong></dt>
+<dd><ul class="first last simple">
+<li><cite>msa_num</cite> = sequence alignment (previously converted to numerical representation using <a class="reference external" href="scaTools.html#scaTools.lett2num">lett2num</a>)</li>
+<li><cite>seqw</cite> = a vector of sequence weights</li>
+</ul>
+</dd>
+<dt><strong>Keyword Arguments:</strong></dt>
+<dd><ul class="first last simple">
+<li><cite>kseq</cite> = number of eigenvectors to compute</li>
+<li><cite>kica</cite> = number of independent components to compute</li>
+</ul>
+</dd>
+<dt><strong>Returns:</strong></dt>
+<dd><ul class="first last simple">
+<li><cite>Useq[0]/Uica[0]</cite> =  use no weight</li>
+<li><cite>Useq[1]/Uica[1]</cite> =  use sequence weights</li>
+<li><cite>Useq[2]/Uica[2]</cite> =  use sequence weights and positional weights</li>
+</ul>
+</dd>
+<dt><strong>Example:</strong></dt>
+<dd><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">Useq</span><span class="p">,</span> <span class="n">Uica</span> <span class="o">=</span> <span class="n">sca</span><span class="o">.</span><span class="n">seqProj</span><span class="p">(</span><span class="n">msa_num</span><span class="p">,</span> <span class="n">seqw</span><span class="p">,</span> <span class="n">kseq</span> <span class="o">=</span> <span class="mi">30</span><span class="p">,</span> <span class="n">kica</span> <span class="o">=</span> <span class="mi">15</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="scaTools.seqSim">
+<tt class="descclassname">scaTools.</tt><tt class="descname">seqSim</tt><big>(</big><em>alg</em><big>)</big><a class="headerlink" href="#scaTools.seqSim" title="Permalink to this definition">¶</a></dt>
+<dd><p>Take an MxL alignment (converted to numeric representation using <a class="reference external" href="scaTools.html#scaTools.lett2num">lett2num</a>) 
+and compute a MxM matrix of sequence similarities.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Example :</th><td class="field-body"><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">simMat</span> <span class="o">=</span> <span class="n">seqSim</span><span class="p">(</span><span class="n">alg</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="scaTools.seqWeights">
+<tt class="descclassname">scaTools.</tt><tt class="descname">seqWeights</tt><big>(</big><em>alg</em>, <em>max_seqid=0.8</em>, <em>gaps=1</em><big>)</big><a class="headerlink" href="#scaTools.seqWeights" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute sequence weights for an alignment (format: list of sequences)
+where the weight of a sequence is the inverse of the number of sequences in
+its neighborhood, defined as the sequences with sequence similarity below
+max_seqid. The sum of the weights defines an effective number of sequences.</p>
+<dl class="docutils">
+<dt><strong>Arguments:</strong></dt>
+<dd><ul class="first last simple">
+<li><cite>alg</cite> = list of sequences</li>
+</ul>
+</dd>
+<dt><strong>Keyword Arguments:</strong></dt>
+<dd><ul class="first last simple">
+<li><cite>max_seqid</cite></li>
+<li><cite>gaps</cite> = If gaps == 1 (default), considering gaps as a 21st amino acid, if gaps == 0, not considering them.</li>
+</ul>
+</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Example :</th><td class="field-body"><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">seqw</span> <span class="o">=</span> <span class="n">seqWeights</span><span class="p">(</span><span class="n">alg</span><span class="p">)</span>    
+</pre></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="scaTools.singleBar">
+<tt class="descclassname">scaTools.</tt><tt class="descname">singleBar</tt><big>(</big><em>x</em>, <em>loc</em>, <em>cols</em>, <em>width=0.5</em><big>)</big><a class="headerlink" href="#scaTools.singleBar" title="Permalink to this definition">¶</a></dt>
+<dd><p>Single bar diagram, called by <a class="reference external" href="scaTools.html#scaTools.MultiBar">MultiBar</a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Example :</th><td class="field-body"><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">singleBar</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">loc</span><span class="p">,</span> <span class="n">cols</span><span class="p">,</span> <span class="n">width</span><span class="o">=.</span><span class="mi">5</span><span class="p">)</span> 
+</pre></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="scaTools.sizeLargestCompo">
+<tt class="descclassname">scaTools.</tt><tt class="descname">sizeLargestCompo</tt><big>(</big><em>adjMat</em><big>)</big><a class="headerlink" href="#scaTools.sizeLargestCompo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the size of the largest component of a graph given its adjacency matrix. 
+Called by <a class="reference external" href="scaTools.html#scaTools.sizeLargestCompo">numConnected</a> (Done by actually listing all the components)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Example :</th><td class="field-body"><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">sizeLargestCompo</span><span class="p">(</span><span class="n">adjMat</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="scaTools.svdss">
+<tt class="descclassname">scaTools.</tt><tt class="descname">svdss</tt><big>(</big><em>X</em>, <em>k=6</em><big>)</big><a class="headerlink" href="#scaTools.svdss" title="Permalink to this definition">¶</a></dt>
+<dd><p>Singular value decomposition for sparse matrices (top k components). The singular
+values are ordered by decreasing values,  the sign of the singular vectors is fixed,
+and the convention is that X = u.dot(s).dot(v.T):</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Example :</th><td class="field-body"><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">u</span><span class="p">,</span> <span class="n">s</span> <span class="p">,</span><span class="n">v</span> <span class="o">=</span> <span class="n">svdss</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="scaTools.truncDiag">
+<tt class="descclassname">scaTools.</tt><tt class="descname">truncDiag</tt><big>(</big><em>M</em>, <em>dmax</em><big>)</big><a class="headerlink" href="#scaTools.truncDiag" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set to 0 the elements of a matrix M up to a distance dmax from the diagonal.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Example :</th><td class="field-body"><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">Mtr</span> <span class="o">=</span> <span class="n">truncDiag</span><span class="p">(</span><span class="n">M</span><span class="p">,</span> <span class="n">dmax</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="scaTools.weighted_rand_list">
+<tt class="descclassname">scaTools.</tt><tt class="descname">weighted_rand_list</tt><big>(</big><em>weights</em>, <em>Nmax</em>, <em>keepList</em><big>)</big><a class="headerlink" href="#scaTools.weighted_rand_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate a random list of at most Nmax elements with weights (numpy array) but 
+without replacement. Called by <a class="reference external" href="scaTools.html#scaTools.randSel">randSel</a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Example :</th><td class="field-body"><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">selection</span> <span class="o">=</span> <span class="n">weighted_rand_list</span><span class="p">(</span><span class="n">weights</span><span class="p">,</span> <span class="n">Nmax</span><span class="p">,</span> <span class="p">[</span><span class="n">iref</span><span class="p">])</span> 
+</pre></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="scaTools.weighted_rand_sel">
+<tt class="descclassname">scaTools.</tt><tt class="descname">weighted_rand_sel</tt><big>(</big><em>weights</em><big>)</big><a class="headerlink" href="#scaTools.weighted_rand_sel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate a random index with probability given by input weights.
+Called by <a class="reference external" href="scaTools.html#scaTools.weighted_rand_list">weighted_rand_list</a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Example :</th><td class="field-body"><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">index</span> <span class="o">=</span> <span class="n">weighted_rand_sel</span><span class="p">(</span><span class="n">weights</span><span class="p">)</span> 
+</pre></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="scaTools.writePymol">
+<tt class="descclassname">scaTools.</tt><tt class="descname">writePymol</tt><big>(</big><em>pdb</em>, <em>sectors</em>, <em>ics</em>, <em>ats</em>, <em>outfilename</em>, <em>chain='A'</em>, <em>inpath='Inputs/'</em>, <em>quit=1</em><big>)</big><a class="headerlink" href="#scaTools.writePymol" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write basic a pymol script for displaying sectors and exporting an image.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Example :</th><td class="field-body"><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">writePymol</span><span class="p">(</span><span class="n">pdb</span><span class="p">,</span> <span class="n">sectors</span><span class="p">,</span> <span class="n">ics</span><span class="p">,</span> <span class="n">ats</span><span class="p">,</span> <span class="n">outfilename</span><span class="p">,</span> <span class="n">chain</span><span class="o">=</span><span class="s">&#39;A&#39;</span><span class="p">,</span><span class="n">inpath</span><span class="o">=</span><span class="n">path2structures</span><span class="p">,</span> <span class="n">quit</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="scaSectorID.html" title="scaSectorID Module"
+             >previous</a> |</li>
+        <li><a href="index.html">home</a>|&nbsp;</li>
+        <li><a href="search.html">search</a>|&nbsp;</li>
+
+          <li><a href="modules.html" >The pySCA code</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2014, Olivier Rivoire, Kim Reynolds, Rama Ranganathan.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

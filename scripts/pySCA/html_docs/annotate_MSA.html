@@ -1,0 +1,199 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>annotate_MSA Module &mdash; pySCA 1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="pySCA 1 documentation" href="index.html" />
+    <link rel="up" title="The pySCA code" href="modules.html" />
+    <link rel="next" title="scaProcessMSA Module" href="scaProcessMSA.html" />
+    <link rel="prev" title="The pySCA code" href="modules.html" /> 
+  </head>
+  <body>
+
+<div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
+<a href="index.html"><img src="_static/logo.png" border="0" alt="py4sci"/></a>
+</div>
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="scaProcessMSA.html" title="scaProcessMSA Module"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="modules.html" title="The pySCA code"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">home</a>|&nbsp;</li>
+        <li><a href="search.html">search</a>|&nbsp;</li>
+
+          <li><a href="modules.html" accesskey="U">The pySCA code</a> &raquo;</li> 
+      </ul>
+    </div>
+
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="modules.html"
+                        title="previous chapter">The pySCA code</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="scaProcessMSA.html"
+                        title="next chapter">scaProcessMSA Module</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/annotate_MSA.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="module-annotate_MSA">
+<span id="annotate-msa-module"></span><h1>annotate_MSA Module<a class="headerlink" href="#module-annotate_MSA" title="Permalink to this headline">¶</a></h1>
+<p>The annotate_MSA script provides utilities to automatically annotate sequence headers 
+(for a fasta file) with taxonomic information. Currently this can be done in one of two ways:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>For PFAM alignments, annotations can be extracted from the file pfamseq.txt. This file can be downloaded from the PFAM ftp site. To access this, go to the following link: <a class="reference external" href="http://pfam.xfam.org/help#tabview=tab12">http://pfam.xfam.org/help#tabview=tab12</a>, click on database_files, and download pfamseq.txt.gz (notice that this is a large file).</li>
+<li>For Blast alignments, annotations can be added using the NCBI Entrez utilities provided by BioPython. In this case, an additional command line argument (&#8211;giList, see below) should specify a list of gi numbers. These numbers are then used to query NCBI for taxonomy information (note that this approach requires a network connection).</li>
+</ol>
+</div></blockquote>
+<p>To quickly extract gi numbers from a list of headers (variable name
+&#8216;hd&#8217;) with typical Blast alignment formatting, the following line of python code is useful:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">gis</span> <span class="o">=</span> <span class="p">[</span><span class="n">h</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39;_&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">h</span> <span class="ow">in</span> <span class="n">hd</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Alternatively, the script alnParseGI.py will accomplish this. For both the PFAM and NCBI utilities, the process of sequence annotation <em>can be slow</em> (on the order of hours, particularly for NCBI entrez with larger alignments). However, the annotation process only needs to be run once per alignment.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><p class="first">Input_MSA.fasta (an input sequence alignment)</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Keyword Arguments:</th></tr>
+<tr class="field-even field"><td>&nbsp;</td><td class="field-body"><table class="first docutils option-list" frame="void" rules="none">
+<col class="option" />
+<col class="description" />
+<tbody valign="top">
+<tr><td class="option-group">
+<kbd><span class="option">-o</span>, <span class="option">--output</span></kbd></td>
+<td><p class="first last">Specify an output file, Output_MSA.an</p>
+</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-a</span>, <span class="option">--annot</span></kbd></td>
+<td><p class="first last">Annotation method. Options are &#8216;pfam&#8217; or &#8216;ncbi&#8217;. Default: &#8216;pfam&#8217;</p>
+</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-g</span>, <span class="option">--giList</span></kbd></td>
+<td><p class="first last">This argument is necessary for the &#8216;ncbi&#8217; method. Specifies a file containing a list of gi numbers corresponding to the sequence order in the alignment; a gi number of &#8220;0&#8221; indicates that a gi number wasn&#8217;t assigned for a particular sequence.</p>
+</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-p</span>, <span class="option">--pfam_seq</span></kbd></td>
+<td><p class="first last">Location of the pfamseq.txt file. Defaults to path2pfamseq (specified at the top of scaTools.py)</p>
+</td></tr>
+</tbody>
+</table>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Examples:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="o">./</span><span class="n">annotate_MSA</span><span class="o">.</span><span class="n">py</span> <span class="n">Inputs</span><span class="o">/</span><span class="n">PF00186_full</span><span class="o">.</span><span class="n">txt</span> <span class="o">-</span><span class="n">o</span> <span class="n">Outputs</span><span class="o">/</span><span class="n">PF00186_full</span><span class="o">.</span><span class="n">an</span> <span class="o">-</span><span class="n">a</span> <span class="s">&#39;pfam&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="o">./</span><span class="n">annotate_MSA</span><span class="o">.</span><span class="n">py</span> <span class="n">Inputs</span><span class="o">/</span><span class="n">DHFR_PEPM3</span><span class="o">.</span><span class="n">fasta</span> <span class="o">-</span><span class="n">o</span> <span class="n">Outputs</span><span class="o">/</span><span class="n">DHFR_PEPM3</span><span class="o">.</span><span class="n">an</span> <span class="o">-</span><span class="n">a</span> <span class="s">&#39;ncbi&#39;</span> <span class="o">-</span><span class="n">g</span> <span class="n">Inputs</span><span class="o">/</span><span class="n">DHFR_PEPM3</span><span class="o">.</span><span class="n">gis</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">By:</th><td class="field-body">Rama Ranganathan, Kim Reynolds</td>
+</tr>
+<tr class="field-even field"><th class="field-name">On:</th><td class="field-body">9.22.2014</td>
+</tr>
+</tbody>
+</table>
+<p>Copyright (C) 2015 Olivier Rivoire, Rama Ranganathan, Kimberly Reynolds
+This program is free software distributed under the BSD 3-clause
+license, please see the file LICENSE for details.</p>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="scaProcessMSA.html" title="scaProcessMSA Module"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="modules.html" title="The pySCA code"
+             >previous</a> |</li>
+        <li><a href="index.html">home</a>|&nbsp;</li>
+        <li><a href="search.html">search</a>|&nbsp;</li>
+
+          <li><a href="modules.html" >The pySCA code</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2014, Olivier Rivoire, Kim Reynolds, Rama Ranganathan.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

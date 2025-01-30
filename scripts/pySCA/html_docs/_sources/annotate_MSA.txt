@@ -1,0 +1,7 @@
+annotate_MSA Module
+===================
+
+.. automodule:: annotate_MSA
+    :members:
+    :undoc-members:
+    :show-inheritance:

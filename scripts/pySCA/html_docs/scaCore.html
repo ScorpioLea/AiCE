@@ -1,0 +1,214 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>scaCore Module &mdash; pySCA 1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="pySCA 1 documentation" href="index.html" />
+    <link rel="up" title="The pySCA code" href="modules.html" />
+    <link rel="next" title="scaSectorID Module" href="scaSectorID.html" />
+    <link rel="prev" title="scaProcessMSA Module" href="scaProcessMSA.html" /> 
+  </head>
+  <body>
+
+<div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
+<a href="index.html"><img src="_static/logo.png" border="0" alt="py4sci"/></a>
+</div>
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="scaSectorID.html" title="scaSectorID Module"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="scaProcessMSA.html" title="scaProcessMSA Module"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">home</a>|&nbsp;</li>
+        <li><a href="search.html">search</a>|&nbsp;</li>
+
+          <li><a href="modules.html" accesskey="U">The pySCA code</a> &raquo;</li> 
+      </ul>
+    </div>
+
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="scaProcessMSA.html"
+                        title="previous chapter">scaProcessMSA Module</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="scaSectorID.html"
+                        title="next chapter">scaSectorID Module</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/scaCore.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="module-scaCore">
+<span id="scacore-module"></span><h1>scaCore Module<a class="headerlink" href="#module-scaCore" title="Permalink to this headline">¶</a></h1>
+<p>The scaCore script runs the core calculations for SCA, and stores the output using the python tool pickle. These calculations can be divided into two parts:</p>
+<blockquote>
+<div><ol class="arabic">
+<li><dl class="first docutils">
+<dt>Sequence correlations:</dt>
+<dd><ol class="first last loweralpha simple">
+<li>Compute simMat = the global sequence similarity matrix for the alignment</li>
+<li>Compute Useq and Uica = the eigenvectors (and independent components) for the following sequence correlation matrices:<ul>
+<li>unweighted (<span class="math">\(U^0\)</span>)</li>
+<li>sequence weights applied (<span class="math">\(U^1\)</span>)</li>
+<li>both sequence and position weights applied (<span class="math">\(U^2\)</span>)</li>
+</ul>
+</li>
+</ol>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Positional correlations: </dt>
+<dd><ol class="first last loweralpha simple">
+<li>Compute the single-site position weights and positional conservation values (<span class="math">\(D_i\)</span> and <span class="math">\(D_i^a\)</span>)</li>
+<li>Compute the dimension-reduced SCA correlation matrix <span class="math">\(\tilde{C_{ij}}\)</span>, the projected alignment <span class="math">\(tX\)</span>, 
+and the projector</li>
+<li>Compute Ntrials of the randomized SCA matrix, and the eigenvectors and eigenvalues associated with each</li>
+</ol>
+</dd>
+</dl>
+</li>
+</ol>
+</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><p class="first"><a href="#id1"><span class="problematic" id="id2">*</span></a>.db (the database produced by running scaProcessMSA.py).</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Keyword Arguments:</th></tr>
+<tr class="field-even field"><td>&nbsp;</td><td class="field-body"><table class="first docutils option-list" frame="void" rules="none">
+<col class="option" />
+<col class="description" />
+<tbody valign="top">
+<tr><td class="option-group">
+<kbd><span class="option">-n</span></kbd></td>
+<td><p class="first last">norm type for dimension-reducing the sca matrix. Options are: &#8216;spec&#8217; (the spectral norm) or &#8216;frob&#8217; (frobenius norm). Default: frob</p>
+</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-l</span></kbd></td>
+<td><p class="first last">lambda parameter for pseudo-counting the alignment. Default: 0.03</p>
+</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">--Ntrials</span>, <span class="option">-t</span></kbd></td>
+<td><p class="first last">number of randomization trials</p>
+</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">--matlab</span>, <span class="option">-m</span></kbd></td>
+<td><p class="first last">write out the results of these calculations to a matlab workspace for further analysis</p>
+</td></tr>
+</tbody>
+</table>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="o">./</span><span class="n">scaCore</span><span class="o">.</span><span class="n">py</span> <span class="n">PF00071_full</span><span class="o">.</span><span class="n">db</span> 
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">By:</th><td class="field-body">Rama Ranganathan, Kim Reynolds</td>
+</tr>
+<tr class="field-even field"><th class="field-name">On:</th><td class="field-body">8.5.2014</td>
+</tr>
+</tbody>
+</table>
+<p>Copyright (C) 2015 Olivier Rivoire, Rama Ranganathan, Kimberly Reynolds
+This program is free software distributed under the BSD 3-clause
+license, please see the file LICENSE for details.</p>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="scaSectorID.html" title="scaSectorID Module"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="scaProcessMSA.html" title="scaProcessMSA Module"
+             >previous</a> |</li>
+        <li><a href="index.html">home</a>|&nbsp;</li>
+        <li><a href="search.html">search</a>|&nbsp;</li>
+
+          <li><a href="modules.html" >The pySCA code</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2014, Olivier Rivoire, Kim Reynolds, Rama Ranganathan.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

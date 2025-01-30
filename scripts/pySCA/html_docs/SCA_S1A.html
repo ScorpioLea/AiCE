@@ -1,0 +1,752 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>SCA6.0 - The S1A Serine Proteases &mdash; pySCA 1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="pySCA 1 documentation" href="index.html" />
+    <link rel="up" title="Tutorials - Usage:" href="tutorials.html" />
+    <link rel="next" title="SCA6.0 - The DHFR (dihydrofolate reductase) family" href="SCA_DHFR.html" />
+    <link rel="prev" title="SCA6.0 - The G protein family" href="SCA_G.html" /> 
+  </head>
+  <body>
+
+<div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
+<a href="index.html"><img src="_static/logo.png" border="0" alt="py4sci"/></a>
+</div>
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="SCA_DHFR.html" title="SCA6.0 - The DHFR (dihydrofolate reductase) family"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="SCA_G.html" title="SCA6.0 - The G protein family"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">home</a>|&nbsp;</li>
+        <li><a href="search.html">search</a>|&nbsp;</li>
+
+          <li><a href="tutorials.html" accesskey="U">Tutorials - Usage:</a> &raquo;</li> 
+      </ul>
+    </div>
+
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">SCA6.0 - The S1A Serine Proteases</a><ul>
+<li><a class="reference internal" href="#i-alignment-processing-and-composition">I. Alignment processing and composition</a></li>
+<li><a class="reference internal" href="#ii-first-order-statistics-position-specific-conservation">II.  First-order statistics: position-specific conservation.</a></li>
+<li><a class="reference internal" href="#iii-second-order-statistics-conserved-correlations">III. Second-order statistics: conserved correlations.</a></li>
+<li><a class="reference internal" href="#iv-sector-decomposition">IV.  Sector decomposition.</a></li>
+<li><a class="reference internal" href="#v-sequence-subfamilies-and-the-basis-of-sector-hierarchy">V. Sequence subfamilies and the basis of sector hierarchy.</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="SCA_G.html"
+                        title="previous chapter">SCA6.0 - The G protein family</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="SCA_DHFR.html"
+                        title="next chapter">SCA6.0 - The DHFR (dihydrofolate reductase) family</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/SCA_S1A.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="sca6-0-the-s1a-serine-proteases">
+<h1>SCA6.0 - The S1A Serine Proteases<a class="headerlink" href="#sca6-0-the-s1a-serine-proteases" title="Permalink to this headline">¶</a></h1>
+<p><strong>Summary:</strong> This script repeats the analysis of the S1A serine protease
+family, an example of a single protein containing at least three
+independent sectors. This analysis starts from the alignment used in: -
+Halabi, Rivoire, Leibler and Ranganathan. (2009) Cell 138:774-786. The
+goal is to examine the output of the pySCA (v6) analysis for the
+comparison to earlier results. In the S1A serine protease family, prior
+results indicate three sectors: &#8220;red&#8221; - associated with catalytic
+specificity, &#8220;green&#8221; - associated with catalytic function (the catalytic
+triad), and &#8220;blue&#8221; - associated with stability.</p>
+<p>To facilitate comparison, here are the S1A sector definitions as
+described in Halabi et al. in a format suitable for pasting into pyMol:
+** Red:**
+17+161+172+176+177+180+183+187+188+189+191+192+213+215+216+220+221+226+227+228
+** Green:**
+19+33+42+43+55+56+57+58+102+141+142+184+194+195+196+197+198+199+213+214+216+225
+** Blue:**
+21+26+46+52+68+69+71+77+80+81+104+105+108+118+123+124+136+153+157+201+210+229+237+242+245
+Prior to running this tutorial, the core calculation scripts must be
+executed from the command line as follows: &gt;&gt; ./scaProcessMSA.py
+Inputs/s1Ahalabi_1470_nosnakes.an -s 3TGI -c E -t -n &gt;&gt; ./scaCore.py
+Outputs/s1Ahalabi_1470_nosnakes.db &gt;&gt; ./scaSectorID.py
+Outputs/s1Ahalabi_1470_nosnakes.db Note that we supply pre-annotated
+alignments for all tutorial scripts <em>(the annotate_pfMSA step is slow,
+and should only be run once)</em>.</p>
+<p><strong>O.Rivoire, K.Reynolds and R.Ranganathan</strong> 10/2015</p>
+<div class="code python highlight-python"><pre>%matplotlib inline
+from __future__ import division
+
+import os
+import time
+import matplotlib.pyplot as plt
+import numpy as np
+import copy
+import scipy.cluster.hierarchy as sch
+from scipy.stats import scoreatpercentile
+import matplotlib.image as mpimg
+from IPython.display import display
+from IPython.display import Image
+from Bio.Seq import Seq
+from Bio import motifs
+import colorsys
+import scaTools as sca
+import mpld3
+import cPickle as pickle
+from optparse import OptionParser
+
+if not os.path.exists('Outputs/'): os.makedirs('Outputs/')</pre>
+</div>
+<p>To begin, we read in the results of the above three scripts
+(scaProcessMSA, scaCore and scaSectorID), stored as three dictionaries
+in the database s1Ahalabi_1470_nosnakes.db</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="n">db</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s">&#39;Outputs/s1Ahalabi_1470_nosnakes.db&#39;</span><span class="p">,</span><span class="s">&#39;rb&#39;</span><span class="p">))</span>
+<span class="n">Dseq</span> <span class="o">=</span> <span class="n">db</span><span class="p">[</span><span class="s">&#39;sequence&#39;</span><span class="p">]</span>  <span class="c">#the results of scaProcessMSA</span>
+<span class="n">Dsca</span> <span class="o">=</span> <span class="n">db</span><span class="p">[</span><span class="s">&#39;sca&#39;</span><span class="p">]</span>       <span class="c">#the results of scaCore</span>
+<span class="n">Dsect</span> <span class="o">=</span> <span class="n">db</span><span class="p">[</span><span class="s">&#39;sector&#39;</span><span class="p">]</span>   <span class="c">#the results of scaSectorID</span>
+</pre></div>
+</div>
+<div class="section" id="i-alignment-processing-and-composition">
+<h2>I. Alignment processing and composition<a class="headerlink" href="#i-alignment-processing-and-composition" title="Permalink to this headline">¶</a></h2>
+<p>First, we print out a few statistics describing the alignment:</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="s">&quot;After processing, the alignment size is </span><span class="si">%i</span><span class="s"> sequences and </span><span class="si">%i</span><span class="s"> positions&quot;</span> <span class="o">%</span> \
+      <span class="p">(</span><span class="n">Dseq</span><span class="p">[</span><span class="s">&#39;Nseq&#39;</span><span class="p">],</span> <span class="n">Dseq</span><span class="p">[</span><span class="s">&#39;Npos&#39;</span><span class="p">]))</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;With sequence weights, there are </span><span class="si">%i</span><span class="s"> effective sequences&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">Dseq</span><span class="p">[</span><span class="s">&#39;effseqs&#39;</span><span class="p">]))</span>
+</pre></div>
+</div>
+<div class="highlight-python"><pre>After processing, the alignment size is 1344 sequences and 205 positions
+With sequence weights, there are 928 effective sequences</pre>
+</div>
+<p>To examine alignment composition, we plot a histogram of all pairwise
+sequence identities <em>(left panel)</em> and a global view of the sequence
+similarity matrix (defined by <span class="math">\(S\equiv \frac{1}{L}XX^\top\)</span>)
+<em>(right panel)</em>. The data show that the alignment is described by a
+nearly homogeneous distribution of sequence identities with a mean value
+of about 30%.</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="c"># List all elements above the diagonal (i&lt;j):</span>
+<span class="n">listS</span> <span class="o">=</span> <span class="p">[</span><span class="n">Dsca</span><span class="p">[</span><span class="s">&#39;simMat&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">Dsca</span><span class="p">[</span><span class="s">&#39;simMat&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> \
+         <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">Dsca</span><span class="p">[</span><span class="s">&#39;simMat&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])]</span>
+<span class="c">#Cluster the sequence similarity matrix</span>
+<span class="n">Z</span> <span class="o">=</span> <span class="n">sch</span><span class="o">.</span><span class="n">linkage</span><span class="p">(</span><span class="n">Dsca</span><span class="p">[</span><span class="s">&#39;simMat&#39;</span><span class="p">],</span><span class="n">method</span> <span class="o">=</span> <span class="s">&#39;complete&#39;</span><span class="p">,</span> <span class="n">metric</span> <span class="o">=</span> <span class="s">&#39;cityblock&#39;</span><span class="p">)</span>
+<span class="n">R</span> <span class="o">=</span> <span class="n">sch</span><span class="o">.</span><span class="n">dendrogram</span><span class="p">(</span><span class="n">Z</span><span class="p">,</span><span class="n">no_plot</span> <span class="o">=</span> <span class="bp">True</span><span class="p">)</span>
+<span class="n">ind</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="n">R</span><span class="p">[</span><span class="s">&#39;ivl&#39;</span><span class="p">])</span>
+<span class="c">#Plotting</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s">&#39;figure.figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">4</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">listS</span><span class="p">,</span> <span class="n">Dseq</span><span class="p">[</span><span class="s">&#39;Npos&#39;</span><span class="p">]</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;Pairwise sequence identities&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">&#39;Number&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">Dsca</span><span class="p">[</span><span class="s">&#39;simMat&#39;</span><span class="p">][</span><span class="n">np</span><span class="o">.</span><span class="n">ix_</span><span class="p">(</span><span class="n">ind</span><span class="p">,</span><span class="n">ind</span><span class="p">)],</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">();</span>
+</pre></div>
+</div>
+<img alt="_images/SCA_S1A_9_0.png" src="_images/SCA_S1A_9_0.png" />
+<p><strong>Sequence annotations:</strong> We construct a dictionary of phylogenetic
+annotations (parsed from the sequence headers) and check the
+representation of sequences in the top taxonomic levels. For each level,
+we print a list of taxonomic classes, and the number of sequences found
+for each. We also construct dictionaries of annotations for vertebrate
+vs. non vertebrate sequences, and substrate specificity (to later be
+used when mapping to sequence space). We print a list of common
+specificities following the list of taxonomic classes.</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="c">#construct a dictionary of phylogenetic groups</span>
+<span class="n">annot</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+<span class="n">spec</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+<span class="n">vert</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+<span class="n">vert</span><span class="p">[</span><span class="s">&#39;vertebrate&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">vert</span><span class="p">[</span><span class="s">&#39;not vertebrate&#39;</span><span class="p">]</span><span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">h</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">Dseq</span><span class="p">[</span><span class="s">&#39;hd&#39;</span><span class="p">]):</span>
+    <span class="n">s1</span> <span class="o">=</span> <span class="n">h</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39;__&#39;</span><span class="p">)</span>
+    <span class="n">s2</span> <span class="o">=</span> <span class="n">s1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39;|&#39;</span><span class="p">)</span>
+    <span class="n">hs</span> <span class="o">=</span> <span class="n">s1</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39;|&#39;</span><span class="p">)</span>
+    <span class="n">tax</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">annot</span><span class="p">[</span><span class="n">s2</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span> <span class="o">=</span> <span class="n">sca</span><span class="o">.</span><span class="n">Annot</span><span class="p">(</span><span class="n">s1</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">hs</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="s">&#39;,&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">hs</span><span class="p">[</span><span class="mi">3</span><span class="p">:</span><span class="o">-</span><span class="mi">2</span><span class="p">]))</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">hs</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span> <span class="ow">in</span> <span class="n">spec</span><span class="p">):</span>
+        <span class="n">spec</span><span class="p">[</span><span class="n">hs</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">spec</span><span class="p">[</span><span class="n">hs</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]]</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">hs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s">&#39;vertebrate&#39;</span><span class="p">:</span>
+        <span class="n">vert</span><span class="p">[</span><span class="n">hs</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">vert</span><span class="p">[</span><span class="s">&#39;not vertebrate&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+
+<span class="c"># Most frequent taxonomic groups:</span>
+<span class="n">atleast</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="k">for</span> <span class="n">level</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+    <span class="n">descr_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">a</span><span class="o">.</span><span class="n">taxo</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39;,&#39;</span><span class="p">)[</span><span class="n">level</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">annot</span><span class="o">.</span><span class="n">values</span><span class="p">()</span> \
+                  <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">taxo</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39;,&#39;</span><span class="p">))</span> <span class="o">&gt;</span> <span class="n">level</span><span class="p">]</span>
+    <span class="n">descr_dict</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span><span class="n">descr_list</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">k</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">descr_list</span> \
+                  <span class="k">if</span> <span class="n">descr_list</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">k</span><span class="p">)</span><span class="o">&gt;=</span><span class="n">atleast</span><span class="p">}</span>
+    <span class="k">print</span> <span class="s">&#39;</span><span class="se">\n</span><span class="s"> Level </span><span class="si">%i</span><span class="s">:&#39;</span> <span class="o">%</span> <span class="n">level</span>
+    <span class="k">print</span> <span class="n">descr_dict</span>
+
+<span class="c"># Most frequent catalytic specificities:</span>
+<span class="k">print</span> <span class="s">&#39;</span><span class="se">\n</span><span class="s">Catalytic Specificities: &#39;</span>
+<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">spec</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">spec</span><span class="p">[</span><span class="n">k</span><span class="p">])</span> <span class="o">&gt;</span> <span class="mi">5</span><span class="p">:</span>
+        <span class="k">print</span> <span class="n">k</span><span class="o">+</span><span class="s">&#39;: &#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">spec</span><span class="p">[</span><span class="n">k</span><span class="p">]))</span>
+</pre></div>
+</div>
+<div class="highlight-python"><pre> Level 0:
+{'Oligochaeta': 11, 'Malacostraca': 12, 'Actinopterygii': 127, 'Actinobacteria (class)': 14, 'Mammalia': 447, 'Amphibia': 58, 'Insecta': 564, 'Arachnida': 25}
+
+ Level 1:
+{'Astigmata': 23, 'Decapoda': 12, 'Pleuronectiformes': 14, 'Carnivora': 45, 'Cypriniformes': 60, 'Anura': 58, 'Hymenoptera': 15, 'Ruminantia': 61, 'Coleoptera': 81, 'Tetraodontiformes': 19, 'Rodentia': 174, 'Perciformes': 12, 'Lepidoptera': 59, 'Actinomycetales': 14, 'Haplotaxida': 11, 'Primates': 142, 'Diptera': 391, 'Laurasiatheria': 14}
+
+ Level 2:
+{'Streptomycetaceae': 12, 'Muridae': 170, 'Bovidae': 61, 'Lumbricidae': 11, 'Noctuidae': 28, 'Drosophilidae': 203, 'Tetraodontidae': 19, 'Tenebrionidae': 70, 'Pipidae': 58, 'Canidae': 44, 'Apidae': 10, 'Paralichthyidae': 12, 'Sarcoptidae': 14, 'Cyprinidae': 60, 'Suidae': 14, 'Culicidae': 153, 'Hominidae': 129, 'Cercopithecidae': 11}
+
+Catalytic Specificities:
+chymotrypsin: 85
+kallikrein: 86
+tryptase: 19
+chymase: 8
+allergen: 21
+not trypsin: 34
+thrombin: 7
+plasminogen activator: 6
+haptoglobin: 13
+ELSE: 611
+mast cell protease: 24
+plasminogen: 6
+marapsin: 6
+granzyme: 52
+elastase: 42
+trypsin: 182</pre>
+</div>
+<p>Based on this, we select both taxonomic groups and specificity classes,
+and associate them to colors for representation. We choose broad
+taxonomic groups (corresponding to Level 1), and well-populated
+specificity classes that are well-represented in the alignment . To see
+a complete legend that maps numeric codes to color, use:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">sca</span><span class="o">.</span><span class="n">figColors</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>We start with taxonomic groups:</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="n">phylo</span> <span class="o">=</span> <span class="nb">list</span><span class="p">();</span>
+<span class="n">fam_names</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;Oligochaeta&#39;</span><span class="p">,</span> <span class="s">&#39;Malacostraca&#39;</span><span class="p">,</span><span class="s">&#39;Actinopterygii&#39;</span><span class="p">,</span><span class="s">&#39;Actinobacteria&#39;</span><span class="p">,</span>\
+            <span class="s">&#39;Mammalia&#39;</span><span class="p">,</span><span class="s">&#39;Amphibia&#39;</span><span class="p">,</span><span class="s">&#39;Insecta&#39;</span><span class="p">,</span><span class="s">&#39;Arachnida&#39;</span><span class="p">]</span>
+<span class="n">col</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.12</span><span class="p">,</span><span class="mf">0.18</span><span class="p">,</span><span class="mf">0.38</span><span class="p">,</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">0.60</span><span class="p">,</span><span class="mf">0.78</span><span class="p">,</span><span class="mf">0.90</span><span class="p">)</span>
+<span class="c">#Oligochaeta = red, Malacostraca = orange, Actinopterygii = yellow,</span>
+<span class="c">#Actinobacteria = green, Mammalia = cyan, Amphibia = dark blue,</span>
+<span class="c">#Insecta = purple, Arachnida = bright pink</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">k</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">fam_names</span><span class="p">):</span>
+    <span class="n">sf</span> <span class="o">=</span> <span class="n">sca</span><span class="o">.</span><span class="n">Unit</span><span class="p">()</span>
+    <span class="n">sf</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">fam_names</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+    <span class="n">sf</span><span class="o">.</span><span class="n">col</span> <span class="o">=</span> <span class="n">col</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="n">sf</span><span class="o">.</span><span class="n">items</span> <span class="o">=</span> <span class="p">[</span><span class="n">j</span> <span class="k">for</span> <span class="n">j</span><span class="p">,</span><span class="n">q</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">Dseq</span><span class="p">[</span><span class="s">&#39;hd&#39;</span><span class="p">])</span>  <span class="k">if</span> <span class="n">sf</span><span class="o">.</span><span class="n">name</span> <span class="ow">in</span> <span class="n">q</span><span class="o">.</span><span class="n">lower</span><span class="p">()]</span>
+    <span class="n">phylo</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sf</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Now we assign substrate specificity classes, and also sort sequences
+into catalytically active and inactive enzymes (the haptoglobins).</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="n">spec_names</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;chymotrypsin&#39;</span><span class="p">,</span><span class="s">&#39;trypsin&#39;</span><span class="p">,</span><span class="s">&#39;tryptase&#39;</span><span class="p">,</span> <span class="s">&#39;kallikrein&#39;</span><span class="p">,</span> <span class="s">&#39;granzyme&#39;</span><span class="p">]</span>
+<span class="n">cat_act</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;active&#39;</span><span class="p">,</span><span class="s">&#39;haptoglobin&#39;</span><span class="p">]</span>
+<span class="n">col_spec</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.12</span><span class="p">,</span><span class="mf">0.38</span><span class="p">,</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">0.60</span><span class="p">,</span><span class="mf">0.9</span><span class="p">]</span>
+<span class="c">#chymotrypsin = red, trypsin = orange, tryptase = green,</span>
+<span class="c">#kallikrein = cyan, granzyme = bright pink</span>
+<span class="n">col_vert</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.12</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">]</span>
+<span class="c">#vertebrates = orange, invertebrates = cyan</span>
+<span class="n">col_act</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.65</span><span class="p">,</span><span class="mf">0.5</span><span class="p">]</span>
+<span class="c">#active = blue, inactive (haptoglobin) = cyan</span>
+<span class="n">spec_classes</span> <span class="o">=</span> <span class="p">[];</span> <span class="n">cat_classes</span> <span class="o">=</span> <span class="p">[];</span> <span class="n">vert_classes</span> <span class="o">=</span> <span class="p">[];</span>
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">k</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">spec_names</span><span class="p">):</span>
+    <span class="n">sp</span> <span class="o">=</span> <span class="n">sca</span><span class="o">.</span><span class="n">Unit</span><span class="p">()</span>
+    <span class="n">sp</span><span class="o">.</span><span class="n">col</span> <span class="o">=</span> <span class="n">col_spec</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="n">sp</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">k</span>
+    <span class="n">sp</span><span class="o">.</span><span class="n">items</span> <span class="o">=</span> <span class="n">spec</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
+    <span class="n">spec_classes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sp</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">k</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">cat_act</span><span class="p">):</span>
+    <span class="n">sp</span> <span class="o">=</span> <span class="n">sca</span><span class="o">.</span><span class="n">Unit</span><span class="p">()</span>
+    <span class="n">sp</span><span class="o">.</span><span class="n">col</span> <span class="o">=</span> <span class="n">col_act</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="n">sp</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">k</span>
+    <span class="k">if</span> <span class="n">k</span> <span class="o">==</span> <span class="s">&#39;haptoglobin&#39;</span><span class="p">:</span>
+        <span class="n">sp</span><span class="o">.</span><span class="n">items</span> <span class="o">=</span> <span class="n">spec</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">sp</span><span class="o">.</span><span class="n">items</span> <span class="o">=</span> <span class="p">[</span><span class="n">k</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">Dseq</span><span class="p">[</span><span class="s">&#39;Nseq&#39;</span><span class="p">])</span> <span class="k">if</span> <span class="p">(</span><span class="n">k</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">spec</span><span class="p">[</span><span class="s">&#39;haptoglobin&#39;</span><span class="p">]</span> \
+                                                       <span class="ow">and</span> <span class="n">k</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">spec</span><span class="p">[</span><span class="s">&#39;ELSE&#39;</span><span class="p">])]</span>
+    <span class="n">cat_classes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sp</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">k</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">vert</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
+    <span class="n">sp</span> <span class="o">=</span> <span class="n">sca</span><span class="o">.</span><span class="n">Unit</span><span class="p">()</span>
+    <span class="n">sp</span><span class="o">.</span><span class="n">col</span> <span class="o">=</span> <span class="n">col_vert</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="n">sp</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">k</span>
+    <span class="n">sp</span><span class="o">.</span><span class="n">items</span> <span class="o">=</span> <span class="n">vert</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
+    <span class="n">vert_classes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sp</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>To examine the relationship between <strong>global</strong> sequence similarity,
+phylogeny, and functional sub-class, we plot the top six independent
+components of the sequence correlation matrix (including sequence
+weights). In these plots, each point represents a particular sequence,
+and the distance between points reflects global sequence identity. The
+color codings are as follows: <strong>top row:</strong> phylogenetic annotation
+<strong>second row:</strong> active <em>(blue)</em> vs. inactive/haptoglobin <em>(cyan)</em>
+<strong>third row:</strong> specificity, chymotrypsin <em>(red)</em>, trypsin <em>(orange)</em>,
+tryptase <em>(green)</em>, kallikrein <em>(cyan)</em>, granzyme <em>(bright pink)</em>
+<strong>fourth row:</strong> vertebrate <em>(orange)</em> vs. invertebrate <em>(cyan)</em></p>
+<p>The data show some seperation of particular phylogenetic groups along
+ICs 1-5. For example, a subset of mammalian sequences <em>(cyan)</em> seperate
+out along IC2. In contrast, S1A specificity and catalytic activity are
+poorly seperated/classified using the independent components of the
+global sequence similarity matrix. This provides one indication that S1A
+enzymatic specificity and catalysis are not well-described by global
+sequence identity, but are largely encoded in a subset of positions. We
+will later see that these sequences <em>can</em> be seperated by projecting the
+sequence space using the positional correlations.</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s">&#39;figure.figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">13</span>
+<span class="n">U</span> <span class="o">=</span> <span class="n">Dsca</span><span class="p">[</span><span class="s">&#39;Uica&#39;</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">pairs</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">2</span><span class="o">*</span><span class="n">i</span><span class="p">,</span><span class="mi">2</span><span class="o">*</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">)]</span>
+<span class="k">for</span> <span class="n">k</span><span class="p">,[</span><span class="n">k1</span><span class="p">,</span><span class="n">k2</span><span class="p">]</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">pairs</span><span class="p">):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">sca</span><span class="o">.</span><span class="n">figUnits</span><span class="p">(</span><span class="n">U</span><span class="p">[:,</span><span class="n">k1</span><span class="p">],</span> <span class="n">U</span><span class="p">[:,</span><span class="n">k2</span><span class="p">],</span> <span class="n">phylo</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">r&quot;$IC_{seq}^{</span><span class="si">%i</span><span class="s">}$&quot;</span><span class="o">%</span><span class="p">(</span><span class="n">k1</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">r&quot;$IC_{seq}^{</span><span class="si">%i</span><span class="s">}$&quot;</span><span class="o">%</span><span class="p">(</span><span class="n">k2</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="n">k</span><span class="o">+</span><span class="mi">4</span><span class="p">)</span>
+    <span class="n">sca</span><span class="o">.</span><span class="n">figUnits</span><span class="p">(</span><span class="n">U</span><span class="p">[:,</span><span class="n">k1</span><span class="p">],</span> <span class="n">U</span><span class="p">[:,</span><span class="n">k2</span><span class="p">],</span> <span class="n">cat_classes</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">r&quot;$IC_{seq}^{</span><span class="si">%i</span><span class="s">}$&quot;</span><span class="o">%</span><span class="p">(</span><span class="n">k1</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">r&quot;$IC_{seq}^{</span><span class="si">%i</span><span class="s">}$&quot;</span><span class="o">%</span><span class="p">(</span><span class="n">k2</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="n">k</span><span class="o">+</span><span class="mi">7</span><span class="p">)</span>
+    <span class="n">sca</span><span class="o">.</span><span class="n">figUnits</span><span class="p">(</span><span class="n">U</span><span class="p">[:,</span><span class="n">k1</span><span class="p">],</span> <span class="n">U</span><span class="p">[:,</span><span class="n">k2</span><span class="p">],</span> <span class="n">spec_classes</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">r&quot;$IC_{seq}^{</span><span class="si">%i</span><span class="s">}$&quot;</span><span class="o">%</span><span class="p">(</span><span class="n">k1</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">r&quot;$IC_{seq}^{</span><span class="si">%i</span><span class="s">}$&quot;</span><span class="o">%</span><span class="p">(</span><span class="n">k2</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="n">k</span><span class="o">+</span><span class="mi">10</span><span class="p">)</span>
+    <span class="n">sca</span><span class="o">.</span><span class="n">figUnits</span><span class="p">(</span><span class="n">U</span><span class="p">[:,</span><span class="n">k1</span><span class="p">],</span> <span class="n">U</span><span class="p">[:,</span><span class="n">k2</span><span class="p">],</span> <span class="n">vert_classes</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">r&quot;$IC_{seq}^{</span><span class="si">%i</span><span class="s">}$&quot;</span><span class="o">%</span><span class="p">(</span><span class="n">k1</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">r&quot;$IC_{seq}^{</span><span class="si">%i</span><span class="s">}$&quot;</span><span class="o">%</span><span class="p">(</span><span class="n">k2</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+</pre></div>
+</div>
+<img alt="_images/SCA_S1A_17_0.png" src="_images/SCA_S1A_17_0.png" />
+</div>
+<div class="section" id="ii-first-order-statistics-position-specific-conservation">
+<h2>II.  First-order statistics: position-specific conservation.<a class="headerlink" href="#ii-first-order-statistics-position-specific-conservation" title="Permalink to this headline">¶</a></h2>
+<p>Plot the position-specific conservation values for each S1A protease
+position. <span class="math">\(D_i\)</span> is calculated according to equation S4
+(supplemental information).</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<span class="n">xvals</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Dsca</span><span class="p">[</span><span class="s">&#39;Di&#39;</span><span class="p">]))]</span>
+<span class="n">xticks</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">50</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">150</span><span class="p">,</span><span class="mi">200</span><span class="p">]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">xvals</span><span class="p">,</span><span class="n">Dsca</span><span class="p">[</span><span class="s">&#39;Di&#39;</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;k&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">labelsize</span><span class="o">=</span><span class="mi">11</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">axs</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">xticks</span><span class="p">);</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="n">Dseq</span><span class="p">[</span><span class="s">&#39;ats&#39;</span><span class="p">][</span><span class="n">k</span><span class="p">]</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">xticks</span><span class="p">]</span>
+<span class="n">axs</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">(</span><span class="n">labels</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;Amino acid position&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">&#39;Di&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">);</span>
+</pre></div>
+</div>
+<img alt="_images/SCA_S1A_20_0.png" src="_images/SCA_S1A_20_0.png" />
+</div>
+<div class="section" id="iii-second-order-statistics-conserved-correlations">
+<h2>III. Second-order statistics: conserved correlations.<a class="headerlink" href="#iii-second-order-statistics-conserved-correlations" title="Permalink to this headline">¶</a></h2>
+<p>Plot the SCA correlation matrix ( <span class="math">\(\tilde{C_{ij}}\)</span> ) computed
+according to Equations 4 + 5 of Rivoire et al.</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s">&#39;figure.figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">8</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">Dsca</span><span class="p">[</span><span class="s">&#39;Csca&#39;</span><span class="p">],</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mf">1.4</span><span class="p">,</span><span class="n">interpolation</span><span class="o">=</span><span class="s">&#39;none&#39;</span><span class="p">,</span>\
+           <span class="n">aspect</span><span class="o">=</span><span class="s">&#39;equal&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python"><pre>&lt;matplotlib.image.AxesImage at 0x10a44ee90&gt;</pre>
+</div>
+<img alt="_images/SCA_S1A_23_1.png" src="_images/SCA_S1A_23_1.png" />
+<p>Plot the eigenspectrum of (1) the SCA positional coevolution matrix
+(<span class="math">\(\tilde{C_{ij}}\)</span>) <em>(black bars)</em> and (2) 10 trials of matrix
+randomization for comparison. This graph is used to choose the number of
+significant eigenmodes (<span class="math">\(k^* = 7\)</span>).</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s">&#39;figure.figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">4</span>
+<span class="n">hist0</span><span class="p">,</span> <span class="n">bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">Dsca</span><span class="p">[</span><span class="s">&#39;Lrand&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span> <span class="n">bins</span><span class="o">=</span><span class="n">Dseq</span><span class="p">[</span><span class="s">&#39;Npos&#39;</span><span class="p">],</span> \
+                           <span class="nb">range</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">Dsect</span><span class="p">[</span><span class="s">&#39;Lsca&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()))</span>
+<span class="n">hist1</span><span class="p">,</span> <span class="n">bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">Dsect</span><span class="p">[</span><span class="s">&#39;Lsca&#39;</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="n">Dseq</span><span class="p">[</span><span class="s">&#39;Npos&#39;</span><span class="p">],</span> \
+                           <span class="nb">range</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">Dsect</span><span class="p">[</span><span class="s">&#39;Lsca&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">bins</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">hist1</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">bins</span><span class="p">),</span><span class="n">color</span><span class="o">=</span><span class="s">&#39;k&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">bins</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">hist0</span><span class="o">/</span><span class="n">Dsca</span><span class="p">[</span><span class="s">&#39;Ntrials&#39;</span><span class="p">],</span> <span class="s">&#39;r&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">labelsize</span><span class="o">=</span><span class="mi">11</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;Eigenvalues&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">&#39;Numbers&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">);</span>
+<span class="k">print</span> <span class="s">&#39;Number of eigenmodes to keep is </span><span class="si">%i</span><span class="s">&#39;</span> <span class="o">%</span><span class="p">(</span><span class="n">Dsect</span><span class="p">[</span><span class="s">&#39;kpos&#39;</span><span class="p">])</span>
+<span class="c">#mpld3.display()</span>
+</pre></div>
+</div>
+<div class="highlight-python"><pre>Number of eigenmodes to keep is 7</pre>
+</div>
+<img alt="_images/SCA_S1A_25_1.png" src="_images/SCA_S1A_25_1.png" />
+<p>Plot the top significant eigenmodes <em>(top row)</em> and associated
+independent components <em>(bottom row)</em>. The ICs are an optimally
+independent representation of the seven different residue groups.</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s">&#39;figure.figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">9.5</span><span class="p">,</span> <span class="mf">5.5</span>
+<span class="n">pairs</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">],[</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]]</span>
+<span class="n">EVs</span> <span class="o">=</span> <span class="n">Dsect</span><span class="p">[</span><span class="s">&#39;Vsca&#39;</span><span class="p">]</span>
+<span class="n">ICs</span> <span class="o">=</span> <span class="n">Dsect</span><span class="p">[</span><span class="s">&#39;Vpica&#39;</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">k</span><span class="p">,[</span><span class="n">k1</span><span class="p">,</span><span class="n">k2</span><span class="p">]</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">pairs</span><span class="p">):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">EVs</span><span class="p">[:,</span><span class="n">k1</span><span class="p">],</span> <span class="n">EVs</span><span class="p">[:,</span><span class="n">k2</span><span class="p">],</span> <span class="s">&#39;ok&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">&quot;EV</span><span class="si">%i</span><span class="s">&quot;</span><span class="o">%</span><span class="p">(</span><span class="n">k1</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">&quot;EV</span><span class="si">%i</span><span class="s">&quot;</span><span class="o">%</span><span class="p">(</span><span class="n">k2</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="n">k</span><span class="o">+</span><span class="mi">5</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ICs</span><span class="p">[:,</span><span class="n">k1</span><span class="p">],</span> <span class="n">ICs</span><span class="p">[:,</span><span class="n">k2</span><span class="p">],</span> <span class="s">&#39;ok&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">&quot;IC</span><span class="si">%i</span><span class="s">&quot;</span><span class="o">%</span><span class="p">(</span><span class="n">k1</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">&quot;IC</span><span class="si">%i</span><span class="s">&quot;</span><span class="o">%</span><span class="p">(</span><span class="n">k2</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+</pre></div>
+</div>
+<img alt="_images/SCA_S1A_27_0.png" src="_images/SCA_S1A_27_0.png" />
+</div>
+<div class="section" id="iv-sector-decomposition">
+<h2>IV.  Sector decomposition.<a class="headerlink" href="#iv-sector-decomposition" title="Permalink to this headline">¶</a></h2>
+<p>To define the positions with significant contributions to each of the
+independent components (ICs), we make a empirical fit for each IC to the
+t-distribution and select positions with greater than a specified cutoff
+on the CDF. We choose <span class="math">\(p=0.95\)</span> as our cutoff. Note that since some
+positions might contribute significantly to more than one IC (an
+indication of non-independence of ICs), we apply a simple algorithm to
+assign such positions to one IC. Specifically, we assign positions to
+the IC with which it has the greatest degree of co-evolution.In the case
+of IC7, all of the positions are more strongly assigned to other ICs, so
+we end up with 6 ICs containing 97 total positions</p>
+<p>The data indicate generally good fits for the top seven ICs, and we
+return the positions contributing to each IC in a format suitable for
+cut and paste into PyMol.</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s">&#39;figure.figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">8</span>
+
+<span class="n">Vpica</span> <span class="o">=</span> <span class="n">Dsect</span><span class="p">[</span><span class="s">&#39;Vpica&#39;</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">Dsect</span><span class="p">[</span><span class="s">&#39;kpos&#39;</span><span class="p">]):</span>
+    <span class="n">iqr</span> <span class="o">=</span> <span class="n">scoreatpercentile</span><span class="p">(</span><span class="n">Vpica</span><span class="p">[:,</span><span class="n">k</span><span class="p">],</span><span class="mi">75</span><span class="p">)</span> <span class="o">-</span> <span class="n">scoreatpercentile</span><span class="p">(</span><span class="n">Vpica</span><span class="p">[:,</span><span class="n">k</span><span class="p">],</span><span class="mi">25</span><span class="p">)</span>
+    <span class="n">binwidth</span><span class="o">=</span><span class="mi">2</span><span class="o">*</span><span class="n">iqr</span><span class="o">*</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Vpica</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="mf">0.33</span><span class="p">))</span>
+    <span class="n">nbins</span><span class="o">=</span><span class="nb">round</span><span class="p">((</span><span class="nb">max</span><span class="p">(</span><span class="n">Vpica</span><span class="p">[:,</span><span class="n">k</span><span class="p">])</span><span class="o">-</span><span class="nb">min</span><span class="p">(</span><span class="n">Vpica</span><span class="p">[:,</span><span class="n">k</span><span class="p">]))</span><span class="o">/</span><span class="n">binwidth</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="n">Dsect</span><span class="p">[</span><span class="s">&#39;kpos&#39;</span><span class="p">],</span><span class="mi">1</span><span class="p">,</span><span class="n">k</span><span class="p">)</span>
+    <span class="n">h_params</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">Vpica</span><span class="p">[:,</span><span class="n">k</span><span class="p">],</span> <span class="n">nbins</span><span class="p">)</span>
+    <span class="n">x_dist</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">h_params</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="nb">max</span><span class="p">(</span><span class="n">h_params</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="n">num</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_dist</span><span class="p">,</span><span class="n">Dsect</span><span class="p">[</span><span class="s">&#39;scaled_pd&#39;</span><span class="p">][</span><span class="n">k</span><span class="p">],</span><span class="s">&#39;r&#39;</span><span class="p">,</span><span class="n">linewidth</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">Dsect</span><span class="p">[</span><span class="s">&#39;cutoff&#39;</span><span class="p">][</span><span class="n">k</span><span class="p">],</span><span class="n">Dsect</span><span class="p">[</span><span class="s">&#39;cutoff&#39;</span><span class="p">][</span><span class="n">k</span><span class="p">]],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">60</span><span class="p">],</span> <span class="s">&#39;k--&#39;</span><span class="p">,</span><span class="n">linewidth</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">r&#39;$V^p_{</span><span class="si">%i</span><span class="s">}$&#39;</span><span class="o">%</span><span class="p">(</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">&#39;Number&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">n</span><span class="p">,</span><span class="n">ipos</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">Dsect</span><span class="p">[</span><span class="s">&#39;ics&#39;</span><span class="p">]):</span>
+    <span class="n">sort_ipos</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">ipos</span><span class="o">.</span><span class="n">items</span><span class="p">)</span>
+    <span class="n">ats_ipos</span> <span class="o">=</span> <span class="p">([</span><span class="n">Dseq</span><span class="p">[</span><span class="s">&#39;ats&#39;</span><span class="p">][</span><span class="n">s</span><span class="p">]</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">sort_ipos</span><span class="p">])</span>
+    <span class="n">ic_pymol</span> <span class="o">=</span> <span class="p">(</span><span class="s">&#39;+&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">ats_ipos</span><span class="p">))</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">&#39;IC </span><span class="si">%i</span><span class="s"> is composed of </span><span class="si">%i</span><span class="s"> positions:&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">ats_ipos</span><span class="p">)))</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">ic_pymol</span> <span class="o">+</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python"><pre>IC 1 is composed of 32 positions:
+16+19+28+42+43+44+54+55+56+57+58+102+140+141+142+155+168+182+191+193+194+195+196+197+198+199+211+214+220+225+237+238
+
+IC 2 is composed of 22 positions:
+29+138+160+161+172+176+177+180+183+184+188A+189+192+213+215+216+221+222+226+227+228+230
+
+IC 3 is composed of 20 positions:
+21+25+26+27+46+52+68+69+71+77+81+104+107+108+114+118+123+124+136+201
+
+IC 4 is composed of 10 positions:
+30+31+32+34+40+51+139+152+156+200
+
+IC 5 is composed of 6 positions:
+85+89+91+92+94+95
+
+IC 6 is composed of 7 positions:
+47+53+101+103+105+229+234
+
+IC 7 is composed of 0 positions:</pre>
+</div>
+<div class="highlight-python"><pre>/Users/kreynolds/anaconda/lib/python2.7/site-packages/matplotlib/axes/_subplots.py:69: MatplotlibDeprecationWarning: The use of 0 (which ends up being the _last_ sub-plot) is deprecated in 1.4 and will raise an error in 1.5
+  mplDeprecation)</pre>
+</div>
+<img alt="_images/SCA_S1A_30_2.png" src="_images/SCA_S1A_30_2.png" />
+<p>To define protein sectors, we examine the structure of the SCA
+positional correlation matrix with positions contributing to the top
+independent components (ICs) ordered by weight (<em>left panel</em>). This
+provides a basis to determine/interpret which ICs are truly
+statistically independent (defining an independent sector) and which
+represent hierarchical breakdowns of one sector. In this case, the data
+suggest that ICs 1-7 are indeed relatively independent.</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="c">#plot the SCA positional correlation matrix, ordered by contribution to the top ICs</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s">&#39;figure.figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">Dsca</span><span class="p">[</span><span class="s">&#39;Csca&#39;</span><span class="p">][</span><span class="n">np</span><span class="o">.</span><span class="n">ix_</span><span class="p">(</span><span class="n">Dsect</span><span class="p">[</span><span class="s">&#39;sortedpos&#39;</span><span class="p">],</span> <span class="n">Dsect</span><span class="p">[</span><span class="s">&#39;sortedpos&#39;</span><span class="p">])],</span> \
+           <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">interpolation</span><span class="o">=</span><span class="s">&#39;none&#39;</span><span class="p">,</span>\
+           <span class="n">aspect</span><span class="o">=</span><span class="s">&#39;equal&#39;</span><span class="p">,</span><span class="n">extent</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="nb">sum</span><span class="p">(</span><span class="n">Dsect</span><span class="p">[</span><span class="s">&#39;icsize&#39;</span><span class="p">]),</span>\
+                                  <span class="mi">0</span><span class="p">,</span><span class="nb">sum</span><span class="p">(</span><span class="n">Dsect</span><span class="p">[</span><span class="s">&#39;icsize&#39;</span><span class="p">])])</span>
+<span class="n">line_index</span><span class="o">=</span><span class="mi">0</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">Dsect</span><span class="p">[</span><span class="s">&#39;kpos&#39;</span><span class="p">]):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">line_index</span><span class="o">+</span><span class="n">Dsect</span><span class="p">[</span><span class="s">&#39;icsize&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">],</span><span class="n">line_index</span><span class="o">+</span><span class="n">Dsect</span><span class="p">[</span><span class="s">&#39;icsize&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]],</span>\
+             <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="nb">sum</span><span class="p">(</span><span class="n">Dsect</span><span class="p">[</span><span class="s">&#39;icsize&#39;</span><span class="p">])],</span><span class="s">&#39;w&#39;</span><span class="p">,</span> <span class="n">linewidth</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="nb">sum</span><span class="p">(</span><span class="n">Dsect</span><span class="p">[</span><span class="s">&#39;icsize&#39;</span><span class="p">])],[</span><span class="nb">sum</span><span class="p">(</span><span class="n">Dsect</span><span class="p">[</span><span class="s">&#39;icsize&#39;</span><span class="p">])</span><span class="o">-</span>\
+            <span class="n">line_index</span><span class="p">,</span><span class="nb">sum</span><span class="p">(</span><span class="n">Dsect</span><span class="p">[</span><span class="s">&#39;icsize&#39;</span><span class="p">])</span><span class="o">-</span><span class="n">line_index</span><span class="p">],</span><span class="s">&#39;w&#39;</span><span class="p">,</span> <span class="n">linewidth</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="n">line_index</span> <span class="o">+=</span> <span class="n">Dsect</span><span class="p">[</span><span class="s">&#39;icsize&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span>
+
+<span class="c">#define the new sector groupings - 3 total</span>
+<span class="n">sec_groups</span> <span class="o">=</span> <span class="p">([</span><span class="mi">0</span><span class="p">],[</span><span class="mi">1</span><span class="p">],[</span><span class="mi">2</span><span class="p">],[</span><span class="mi">3</span><span class="p">],[</span><span class="mi">4</span><span class="p">],[</span><span class="mi">5</span><span class="p">])</span>
+<span class="n">sectors</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+
+<span class="c">#defining color codes for the sectors</span>
+<span class="c">#s1 = green, s2 = red, s3 = blue, s4 = orange, s5 = hot pink, s6 = cyan</span>
+<span class="n">c</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.4</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.7</span><span class="p">,</span><span class="mf">0.15</span><span class="p">,</span><span class="mf">0.9</span><span class="p">,</span><span class="mf">0.5</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">n</span><span class="p">,</span><span class="n">k</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">sec_groups</span><span class="p">):</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">sca</span><span class="o">.</span><span class="n">Unit</span><span class="p">()</span>
+    <span class="n">all_items</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+    <span class="n">all_Vp</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">k</span><span class="p">:</span>
+        <span class="n">all_items</span> <span class="o">=</span> <span class="n">all_items</span><span class="o">+</span><span class="n">Dsect</span><span class="p">[</span><span class="s">&#39;ics&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">items</span>
+        <span class="n">all_Vp</span> <span class="o">=</span> <span class="n">all_Vp</span><span class="o">+</span><span class="nb">list</span><span class="p">(</span><span class="n">Dsect</span><span class="p">[</span><span class="s">&#39;ics&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">vect</span><span class="p">)</span>
+    <span class="n">svals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">all_Vp</span><span class="p">)</span>
+    <span class="n">s</span><span class="o">.</span><span class="n">items</span> <span class="o">=</span> <span class="p">[</span><span class="n">all_items</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">svals</span><span class="p">]</span>
+    <span class="n">s</span><span class="o">.</span><span class="n">col</span> <span class="o">=</span> <span class="n">c</span><span class="p">[</span><span class="n">n</span><span class="p">]</span>
+    <span class="n">sectors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+
+<span class="c">#plot the re-ordered matrix</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">)</span>
+<span class="n">line_index</span><span class="o">=</span><span class="mi">0</span>
+<span class="n">sortpos</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">sectors</span><span class="p">:</span>
+    <span class="n">sortpos</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">items</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">Dsca</span><span class="p">[</span><span class="s">&#39;Csca&#39;</span><span class="p">][</span><span class="n">np</span><span class="o">.</span><span class="n">ix_</span><span class="p">(</span><span class="n">sortpos</span><span class="p">,</span> <span class="n">sortpos</span><span class="p">)],</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mf">2.2</span><span class="p">,</span>\
+           <span class="n">interpolation</span><span class="o">=</span><span class="s">&#39;none&#39;</span><span class="p">,</span><span class="n">aspect</span><span class="o">=</span><span class="s">&#39;equal&#39;</span><span class="p">,</span>\
+           <span class="n">extent</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">sortpos</span><span class="p">),</span><span class="mi">0</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">sortpos</span><span class="p">)])</span>
+<span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">sectors</span><span class="p">:</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">line_index</span><span class="o">+</span><span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">items</span><span class="p">),</span><span class="n">line_index</span><span class="o">+</span><span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">items</span><span class="p">)],</span>\
+             <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">sortpos</span><span class="p">)],</span><span class="s">&#39;w&#39;</span><span class="p">,</span> <span class="n">linewidth</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="nb">sum</span><span class="p">(</span><span class="n">Dsect</span><span class="p">[</span><span class="s">&#39;icsize&#39;</span><span class="p">])],[</span><span class="nb">len</span><span class="p">(</span><span class="n">sortpos</span><span class="p">)</span><span class="o">-</span><span class="n">line_index</span><span class="p">,</span>\
+                    <span class="nb">len</span><span class="p">(</span><span class="n">sortpos</span><span class="p">)</span><span class="o">-</span><span class="n">line_index</span><span class="p">],</span><span class="s">&#39;w&#39;</span><span class="p">,</span> <span class="n">linewidth</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="n">line_index</span> <span class="o">+=</span> <span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">items</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+</pre></div>
+</div>
+<img alt="_images/SCA_S1A_32_0.png" src="_images/SCA_S1A_32_0.png" />
+<p>Print the sector positions, in a format suitable for pyMol, and create a
+pyMol session (in the Outputs directory) with the sectors (and
+decomposition into independent components) as seperate objects.</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">k</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">sectors</span><span class="p">):</span>
+    <span class="n">sort_ipos</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">k</span><span class="o">.</span><span class="n">items</span><span class="p">)</span>
+    <span class="n">ats_ipos</span> <span class="o">=</span> <span class="p">([</span><span class="n">Dseq</span><span class="p">[</span><span class="s">&#39;ats&#39;</span><span class="p">][</span><span class="n">s</span><span class="p">]</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">sort_ipos</span><span class="p">])</span>
+    <span class="n">ic_pymol</span> <span class="o">=</span> <span class="p">(</span><span class="s">&#39;+&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">ats_ipos</span><span class="p">))</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">&#39;Sector </span><span class="si">%i</span><span class="s"> is composed of </span><span class="si">%i</span><span class="s"> positions:&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">ats_ipos</span><span class="p">)))</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">ic_pymol</span> <span class="o">+</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">)</span>
+<span class="n">sca</span><span class="o">.</span><span class="n">writePymol</span><span class="p">(</span><span class="s">&#39;3TGI&#39;</span><span class="p">,</span> <span class="n">sectors</span><span class="p">,</span> <span class="n">Dsect</span><span class="p">[</span><span class="s">&#39;ics&#39;</span><span class="p">],</span> <span class="n">Dseq</span><span class="p">[</span><span class="s">&#39;ats&#39;</span><span class="p">],</span> \
+               <span class="s">&#39;Outputs/S1A.pml&#39;</span><span class="p">,</span><span class="s">&#39;E&#39;</span><span class="p">,</span> <span class="s">&#39;../Inputs/&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python"><pre>Sector 1 is composed of 32 positions:
+16+19+28+42+43+44+54+55+56+57+58+102+140+141+142+155+168+182+191+193+194+195+196+197+198+199+211+214+220+225+237+238
+
+Sector 2 is composed of 22 positions:
+29+138+160+161+172+176+177+180+183+184+188A+189+192+213+215+216+221+222+226+227+228+230
+
+Sector 3 is composed of 20 positions:
+21+25+26+27+46+52+68+69+71+77+81+104+107+108+114+118+123+124+136+201
+
+Sector 4 is composed of 10 positions:
+30+31+32+34+40+51+139+152+156+200
+
+Sector 5 is composed of 6 positions:
+85+89+91+92+94+95
+
+Sector 6 is composed of 7 positions:
+47+53+101+103+105+229+234</pre>
+</div>
+<p>These positions have clear physical consistency with the concept of
+sectors as functional, physically contiguous units in the protein
+structure. IC1 corresponds to the previously reported green sector, IC2
+to the red sector, and IC3 is similar to the blue sector. ICs 4-6 follow
+the general principle of physical connectivity that seems to
+characterize sectors, but their functional meaning requires further
+study.</p>
+</div>
+<div class="section" id="v-sequence-subfamilies-and-the-basis-of-sector-hierarchy">
+<h2>V. Sequence subfamilies and the basis of sector hierarchy.<a class="headerlink" href="#v-sequence-subfamilies-and-the-basis-of-sector-hierarchy" title="Permalink to this headline">¶</a></h2>
+<p>How does the phylogenetic and functional heterogeneity in the MSA
+influence the sector definitions? To address this, we take advantage of
+mathematical methods for mapping between the space of positional and
+sequence correlations, as described in <em>Rivoire et al</em> (see equations
+8-11). Using this mapping, we plot the top <span class="math">\(k^*\)</span> ICs of the matrix
+<span class="math">\(\tilde{C_{ij}}\)</span> as 2-D scatter plots <em>(top row)</em>, and compare
+them to the corresponding sequence space divergence <em>(middle and bottom
+rows)</em>. The amino acid positions contributing to each IC are colored by
+sector <em>(sector 1 = green, sector 2 = red, sector 3 = blue, sector 4 =
+orange, sector 5 = pink, sector 6 = cyan, all top row)</em>. The sequences
+are color-coded according to phylogenetic classifications <em>(row 2)</em>,
+specificity <em>(row 3)</em>, vertebrate/invertebrate <em>(row 4)</em>, or catalytic
+activity <em>(row 5)</em> as we defined above.</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s">&#39;figure.figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">20</span>
+<span class="n">pairs</span><span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">],[</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]]</span>
+<span class="k">for</span> <span class="n">n</span><span class="p">,[</span><span class="n">k1</span><span class="p">,</span><span class="n">k2</span><span class="p">]</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">pairs</span><span class="p">):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">sca</span><span class="o">.</span><span class="n">figUnits</span><span class="p">(</span><span class="n">Dsect</span><span class="p">[</span><span class="s">&#39;Vpica&#39;</span><span class="p">][:,</span><span class="n">k1</span><span class="p">],</span> <span class="n">Dsect</span><span class="p">[</span><span class="s">&#39;Vpica&#39;</span><span class="p">][:,</span><span class="n">k2</span><span class="p">],</span> \
+                 <span class="n">sectors</span><span class="p">,</span> <span class="n">dotsize</span> <span class="o">=</span> <span class="mi">6</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;IC</span><span class="si">%i</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">k1</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">&#39;IC</span><span class="si">%i</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">k2</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="n">n</span><span class="o">+</span><span class="mi">6</span><span class="p">)</span>
+    <span class="n">sca</span><span class="o">.</span><span class="n">figUnits</span><span class="p">(</span><span class="n">Dsect</span><span class="p">[</span><span class="s">&#39;Upica&#39;</span><span class="p">][:,</span><span class="n">k1</span><span class="p">],</span> <span class="n">Dsect</span><span class="p">[</span><span class="s">&#39;Upica&#39;</span><span class="p">][:,</span><span class="n">k2</span><span class="p">],</span> \
+                 <span class="n">phylo</span><span class="p">,</span> <span class="n">dotsize</span> <span class="o">=</span> <span class="mi">6</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">r&#39;$U^p_{</span><span class="si">%i</span><span class="s">}$&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">k1</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">r&#39;$U^p_{</span><span class="si">%i</span><span class="s">}$&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">k2</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="n">n</span><span class="o">+</span><span class="mi">11</span><span class="p">)</span>
+    <span class="n">sca</span><span class="o">.</span><span class="n">figUnits</span><span class="p">(</span><span class="n">Dsect</span><span class="p">[</span><span class="s">&#39;Upica&#39;</span><span class="p">][:,</span><span class="n">k1</span><span class="p">],</span> <span class="n">Dsect</span><span class="p">[</span><span class="s">&#39;Upica&#39;</span><span class="p">][:,</span><span class="n">k2</span><span class="p">],</span> \
+                 <span class="n">spec_classes</span><span class="p">,</span> <span class="n">dotsize</span> <span class="o">=</span> <span class="mi">6</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">r&#39;$U^p_{</span><span class="si">%i</span><span class="s">}$&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">k1</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">r&#39;$U^p_{</span><span class="si">%i</span><span class="s">}$&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">k2</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="n">n</span><span class="o">+</span><span class="mi">16</span><span class="p">)</span>
+    <span class="n">sca</span><span class="o">.</span><span class="n">figUnits</span><span class="p">(</span><span class="n">Dsect</span><span class="p">[</span><span class="s">&#39;Upica&#39;</span><span class="p">][:,</span><span class="n">k1</span><span class="p">],</span> <span class="n">Dsect</span><span class="p">[</span><span class="s">&#39;Upica&#39;</span><span class="p">][:,</span><span class="n">k2</span><span class="p">],</span> \
+                 <span class="n">vert_classes</span><span class="p">,</span> <span class="n">dotsize</span> <span class="o">=</span> <span class="mi">6</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">r&#39;$U^p_{</span><span class="si">%i</span><span class="s">}$&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">k1</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">r&#39;$U^p_{</span><span class="si">%i</span><span class="s">}$&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">k2</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="n">n</span><span class="o">+</span><span class="mi">21</span><span class="p">)</span>
+    <span class="n">sca</span><span class="o">.</span><span class="n">figUnits</span><span class="p">(</span><span class="n">Dsect</span><span class="p">[</span><span class="s">&#39;Upica&#39;</span><span class="p">][:,</span><span class="n">k1</span><span class="p">],</span> <span class="n">Dsect</span><span class="p">[</span><span class="s">&#39;Upica&#39;</span><span class="p">][:,</span><span class="n">k2</span><span class="p">],</span> \
+                 <span class="n">cat_classes</span><span class="p">,</span> <span class="n">dotsize</span> <span class="o">=</span> <span class="mi">6</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">r&#39;$U^p_{</span><span class="si">%i</span><span class="s">}$&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">k1</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">r&#39;$U^p_{</span><span class="si">%i</span><span class="s">}$&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">k2</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+</pre></div>
+</div>
+<img alt="_images/SCA_S1A_39_0.png" src="_images/SCA_S1A_39_0.png" />
+<p>As previously described, we see a clear correpsondence between the top
+three sectors (red, green, blue) and distinct functional properties of
+the S1A protease family. IC1 <em>(the green sector)</em> seperates the
+non-catalytic haptoglobins <em>(cyan, bottom row)</em> from the catalytic
+family members. IC2 <em>(the red sector)</em> seperates the proteases by
+specificity, and IC3 <em>(the blue sector)</em> seperates vertebrate from
+invertebrate sequences. The remaining ICs (4-6) correspond to small
+numbers of physically contiguous positions, with no obvious relationship
+to particular sequence functional groups.</p>
+<p>To more clearly see seperations in sequence classification, we also plot
+the above distributions of sequences as stacked bar plots.</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s">&#39;figure.figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">12</span>
+
+<span class="n">col</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">spec_classes</span><span class="p">:</span>
+    <span class="n">col</span> <span class="o">=</span> <span class="n">col</span> <span class="o">+</span> <span class="p">[</span><span class="n">colorsys</span><span class="o">.</span><span class="n">hsv_to_rgb</span><span class="p">(</span><span class="n">k</span><span class="o">.</span><span class="n">col</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)]</span>
+<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">Dsect</span><span class="p">[</span><span class="s">&#39;kpos&#39;</span><span class="p">]):</span>
+    <span class="n">forhist</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">group</span> <span class="ow">in</span> <span class="n">spec_classes</span><span class="p">:</span>
+        <span class="n">forhist</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">Dsect</span><span class="p">[</span><span class="s">&#39;Upica&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">,</span><span class="n">k</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">group</span><span class="o">.</span><span class="n">items</span><span class="p">])</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="n">Dsect</span><span class="p">[</span><span class="s">&#39;kpos&#39;</span><span class="p">],</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">forhist</span><span class="p">,</span> <span class="n">histtype</span><span class="o">=</span><span class="s">&#39;barstacked&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="n">col</span><span class="p">)</span>
+
+<span class="n">col</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">vert_classes</span><span class="p">:</span>
+    <span class="n">col</span> <span class="o">=</span> <span class="n">col</span> <span class="o">+</span> <span class="p">[</span><span class="n">colorsys</span><span class="o">.</span><span class="n">hsv_to_rgb</span><span class="p">(</span><span class="n">k</span><span class="o">.</span><span class="n">col</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)]</span>
+<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">Dsect</span><span class="p">[</span><span class="s">&#39;kpos&#39;</span><span class="p">]):</span>
+    <span class="n">forhist</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">group</span> <span class="ow">in</span> <span class="n">vert_classes</span><span class="p">:</span>
+        <span class="n">forhist</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">Dsect</span><span class="p">[</span><span class="s">&#39;Upica&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">,</span><span class="n">k</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">group</span><span class="o">.</span><span class="n">items</span><span class="p">])</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="n">Dsect</span><span class="p">[</span><span class="s">&#39;kpos&#39;</span><span class="p">],</span><span class="n">k</span><span class="o">+</span><span class="p">(</span><span class="n">Dsect</span><span class="p">[</span><span class="s">&#39;kpos&#39;</span><span class="p">])</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">forhist</span><span class="p">,</span> <span class="n">histtype</span><span class="o">=</span><span class="s">&#39;barstacked&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="n">col</span><span class="p">)</span>
+
+<span class="n">col</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">cat_classes</span><span class="p">:</span>
+    <span class="n">col</span> <span class="o">=</span> <span class="n">col</span> <span class="o">+</span> <span class="p">[</span><span class="n">colorsys</span><span class="o">.</span><span class="n">hsv_to_rgb</span><span class="p">(</span><span class="n">k</span><span class="o">.</span><span class="n">col</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)]</span>
+<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">Dsect</span><span class="p">[</span><span class="s">&#39;kpos&#39;</span><span class="p">]):</span>
+    <span class="n">forhist</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">group</span> <span class="ow">in</span> <span class="n">cat_classes</span><span class="p">:</span>
+        <span class="n">forhist</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">Dsect</span><span class="p">[</span><span class="s">&#39;Upica&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">,</span><span class="n">k</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">group</span><span class="o">.</span><span class="n">items</span><span class="p">])</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="n">Dsect</span><span class="p">[</span><span class="s">&#39;kpos&#39;</span><span class="p">],</span><span class="n">k</span><span class="o">+</span><span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="n">Dsect</span><span class="p">[</span><span class="s">&#39;kpos&#39;</span><span class="p">])</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">forhist</span><span class="p">,</span> <span class="n">histtype</span><span class="o">=</span><span class="s">&#39;barstacked&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="n">col</span><span class="p">)</span>
+
+
+<span class="n">col</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">phylo</span><span class="p">:</span>
+    <span class="n">col</span> <span class="o">=</span> <span class="n">col</span> <span class="o">+</span> <span class="p">[</span><span class="n">colorsys</span><span class="o">.</span><span class="n">hsv_to_rgb</span><span class="p">(</span><span class="n">k</span><span class="o">.</span><span class="n">col</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)]</span>
+<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">Dsect</span><span class="p">[</span><span class="s">&#39;kpos&#39;</span><span class="p">]):</span>
+    <span class="n">forhist</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">group</span> <span class="ow">in</span> <span class="n">phylo</span><span class="p">:</span>
+        <span class="n">forhist</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">Dsect</span><span class="p">[</span><span class="s">&#39;Upica&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">,</span><span class="n">k</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">group</span><span class="o">.</span><span class="n">items</span><span class="p">])</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="n">Dsect</span><span class="p">[</span><span class="s">&#39;kpos&#39;</span><span class="p">],</span><span class="n">k</span><span class="o">+</span><span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="n">Dsect</span><span class="p">[</span><span class="s">&#39;kpos&#39;</span><span class="p">])</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">forhist</span><span class="p">,</span> <span class="n">histtype</span><span class="o">=</span><span class="s">&#39;barstacked&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="n">col</span><span class="p">)</span>
+</pre></div>
+</div>
+<img alt="_images/SCA_S1A_42_0.png" src="_images/SCA_S1A_42_0.png" />
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="SCA_DHFR.html" title="SCA6.0 - The DHFR (dihydrofolate reductase) family"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="SCA_G.html" title="SCA6.0 - The G protein family"
+             >previous</a> |</li>
+        <li><a href="index.html">home</a>|&nbsp;</li>
+        <li><a href="search.html">search</a>|&nbsp;</li>
+
+          <li><a href="tutorials.html" >Tutorials - Usage:</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2014, Olivier Rivoire, Kim Reynolds, Rama Ranganathan.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

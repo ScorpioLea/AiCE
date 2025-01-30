@@ -1,0 +1,7 @@
+scaProcessMSA Module
+====================
+
+.. automodule:: scaProcessMSA
+    :members:
+    :undoc-members:
+    :show-inheritance:

@@ -1,0 +1,111 @@
+.. _install
+
+=============
+Installation
+=============
+
+1. Downloading the code
+=========================
+The pySCA package, tutorials, and associated scripts are available for
+download from github.com. 
+
+2. Package Dependencies
+=========================
+Before running pySCA, you will need to download and install the following
+(free) packages:
+
+    1)  Anaconda Scientific Python - this package will install python,
+        as well as several libraries necessary for the operation of
+        pySCA (NumPy, SciPy, iPython, and Matplotlib).
+
+	https://store.continuum.io/cshop/anaconda/
+ 
+    2)  Install biopython - this can be done in two ways:
+
+	a. from the command line, run:
+
+	   >>> conda install biopython
+
+	b. download (and install) from here:
+	  
+	   http://biopython.org/wiki/Main_Page
+
+    3)  Install a robust pairwise alignment program. Either of the below will
+	work with pySCA, in our hands ggsearch is fastest. This is
+	critical for the scaProcessMSA.py script.
+
+	a.  ggsearch - part of the FASTA software package, http://fasta.bioch.virginia.edu/fasta_www2/fasta_down.shtml
+	b.  needle - part of the EMBOSS software package, http://emboss.sourceforge.net/
+
+	*The following steps are optional but highly recommended.*	
+
+    4)  Download pfamseq.txt - a file containing phylogenetic
+	annotations for PFAM sequences. This is necessary if you would
+	like to annotate PFAM alignments with taxonomic/phylogenetic
+	information using the annotate_MSA.py script provided by
+	pySCA. This file is quite large, but available from the PFAM
+	ftp site in compressed (*.gz) format.
+ 
+        http://pfam.xfam.org/help#tabview=tab12
+
+    5)  Install PyMol (http://www.pymol.org/) - necessary if you would like to use pySCA's automated
+        structure mapping scripts, and useful for mapping the sectors
+	to structure in general	    
+
+    6)  Install mpld3 (http://mpld3.github.io/) - a package that
+	allows more interactive plot visualization in ipython notebooks . If you
+	choose not to install this (optional) package, you will need
+	to comment out the line "import mpld3" at the beginning of the tutorials.
+
+	   
+3. Path Modifications
+=========================
+Following the successful installation of these packages, 
+edit the following variables in the "PATHS" of scaTools.py to reflect
+the locations of these files on your computer:
+
+     path2pfamseq = 'pfamseq.txt' `location of the pfam.seq database file`
+     
+     path2structures = 'Inputs/'  `location of your PDB structures for analysis`
+
+     path2pymol = '/Applications/MacPyMOL.app/Contents/MacOS/MacPyMOL'
+     `location of your PyMOL executable`
+   
+     path2needle = '/usr/local/bin' `location of the needle
+     executable, if you have installed EMBOSS needle`
+
+You may also need to modify the "shebang" line (!#) at the top of the
+following scripts to appropriately reflect the path of
+your python installation: 
+     
+     annotate_MSA.py
+
+     scaProcessMSA.py
+
+     scaCore.py
+
+     scaSectorID.py
+
+
+4. Getting started and Running the tutorials
+==============================================
+The `"getting started"`_ section of this documentation provides
+instructions on how to run some initial calculations and the
+tutorials. The basic idea behind the pySCA code is that the
+core calculations are performed using a series of executable python scripts,
+and then the results can be loaded and analyzed/visualized using an
+ipython notebook (or alternatively, Matlab).
+
+All of the tutorials are written provided  as ipython notebooks. For
+more on how ipython notebooks work, see:
+http://ipython.org/notebook.html. Prior to running the notebook
+tutorials, you'll need to run the core calculation scripts that
+generate the input for the notebooks. One way to do this is with the
+shell script "runAllNBCalcs.sh", and there is more information on this
+in the `"getting started"`_ section. Once the calculations are
+completed, you can begin the tutorial in interactive python from the
+command line, by typing:
+
+>>> ipython notebook script_dhfr.ipynb 
+
+.. _"getting started": get_started.html

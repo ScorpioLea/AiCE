@@ -1,0 +1,193 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Statistical Coupling Analysis in python. &mdash; pySCA 1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="pySCA 1 documentation" href="#" />
+    <link rel="next" title="Installation" href="install.html" /> 
+  </head>
+  <body>
+
+<div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
+<a href="#"><img src="_static/logo.png" border="0" alt="py4sci"/></a>
+</div>
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="install.html" title="Installation"
+             accesskey="N">next</a> |</li>
+        <li><a href="#">home</a>|&nbsp;</li>
+        <li><a href="search.html">search</a>|&nbsp;</li>
+ 
+      </ul>
+    </div>
+
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="#">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Statistical Coupling Analysis in python.</a><ul>
+<li><a class="reference internal" href="#i-installing-and-using-pysca">I. Installing and Using pySCA</a><ul>
+</ul>
+</li>
+<li><a class="reference internal" href="#ii-indices-and-tables">II. Indices and tables</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Next topic</h4>
+  <p class="topless"><a href="install.html"
+                        title="next chapter">Installation</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/index.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="statistical-coupling-analysis-in-python">
+<h1>Statistical Coupling Analysis in python.<a class="headerlink" href="#statistical-coupling-analysis-in-python" title="Permalink to this headline">¶</a></h1>
+<p>The Statistical Coupling Analysis (SCA) is an approach for
+characterizing the pattern of evolutionary constraints on and between
+amino acid positions in a protein family. Given a representative
+multiple sequence alignment of the family, the analysis provides
+methods for quantitatively measuring the overall functional constraint
+at each sequence position (the position-specific, or &#8220;first-order&#8221;
+analysis of conservation), and for measuring and analyzing the coupled
+functional constraint on all pairs of sequence positions (the
+pairwise-correlated, or &#8220;second-order&#8221; analysis of conservation). The
+premise is that extending the traditional definition of conservation
+to include correlations between positions will contribute to defining
+the architecture of functional interactions between amino acids, and
+more importantly, help define the basic physical principles underlying
+protein structure, function, and evolution.</p>
+<p><strong>Please Cite:</strong>  <em>Olivier Rivoire, Kimberly Reynolds, and Rama
+Ranganathan. &#8220;Evolution-Based Functional Decomposition of Proteins&#8221;.</em></p>
+<div class="section" id="i-installing-and-using-pysca">
+<h2>I. Installing and Using pySCA<a class="headerlink" href="#i-installing-and-using-pysca" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="install.html#downloading-the-code">1. Downloading the code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#package-dependencies">2. Package Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#path-modifications">3. Path Modifications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#getting-started-and-running-the-tutorials">4. Getting started and Running the tutorials</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="get_started.html">Getting Started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="get_started.html#getting-oriented-a-quick-note-on-file-and-directory-structure">Getting oriented... a quick note on file and directory structure:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="get_started.html#constructing-and-annotating-a-multiple-sequence-alignment">1. Constructing and annotating a multiple sequence alignment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="get_started.html#alignment-pre-processing-and-conditioning">2. Alignment pre-processing and conditioning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="get_started.html#calculation-of-the-conservation-and-co-evolution-statistics">3. Calculation of the conservation and co-evolution statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="get_started.html#identifying-significant-evolutionary-correlations">4. Identifying significant evolutionary correlations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="get_started.html#interpretation-of-the-results-and-sector-definition">5. Interpretation of the results and sector definition</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials.html">Tutorials - Usage:</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials.html#tutorials-examples">Tutorials - Examples:</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="SCA_G.html">SCA6.0 - The G protein family</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SCA_S1A.html">SCA6.0 - The S1A Serine Proteases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SCA_DHFR.html">SCA6.0 - The DHFR (dihydrofolate reductase) family</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SCA_betalactamase.html">SCA6.0 - The Beta-lactamase enzyme family</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">The pySCA code</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="annotate_MSA.html">annotate_MSA Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scaProcessMSA.html">scaProcessMSA Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scaCore.html">scaCore Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scaSectorID.html">scaSectorID Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scaTools.html">scaTools Module</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="ii-indices-and-tables">
+<h2>II. Indices and tables<a class="headerlink" href="#ii-indices-and-tables" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference internal" href="genindex.html"><em>Index</em></a></li>
+<li><a class="reference internal" href="py-modindex.html"><em>Module Index</em></a></li>
+<li><a class="reference internal" href="search.html"><em>Search Page</em></a></li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="install.html" title="Installation"
+             >next</a> |</li>
+        <li><a href="#">home</a>|&nbsp;</li>
+        <li><a href="search.html">search</a>|&nbsp;</li>
+ 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2014, Olivier Rivoire, Kim Reynolds, Rama Ranganathan.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

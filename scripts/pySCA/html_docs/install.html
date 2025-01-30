@@ -1,0 +1,245 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Installation &mdash; pySCA 1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="pySCA 1 documentation" href="index.html" />
+    <link rel="next" title="Getting Started" href="get_started.html" />
+    <link rel="prev" title="Statistical Coupling Analysis in python." href="index.html" /> 
+  </head>
+  <body>
+
+<div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
+<a href="index.html"><img src="_static/logo.png" border="0" alt="py4sci"/></a>
+</div>
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="get_started.html" title="Getting Started"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Statistical Coupling Analysis in python."
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">home</a>|&nbsp;</li>
+        <li><a href="search.html">search</a>|&nbsp;</li>
+ 
+      </ul>
+    </div>
+
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Installation</a><ul>
+<li><a class="reference internal" href="#downloading-the-code">1. Downloading the code</a></li>
+<li><a class="reference internal" href="#package-dependencies">2. Package Dependencies</a></li>
+<li><a class="reference internal" href="#path-modifications">3. Path Modifications</a></li>
+<li><a class="reference internal" href="#getting-started-and-running-the-tutorials">4. Getting started and Running the tutorials</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">Statistical Coupling Analysis in python.</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="get_started.html"
+                        title="next chapter">Getting Started</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/install.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="installation">
+<h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="downloading-the-code">
+<h2>1. Downloading the code<a class="headerlink" href="#downloading-the-code" title="Permalink to this headline">¶</a></h2>
+<p>The pySCA package, tutorials, and associated scripts are available for
+download from:</p>
+<blockquote>
+<div><a class="reference external" href="https://github.com/reynoldsk/pySCA">https://github.com/reynoldsk/pySCA</a></div></blockquote>
+</div>
+<div class="section" id="package-dependencies">
+<h2>2. Package Dependencies<a class="headerlink" href="#package-dependencies" title="Permalink to this headline">¶</a></h2>
+<p>Before running pySCA, you will need to download and install the following
+(free) packages:</p>
+<blockquote>
+<div><ol class="arabic">
+<li><p class="first">Anaconda Scientific Python - this package will install python,
+as well as several libraries necessary for the operation of
+pySCA (NumPy, SciPy, iPython, and Matplotlib).</p>
+<p><a class="reference external" href="https://store.continuum.io/cshop/anaconda/">https://store.continuum.io/cshop/anaconda/</a></p>
+</li>
+<li><p class="first">Install biopython - this can be done in two ways:</p>
+<ol class="loweralpha">
+<li><p class="first">from the command line, run:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">conda</span> <span class="n">install</span> <span class="n">biopython</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">download (and install) from here:</p>
+<p><a class="reference external" href="http://biopython.org/wiki/Main_Page">http://biopython.org/wiki/Main_Page</a></p>
+</li>
+</ol>
+</li>
+<li><p class="first">Install a robust pairwise alignment program. Either of the below will
+work with pySCA, in our hands ggsearch is fastest. This is
+critical for the scaProcessMSA.py script.</p>
+<ol class="loweralpha simple">
+<li>ggsearch - part of the FASTA software package, <a class="reference external" href="http://fasta.bioch.virginia.edu/fasta_www2/fasta_down.shtml">http://fasta.bioch.virginia.edu/fasta_www2/fasta_down.shtml</a></li>
+<li>needle - part of the EMBOSS software package, <a class="reference external" href="http://emboss.sourceforge.net/">http://emboss.sourceforge.net/</a></li>
+</ol>
+<p><em>The following steps are optional but highly recommended.</em></p>
+</li>
+<li><p class="first">Download pfamseq.txt - a file containing phylogenetic
+annotations for PFAM sequences. This is necessary if you would
+like to annotate PFAM alignments with taxonomic/phylogenetic
+information using the annotate_MSA.py script provided by
+pySCA. This file is quite large, but available from the PFAM
+ftp site in compressed (<a href="#id1"><span class="problematic" id="id2">*</span></a>.gz) format. To get the file, you
+will need to go to the link below, then click on
+database_files to access the ftp site.</p>
+<p><a class="reference external" href="http://pfam.xfam.org/help#tabview=tab12">http://pfam.xfam.org/help#tabview=tab12</a></p>
+</li>
+<li><p class="first">Install PyMol (<a class="reference external" href="http://www.pymol.org/">http://www.pymol.org/</a>) - necessary if you would like to use pySCA&#8217;s automated
+structure mapping scripts, and useful for mapping the sectors
+to structure in general</p>
+</li>
+<li><p class="first">Install mpld3 (<a class="reference external" href="http://mpld3.github.io/">http://mpld3.github.io/</a>) - a package that
+allows more interactive plot visualization in ipython notebooks . If you
+choose not to install this (optional) package, you will need
+to comment out the line &#8220;import mpld3&#8221; at the beginning of the tutorials.</p>
+</li>
+</ol>
+</div></blockquote>
+</div>
+<div class="section" id="path-modifications">
+<h2>3. Path Modifications<a class="headerlink" href="#path-modifications" title="Permalink to this headline">¶</a></h2>
+<p>Following the successful installation of these packages,
+edit the following variables in the &#8220;PATHS&#8221; of scaTools.py to reflect
+the locations of these files on your computer:</p>
+<blockquote>
+<div><p>path2pfamseq = &#8216;pfamseq.txt&#8217; <cite>location of the pfam.seq database file</cite></p>
+<p>path2structures = &#8216;Inputs/&#8217;  <cite>location of your PDB structures for analysis</cite></p>
+<p>path2pymol = &#8216;/Applications/MacPyMOL.app/Contents/MacOS/MacPyMOL&#8217;
+<cite>location of your PyMOL executable</cite></p>
+<p>path2needle = &#8216;/usr/local/bin&#8217; <cite>location of the needle
+executable, if you have installed EMBOSS needle</cite></p>
+</div></blockquote>
+<p>You may also need to modify the &#8220;shebang&#8221; line (#!) at the top of the
+following scripts to appropriately reflect the path of
+your python installation:</p>
+<blockquote>
+<div><p>annotate_MSA.py</p>
+<p>scaProcessMSA.py</p>
+<p>scaCore.py</p>
+<p>scaSectorID.py</p>
+</div></blockquote>
+</div>
+<div class="section" id="getting-started-and-running-the-tutorials">
+<h2>4. Getting started and Running the tutorials<a class="headerlink" href="#getting-started-and-running-the-tutorials" title="Permalink to this headline">¶</a></h2>
+<p>The <a class="reference external" href="get_started.html">&#8220;getting started&#8221;</a> section of this documentation provides
+instructions on how to run some initial calculations and the
+tutorials. The basic idea behind the pySCA code is that the
+core calculations are performed using a series of executable python scripts,
+and then the results can be loaded and analyzed/visualized using an
+ipython notebook (or alternatively, Matlab).</p>
+<p>All of the tutorials are written provided  as ipython notebooks. For
+more on how ipython notebooks work, see:
+<a class="reference external" href="http://ipython.org/notebook.html">http://ipython.org/notebook.html</a>. Prior to running the notebook
+tutorials, you&#8217;ll need to run the core calculation scripts that
+generate the input for the notebooks. One way to do this is with the
+shell script &#8220;runAllNBCalcs.sh&#8221;, and there is more information on this
+in the <a class="reference external" href="get_started.html">&#8220;getting started&#8221;</a> section. Once the calculations are
+completed, you can begin the tutorial in interactive python from the
+command line, by typing:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">ipython</span> <span class="n">notebook</span> <span class="n">script_dhfr</span><span class="o">.</span><span class="n">ipynb</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="get_started.html" title="Getting Started"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Statistical Coupling Analysis in python."
+             >previous</a> |</li>
+        <li><a href="index.html">home</a>|&nbsp;</li>
+        <li><a href="search.html">search</a>|&nbsp;</li>
+ 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2014, Olivier Rivoire, Kim Reynolds, Rama Ranganathan.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

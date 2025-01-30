@@ -1,0 +1,4 @@
+# ignore emacs generated temp files
+*~
+# ignore *pyc files
+*.pyc

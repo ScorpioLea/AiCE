@@ -1,0 +1,47 @@
+.. pySCA documentation master file, created by
+   sphinx-quickstart on Sun Aug 17 16:37:02 2014.
+   You can adapt this file completely to your liking, but it should at least
+   contain the root `toctree` directive.
+
+=============================================================================
+Statistical Coupling Analysis in python.
+=============================================================================
+
+The Statistical Coupling Analysis (SCA) is an approach for
+characterizing the pattern of evolutionary constraints on and between
+amino acid positions in a protein family. Given a representative
+multiple sequence alignment of the family, the analysis provides
+methods for quantitatively measuring the overall functional constraint
+at each sequence position (the position-specific, or "first-order"
+analysis of conservation), and for measuring and analyzing the coupled
+functional constraint on all pairs of sequence positions (the
+pairwise-correlated, or "second-order" analysis of conservation). The
+premise is that extending the traditional definition of conservation
+to include correlations between positions will contribute to defining
+the architecture of functional interactions between amino acids, and
+more importantly, help define the basic physical principles underlying
+protein structure, function, and evolution. 
+
+**Please Cite:**  *Olivier Rivoire, Kimberly Reynolds, and Rama
+Ranganathan. "Evolution-Based Functional Decomposition of Proteins".*
+
+
+
+I. Installing and Using pySCA
+==============================
+
+.. toctree::
+   :maxdepth: 2
+	      
+   install
+   get_started
+   tutorials
+   modules
+
+II. Indices and tables
+=======================
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`
+

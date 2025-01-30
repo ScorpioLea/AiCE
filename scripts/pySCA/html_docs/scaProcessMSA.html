@@ -1,0 +1,251 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>scaProcessMSA Module &mdash; pySCA 1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="pySCA 1 documentation" href="index.html" />
+    <link rel="up" title="The pySCA code" href="modules.html" />
+    <link rel="next" title="scaCore Module" href="scaCore.html" />
+    <link rel="prev" title="annotate_MSA Module" href="annotate_MSA.html" /> 
+  </head>
+  <body>
+
+<div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
+<a href="index.html"><img src="_static/logo.png" border="0" alt="py4sci"/></a>
+</div>
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="scaCore.html" title="scaCore Module"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="annotate_MSA.html" title="annotate_MSA Module"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">home</a>|&nbsp;</li>
+        <li><a href="search.html">search</a>|&nbsp;</li>
+
+          <li><a href="modules.html" accesskey="U">The pySCA code</a> &raquo;</li> 
+      </ul>
+    </div>
+
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="annotate_MSA.html"
+                        title="previous chapter">annotate_MSA Module</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="scaCore.html"
+                        title="next chapter">scaCore Module</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/scaProcessMSA.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="module-scaProcessMSA">
+<span id="scaprocessmsa-module"></span><h1>scaProcessMSA Module<a class="headerlink" href="#module-scaProcessMSA" title="Permalink to this headline">¶</a></h1>
+<p>The scaProcessMSA script conducts the basic steps in multiple sequence alignment (MSA) pre-processing for SCA, and stores the results using the python tool pickle:</p>
+<blockquote>
+<div><ol class="arabic">
+<li><p class="first">Trim the alignment, either by truncating to a reference sequence (specified with the -t flag) or by removing
+excessively gapped positions (set to positions with more than 40% gaps)</p>
+</li>
+<li><p class="first">Identify/designate a reference sequence in the alignment, and create a mapping of the alignment numberings to position numberings 
+for the reference sequence. The reference sequence can be specified in one of four ways:</p>
+<blockquote>
+<div><ol class="loweralpha simple">
+<li>By supplying a PDB file - in this case, the reference sequence is taken from the PDB (see the pdb kwarg)</li>
+<li>By supplying a reference sequence directly (as a fasta file - see the refseq kwarg)</li>
+<li>By supplying the index of the reference sequence in the alignment (see the refseq kwarg)</li>
+<li>If no reference sequence is supplied by the user, one is automatically selected using the scaTools function chooseRef.</li>
+</ol>
+</div></blockquote>
+<dl class="docutils">
+<dt>The position numbers (for mapping the alignment) can be specified in one of three ways:</dt>
+<dd><ol class="first last loweralpha simple">
+<li>By supplying a PDB file - in this case the alignment positions are mapped to structure positions</li>
+<li>By supplying a list of reference positions (see the refpos kwarg)</li>
+<li>If no reference positions are supplied by the user, sequential numbering (starting at 1) is assumed.</li>
+</ol>
+</dd>
+</dl>
+</li>
+<li><p class="first">Filter sequences to remove highly gapped sequences, and sequences with an identity below or above some minimum 
+or maximum value to the reference sequence (see the parameters kwarg)</p>
+</li>
+<li><p class="first">Filter positions to remove highly gapped positions (default 20% gaps, can also be set using &#8211;parameters)</p>
+</li>
+<li><p class="first">Calculate sequence weights and write out the final alignment and other variables</p>
+</li>
+</ol>
+</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><p class="first">Input_MSA.fasta (the alignment to be processed, typically the headers contain taxonomic information for the sequences).</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Keyword Arguments:</th></tr>
+<tr class="field-even field"><td>&nbsp;</td><td class="field-body"><table class="first docutils option-list" frame="void" rules="none">
+<col class="option" />
+<col class="description" />
+<tbody valign="top">
+<tr><td class="option-group">
+<kbd><span class="option">--pdb</span>, <span class="option">-s</span></kbd></td>
+<td><p class="first last">PDB identifier (ex: 1RX2)</p>
+</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">--chainID</span>, <span class="option">-c</span></kbd></td>
+<td><p class="first last">chain ID in the PDB for the reference sequence</p>
+</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">--species</span>, <span class="option">-f</span></kbd></td>
+<td><p class="first last">species of the reference sequence</p>
+</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">--refseq</span>, <span class="option">-r</span></kbd></td>
+<td><p class="first last">reference sequence, supplied as a fasta file</p>
+</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">--refpos</span>, <span class="option">-o</span></kbd></td>
+<td><p class="first last">reference positions, supplied as a text file with one position specified per line</p>
+</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">--refindex</span>, <span class="option">-i</span></kbd></td>
+<td><p class="first last">reference sequence number in the alignment, COUNTING FROM 0</p>
+</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">--parameters</span>, <span class="option">-p</span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td><p class="first last">list of parameters for filtering the alignment: 
+[max_frac_gaps for positions, max_frac_gaps for sequences, min SID to reference seq, max SID to reference seq]
+default values: [0.2, 0.2, 0.2, 0.8] (see filterPos and filterSeq functions for details)</p>
+</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">--selectSeqs</span>, <span class="option">-n</span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td><p class="first last">subsample the alignment to (1.5 * the number of effective sequences) to reduce computational time, default: False</p>
+</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">--truncate</span>, <span class="option">-t</span></kbd></td>
+<td><p class="first last">truncate the alignment to the positions in the reference PDB, default: False</p>
+</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">--matlab</span>, <span class="option">-m</span></kbd></td>
+<td><p class="first last">write out the results of this script to a matlab workspace for further analysis</p>
+</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">--output</span></kbd></td>
+<td><p class="first last">specify a name for the outputfile</p>
+</td></tr>
+</tbody>
+</table>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="o">./</span><span class="n">scaProcessMSA</span><span class="o">.</span><span class="n">py</span> <span class="n">Inputs</span><span class="o">/</span><span class="n">PF00071_full</span><span class="o">.</span><span class="n">an</span> <span class="o">-</span><span class="n">s</span> <span class="mi">5</span><span class="n">P21</span> <span class="o">-</span><span class="n">c</span> <span class="n">A</span> <span class="o">-</span><span class="n">f</span> <span class="s">&#39;Homo sapiens&#39;</span> 
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">By:</th><td class="field-body">Rama Ranganathan</td>
+</tr>
+<tr class="field-even field"><th class="field-name">On:</th><td class="field-body">8.5.2014</td>
+</tr>
+</tbody>
+</table>
+<p>Copyright (C) 2015 Olivier Rivoire, Rama Ranganathan, Kimberly Reynolds
+This program is free software distributed under the BSD 3-clause
+license, please see the file LICENSE for details.</p>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="scaCore.html" title="scaCore Module"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="annotate_MSA.html" title="annotate_MSA Module"
+             >previous</a> |</li>
+        <li><a href="index.html">home</a>|&nbsp;</li>
+        <li><a href="search.html">search</a>|&nbsp;</li>
+
+          <li><a href="modules.html" >The pySCA code</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2014, Olivier Rivoire, Kim Reynolds, Rama Ranganathan.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>
