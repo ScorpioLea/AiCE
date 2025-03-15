@@ -5,13 +5,16 @@ import subprocess
 import os
 import shutil
 
+# Specify the path to the mkdssp executable
+MKDSSP_PATH = os.path.join("..", "scripts", "mkdssp")
+
 def run_dssp(pdb_file, dssp_file):
     """
     Run mkdssp on the provided PDB file to generate a DSSP file.
     """
     try:
         with open(dssp_file, 'w') as outfile:
-            subprocess.run(['mkdssp', pdb_file], check=True, stdout=outfile)
+            subprocess.run([MKDSSP_PATH, pdb_file], check=True, stdout=outfile)
     except subprocess.CalledProcessError as e:
         print(f"Error while running mkdssp: {e}")
         sys.exit(1)
@@ -21,7 +24,7 @@ def parse_dssp(dssp_file, output_file):
     Parse the DSSP file and extract secondary structure information.
     Output format: one residue per line: [resnum, one-letter-aa, secondary-structure].
     """
-    # Mapping from three-letter amino acid to one-letter
+    # Mapping from three-letter amino acid codes to one-letter codes
     aa_three_to_one = {
         'ALA': 'A', 'ARG': 'R', 'ASN': 'N', 'ASP': 'D',
         'CYS': 'C', 'GLU': 'E', 'GLN': 'Q', 'GLY': 'G',
@@ -34,7 +37,7 @@ def parse_dssp(dssp_file, output_file):
 
     with open(dssp_file, 'r') as dssp, open(output_file, 'w') as out:
         for line in dssp:
-            # DSSP lines containing "nohd" typically have secondary structure data
+            # Lines starting with "nohd" typically contain secondary structure data
             if line.startswith('nohd'):
                 columns = line.strip().split()
                 if len(columns) < 5:
@@ -49,10 +52,10 @@ def parse_dssp(dssp_file, output_file):
                 res_num = columns[2]  # residue number
                 ss = columns[4]       # secondary structure symbol
 
-                # Convert three-letter amino acid to one-letter
+                # Convert three-letter amino acid code to one-letter code
                 aa = aa_three_to_one.get(aa_three.upper(), 'X')
 
-                # Map DSSP secondary structure to a simpler form
+                # Map DSSP secondary structure symbols to a simpler form
                 ss_map = {
                     'H': 'H',  # Alpha helix
                     'G': 'H',  # 3-10 helix
@@ -65,7 +68,7 @@ def parse_dssp(dssp_file, output_file):
                     '.': 'C',  # Coil
                     '?': 'C',  # Unknown
                 }
-                ss_simple = ss_map.get(ss, 'C')  # Default 'C' (Coil)
+                ss_simple = ss_map.get(ss, 'C')  # Default to 'C' (Coil)
 
                 out.write(f"{res_num}\t{aa}\t{ss_simple}\n")
 
@@ -77,12 +80,12 @@ def main():
     input_file = sys.argv[1]
     output_file = sys.argv[2]
 
-    # Check if mkdssp is installed
-    if not shutil.which('mkdssp'):
-        print("Error: mkdssp is not installed or not in the PATH.")
+    # Check if mkdssp exists at the specified path and is executable
+    if not os.path.isfile(MKDSSP_PATH) or not os.access(MKDSSP_PATH, os.X_OK):
+        print(f"Error: mkdssp is not found or not executable at the specified path: {MKDSSP_PATH}")
         sys.exit(1)
 
-    # If input is a .cif file, convert it to .pdb
+    # If the input file is a .cif, convert it to .pdb
     file_ext = os.path.splitext(input_file)[1].lower()
     if file_ext == '.cif':
         converted_pdb = input_file + '_temp.pdb'
@@ -92,21 +95,20 @@ def main():
             print(f"Error while running cif2pdb: {e}")
             sys.exit(1)
 
-        # After conversion, check if the first line contains "REMARK cif2pdb"
-        # If yes, remove that line
+        # After conversion, check if the first line contains "REMARK cif2pdb" and remove it if present
         with open(converted_pdb, 'r') as f_in:
             lines = f_in.readlines()
         if lines and "REMARK cif2pdb" in lines[0]:
-            # Overwrite the file without the first line
+            # Rewrite the file without the first line
             with open(converted_pdb, 'w') as f_out:
                 f_out.writelines(lines[1:])
 
         pdb_file = converted_pdb
     else:
-        # Otherwise assume it's a .pdb
+        # Otherwise, assume the input file is a .pdb
         pdb_file = input_file
 
-    # Prepare the dssp file name
+    # Prepare the DSSP file name
     dssp_file = pdb_file + '.dssp'
 
     # Run mkdssp on the pdb file
@@ -115,10 +117,10 @@ def main():
     # Parse the generated DSSP file
     parse_dssp(dssp_file, output_file)
 
-    # Optional: remove the DSSP file
+    # Optionally: remove the generated DSSP file
     os.remove(dssp_file)
 
-    # Optional: if we generated a temp pdb from a .cif, you can remove it too
+    # Optionally: if a temporary pdb was generated from a .cif file, remove it as well
     if file_ext == '.cif':
         os.remove(pdb_file)
 
