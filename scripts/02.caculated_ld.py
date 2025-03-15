@@ -206,7 +206,7 @@ def main():
         # Step C: Run plink to compute LD (r2 matrix)
         plink_out_prefix = os.path.join(output_ld_dir, prefix)
         plink_cmd = [
-            "../scripts/plink", 
+            "../scripts/plink/plink", 
             "--vcf", vcf_file,
             "--r2", "square", 
             "--out", plink_out_prefix,
