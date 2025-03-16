@@ -71,10 +71,10 @@ Run the following script to nominate single mutations using a protein inverse fo
 ```
 bash ../scripts/01.single_mut_prediction.sh <scripts_dir> <input_folder> <beta> <gamma> [output_folder]
 ```
-- **<scripts_dir>**: Directory containing the necessary sub-scripts (by default, the scripts folder).
-- **<input_folder>**: Folder containing input structure files (`PDB/mmCIF file`). The script automatically searches for these files and outputs the nominated single mutations to \[output_folder] using the same file prefix as the structure file.
-- **\<beta>** and **\<gamma>**: Screening thresholds for global occurrence and flexible region occurrence, respectively. We recommend **0.8** and **0.5** as general thresholds ("AiCE filtering").
-- **[output_folder]**: (`Optional`) Folder for storing output results; the default is `../output`.
+- `<scripts_dir>`: Directory containing the necessary sub-scripts (by default, the scripts folder).
+- `<input_folder>`: Folder containing input structure files (`PDB/mmCIF file`). The script automatically searches for these files and outputs the nominated single mutations to \[output_folder] using the same file prefix as the structure file.
+- `\<beta>` and `\<gamma>`: Screening thresholds for global occurrence and flexible region occurrence, respectively. We recommend **0.8** and **0.5** as general thresholds ("AiCE filtering").
+- `[output_folder]`: (`Optional`) Folder for storing output results; the default is `../output`.
 
 Example:
 ```
@@ -93,12 +93,12 @@ Construct the LD matrix based on the inverse folding output sequences:
 ```
 python ../scripts/02.caculated_ld.py <seq_dir> <output_ld_dir>
 ```
-- **<seq_dir>**: Directory containing the inverse folding sequences with a **.fa** extension.
-- **<output_ld_dir>**: Directory where the LD matrix files will be saved.
+- `<seq_dir>`: Directory containing the inverse folding sequences with a **.fa** extension.
+- `<output_ld_dir>`: Directory where the LD matrix files will be saved.
 
 The script automatically searches for **.fa** files in `\<seq_dir>`, predicts the LD matrix, and outputs files with the same prefix as the input. Output files include:
-- **.ld**: Linkage disequilibrium matrix (derived from pseudo-reverse translated sequences)
-- **,vcf**: File recording mutation information
+- `.ld`: Linkage disequilibrium matrix (derived from pseudo-reverse translated sequences)
+- `,vcf`: File recording mutation information
 
 Example:
 ```
@@ -111,13 +111,13 @@ Generate the Statistical Coupling Analysis (SCA) matrix:
 ```
 bash ../scripts/03.caculated_sca.sh <script_dir> <input_dir> <output_dir>
 ```
-- **<input_dir>**: Directory containing the inverse folding sequences with a **.fa** extension.
-- **<script_dir>**: Directory containing the sub-scripts for generating the evolutionary coupling matrix.
-- **<output_ld_dir>**: Directory where the output files will be stored.
+- `<input_dir>`: Directory containing the inverse folding sequences with a **.fa** extension.
+- `<script_dir>`: Directory containing the sub-scripts for generating the evolutionary coupling matrix.
+- `<output_ld_dir>`: Directory where the output files will be stored.
 
 The script automatically searches for **.fa** files in `\<input_dir>`, calls the necessary sub-scripts in `\<script_dir>`, and outputs the results with the same file prefix as the input. Output files include:
-- **.sca_matrix.tsv**: Amino acid evolutionary coupling matrix.
-- **.db**: Binary file.
+- `.sca_matrix.tsv`: Amino acid evolutionary coupling matrix.
+- `.db`: Binary file.
 
 Example:
 ```
@@ -133,12 +133,12 @@ bash ../scripts/04.com_mut_prediction.sh <script_dir> <input_dir> <number-or-lis
 •	The script automatically searches \<input_dir> for the **.fa**, **.sca_matrix.tsv**, **.ld**, **.comb**, and **.vcf** files produced in steps 1, 2, and 3.
 •	It outputs the SCA and LD scores for multi-mutations to files ending in **.sca.result** and **.ld.result**, respectively. The output file prefix will match the corresponding input file.
 
-- **<number-or-list>**:
+- `<number-or-list>`:
   •	If a number is provided, the script iterates over that many multi-mutation types.
   •	If a list is provided (e.g., "1 3 5"), only the scores for the specified mutation combinations will be output.
-    •	Each line in the list represents a mutation combination.
-	  •	Positions are space-separated using 1-based indexing.
-	  •	Lines that are empty or contain unparseable non-integer characters will be skipped or marked as invalid (output as None\tNaN).
+  	•	Each line in the list represents a mutation combination.
+	•	Positions are space-separated using 1-based indexing.
+ 	•	Lines that are empty or contain unparseable non-integer characters will be skipped or marked as invalid (output as None\tNaN).
 
 The output file format is as follows:
 ```
