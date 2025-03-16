@@ -11,7 +11,7 @@ AiCE is an approach that optimizes protein function by incorporating structural 
 - [Installation](#installation)
 - [Optional Dependencies](#optional-dependencies)
 - [Usage](#usage)
-  - [1. Single Mutation Prediction](#1-single-mutation-prediction)
+  - [1. Single Mutation Prediction](#1. single mutation nomination)
   - [2. LD Matrix Construction](#2-ld-matrix-construction)
   - [3. SCA Matrix Construction](#3-sca-matrix-construction)
   - [4. Multi-mutation Prediction](#4-multi-mutation-prediction)
@@ -66,7 +66,7 @@ cd example/
 ```
 The scripts in this repository use relative paths; you may modify them according to your specific requirements.
 
-### 1-single-mutation-prediction
+### 1. single mutation nomination
 Run the following script to nominate single mutations using a protein inverse folding model:
 ```
 bash ../scripts/01.single_mut_prediction.sh <scripts_dir> <input_folder> <beta> <gamma> [output_folder]
