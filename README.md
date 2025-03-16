@@ -126,3 +126,11 @@ bash ../scripts/03.caculated_sca.sh ../scripts/pySCA/ ../output ../output
 The folder ../scripts/pySCA/ contains the modified pySCA scripts.
 
 ### 4. Multi mutation nomination
+Nominate multi-mutations using the LD and SCA matrices:
+```
+bash ../scripts/04.com_mut_prediction.sh <script_dir> <input_dir> <number-or-list> <output_dir>
+```
+•	The script automatically searches \<input_dir> for the **.fa**, **.sca_matrix.tsv**, **.ld**, **.comb**, and **.vcf** files produced in steps 1, 2, and 3.
+•	It outputs the SCA and LD scores for multi-mutations to files ending in **.sca.result** and **.ld.result**, respectively. The output file prefix will match the corresponding input file.
+
+- **<number-or-list>**:
