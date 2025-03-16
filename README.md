@@ -134,11 +134,7 @@ bash ../scripts/04.com_mut_prediction.sh <script_dir> <input_dir> <number-or-lis
 
 •	It outputs the SCA and LD scores for multi-mutations to files ending in **.sca.result** and **.ld.result**, respectively. The output file prefix will match the corresponding input file.
 
-- `<number-or-list>`:
-
-•	If a number is provided, the script iterates over that many multi-mutation types.
-
-•	If a list is provided (e.g., "1 3 5"), only the scores for the specified mutation combinations will be output.
+- `<number-or-list>`: If a number is provided, the script iterates over that many multi-mutation types；If a list is provided (e.g., "1 3 5"), only the scores for the specified mutation combinations will be output.
   	
 	•	Each line in the list represents a mutation combination.
 	
