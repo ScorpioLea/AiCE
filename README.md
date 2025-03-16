@@ -41,7 +41,7 @@ cd AiCE
 # Setup your conda environment
 conda create -n AiCE python=3.11
 conda activate AiCE
-pip install -r requirements.txt
+pip3 install -r requirements.txt
 
 # Install plink
 wget -c https://s3.amazonaws.com/plink1-assets/plink_linux_x86_64_20241022.zip
