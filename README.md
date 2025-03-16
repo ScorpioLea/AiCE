@@ -51,11 +51,11 @@ unzip -d scripts/plink/ plink_linux_x86_64_20241022.zip
 ## Optional Dependencies
 
 - **Inverse folding models:** 
-An inverse folding model is required to output structure-compatible sequences from a given protein structure. For demonstration purposes, we use ProteinMPNN—a lightweight model based on graph neural networks. A pre-deployed version of ProteinMPNN is provided in the scripts folder.
+An inverse folding model is required to output structure-compatible sequences from a given protein structure. For demonstration purposes, we use ProteinMPNN—a lightweight model based on graph neural networks. A pre-deployed version of ProteinMPNN is provided in the `scripts` folder.
 - **Secondary structure prediction:** 
-The DSSP algorithm is used to predict the protein secondary structure. The repository includes the mkdssp module (version 4.4.7).
+The DSSP algorithm is used to predict the protein secondary structure. The repository includes the mkdssp module (version **4.4.7**).
 - **Linkage Disequilibrium (LD) calculation:** 
-[Plink](https://www.cog-genomics.org/plink/) is used to calculate the LD score. We provide a deployment workflow for plink version v1.9.0-b.7.7. Note that plink v2.0 is not compatible with our workflow by default; you may need to modify scripts/02.caculated_ld.py to use plink v2.0 or later.
+[Plink](https://www.cog-genomics.org/plink/) is used to calculate the LD score. We provide a deployment workflow for plink version **v1.9.0-b.7.7**. Note that plink **v2.0** is not compatible with our workflow by default; you may need to modify `scripts/02.caculated_ld.py` to use plink **v2.0** or later.
 - **Evolutionary coupling analysis (SCA) :**
 The repository contains a modified version of the pySCA module (originally from [pySCA](https://github.com/reynoldsk/pySCA)) to calculate amino acid evolutionary coupling effects.
 
