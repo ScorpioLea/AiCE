@@ -60,7 +60,7 @@ The DSSP algorithm is used to predict the protein secondary structure. The repos
 The repository contains a modified version of the pySCA module (originally from [pySCA](https://github.com/reynoldsk/pySCA)) to calculate amino acid evolutionary coupling effects.
 
 ## Usage
-A demo notebook (AiCE_demo.ipynb) is provided for a simple demonstration. Change to the example directory to get started:
+A demo notebook (`AiCE_demo.ipynb`) is provided for a simple demonstration. Change to the example directory to get started:
 ```
 cd example/
 ```
@@ -72,9 +72,9 @@ Run the following script to nominate single mutations using a protein inverse fo
 bash ../scripts/01.single_mut_prediction.sh <scripts_dir> <input_folder> <beta> <gamma> [output_folder]
 ```
 - **<scripts_dir>**: Directory containing the necessary sub-scripts (by default, the scripts folder).
-- **<input_folder>**: Folder containing input structure files (PDB/mmCIF file). The script automatically searches for these files and outputs the nominated single mutations to \[output_folder] using the same file prefix as the structure file.
-- **\<beta>** and **\<gamma>**: Screening thresholds for global occurrence and flexible region occurrence, respectively. We recommend 0.8 and 0.5 as general thresholds (AiCE filtering).
-- **[output_folder]**: (Optional) Folder for storing output results; the default is ../output.
+- **<input_folder>**: Folder containing input structure files (`PDB/mmCIF file`). The script automatically searches for these files and outputs the nominated single mutations to \[output_folder] using the same file prefix as the structure file.
+- **\<beta>** and **\<gamma>**: Screening thresholds for global occurrence and flexible region occurrence, respectively. We recommend **0.8** and **0.5** as general thresholds ("AiCE filtering").
+- **[output_folder]**: (`Optional`) Folder for storing output results; the default is `../output`.
 
 Example:
 ```
@@ -82,11 +82,11 @@ bash ../scripts/01.single_mut_prediction.sh ../scripts ./ 0.8 0.5
 ```
 **Note**: Use bash (not sh) to execute the script to avoid unnecessary errors.
 
-An alternative script automatically recommends <beta> and <gamma> values based on the input structure:
+An alternative script automatically recommends `<beta>` and `<gamma>` values based on the input structure:
 ```
 bash scripts/01.single_mut_Auto_prediction.sh <input_folder> [output_folder]
 ```
-Additionally, the scripts/inverse_MPNN.sh provides a ProteinMPNN-based inverse folding workflow. You can adjust parameters such as **num_seq_per_target** and **sampling_temp** to specify the number of output sequences and the sampling temperature.
+Additionally, the `scripts/inverse_MPNN.sh` provides a ProteinMPNN-based inverse folding workflow. You can adjust parameters such as **num_seq_per_target** and **sampling_temp** to specify the number of output sequences and the sampling temperature.
 
 ### 2. LD matrix construction
 Construct the LD matrix based on the inverse folding output sequences:
@@ -96,7 +96,7 @@ python ../scripts/02.caculated_ld.py <seq_dir> <output_ld_dir>
 - **<seq_dir>**: Directory containing the inverse folding sequences with a **.fa** extension.
 - **<output_ld_dir>**: Directory where the LD matrix files will be saved.
 
-The script automatically searches for **.fa** files in \<seq_dir>, predicts the LD matrix, and outputs files with the same prefix as the input. Output files include:
+The script automatically searches for **.fa** files in `\<seq_dir>`, predicts the LD matrix, and outputs files with the same prefix as the input. Output files include:
 - **.ld**: Linkage disequilibrium matrix (derived from pseudo-reverse translated sequences)
 - **,vcf**: File recording mutation information
 
@@ -115,7 +115,7 @@ bash ../scripts/03.caculated_sca.sh <script_dir> <input_dir> <output_dir>
 - **<script_dir>**: Directory containing the sub-scripts for generating the evolutionary coupling matrix.
 - **<output_ld_dir>**: Directory where the output files will be stored.
 
-The script automatically searches for **.fa** files in \<input_dir>, calls the necessary sub-scripts in \<script_dir>, and outputs the results with the same file prefix as the input. Output files include:
+The script automatically searches for **.fa** files in `\<input_dir>`, calls the necessary sub-scripts in `\<script_dir>`, and outputs the results with the same file prefix as the input. Output files include:
 - **.sca_matrix.tsv**: Amino acid evolutionary coupling matrix.
 - **.db**: Binary file.
 
@@ -142,7 +142,7 @@ bash ../scripts/04.com_mut_prediction.sh <script_dir> <input_dir> <number-or-lis
 
 The output file format is as follows:
 ```
-Mutation Type    Mean Pairwise score: score    Log Mean Pairwise score: score    Logical Flag (0/1)
+Mutation Type	Mean Pairwise score: score	Log Mean Pairwise score: score	Logical Flag (0/1)
 ```
 The fourth column indicates whether the mutation combination is recommended based on the screening thresholds (1 for recommended, 0 for not recommended). By default, the screening thresholds are set to 0.5 for LD scores and 0.9 for SCA scores. You can customize these thresholds by providing an additional -t parameter (see lines 106–124 in 04.com_mut_prediction.sh) or by modifying the structure file directly.
 
@@ -151,7 +151,7 @@ Example:
 bash ../scripts/04.com_mut_prediction.sh ../scripts ../output/ 2 ../output
 ```
 
-This command will iterate over all double mutation combinations and nominate high-fitness mutations.
+This command will iterate over all double mutation combinations and nominate HF mutations.
 
 ## Citing this work
 If you use this code, please cite:
