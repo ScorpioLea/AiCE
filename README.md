@@ -146,7 +146,7 @@ The output file format is as follows:
 ```
 Mutation Type	Mean Pairwise score: score	Log Mean Pairwise score: score	Logical Flag (0/1)
 ```
-The fourth column indicates whether the mutation combination is recommended based on the screening thresholds (1 for recommended, 0 for not recommended). By default, the screening thresholds are set to 0.5 for LD scores and 0.9 for SCA score percentiles. You can customize these thresholds by providing an additional -t parameter (see lines 106–124 in 04.com_mut_prediction.sh) or by modifying the structure file directly.
+The fourth column indicates whether the mutation combination is recommended based on the screening thresholds (1 for recommended, 0 for not recommended). By default, the screening thresholds are set to 0.5 for LD scores and 0.9 for SCA score percentiles. You can customize these thresholds by providing an additional `-t` parameter (see **lines 106–124** in `scripts/04.com_mut_prediction.sh`) directly.
 
 Example:
 ```
