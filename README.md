@@ -96,7 +96,7 @@ python ../scripts/02.caculated_ld.py <seq_dir> <output_ld_dir>
 - `<seq_dir>`: Directory containing the inverse folding sequences with a **.fa** extension.
 - `<output_ld_dir>`: Directory where the LD matrix files will be saved.
 
-The script automatically searches for **.fa** files in `\<seq_dir>`, predicts the LD matrix, and outputs files with the same prefix as the input. Output files include:
+The script automatically searches for **.fa** files in `<seq_dir>`, predicts the LD matrix, and outputs files with the same prefix as the input. Output files include:
 - `.ld`: Linkage disequilibrium matrix (derived from pseudo-reverse translated sequences)
 - `,vcf`: File recording mutation information
 
@@ -115,7 +115,7 @@ bash ../scripts/03.caculated_sca.sh <script_dir> <input_dir> <output_dir>
 - `<script_dir>`: Directory containing the sub-scripts for generating the evolutionary coupling matrix.
 - `<output_ld_dir>`: Directory where the output files will be stored.
 
-The script automatically searches for **.fa** files in `\<input_dir>`, calls the necessary sub-scripts in `\<script_dir>`, and outputs the results with the same file prefix as the input. Output files include:
+The script automatically searches for **.fa** files in `<input_dir>`, calls the necessary sub-scripts in `<script_dir>`, and outputs the results with the same file prefix as the input. Output files include:
 - `.sca_matrix.tsv`: Amino acid evolutionary coupling matrix.
 - `.db`: Binary file.
 
@@ -130,7 +130,7 @@ Nominate multi-mutations using the LD and SCA matrices:
 ```
 bash ../scripts/04.com_mut_prediction.sh <script_dir> <input_dir> <number-or-list> <output_dir>
 ```
-•	The script automatically searches \<input_dir> for the **.fa**, **.sca_matrix.tsv**, **.ld**, **.comb**, and **.vcf** files produced in steps 1, 2, and 3.
+•	The script automatically searches `<input_dir>` for the **.fa**, **.sca_matrix.tsv**, **.ld**, **.comb**, and **.vcf** files produced in steps 1, 2, and 3.
 •	It outputs the SCA and LD scores for multi-mutations to files ending in **.sca.result** and **.ld.result**, respectively. The output file prefix will match the corresponding input file.
 
 - `<number-or-list>`:
