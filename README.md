@@ -11,10 +11,10 @@ AiCE is an approach that optimizes protein function by incorporating structural 
 - [Installation](#installation)
 - [Optional Dependencies](#optional-dependencies)
 - [Usage](#usage)
-  - [1. Single Mutation Prediction](#1. single mutation nomination)
-  - [2. LD Matrix Construction](#2-ld-matrix-construction)
-  - [3. SCA Matrix Construction](#3-sca-matrix-construction)
-  - [4. Multi-mutation Prediction](#4-multi-mutation-prediction)
+  - [1. Single mutation nomination](#1. Single mutation nomination)
+  - [2. LD matrix construction](#2-ld-matrix-construction)
+  - [3. SCA matrix construction](#3-sca-matrix-construction)
+  - [4. Multi-mutation prediction](#4-multi-mutation-prediction)
 - [Citing This Work](#citing-this-work)
 - [Credits](#credits)
 </details>
@@ -66,7 +66,7 @@ cd example/
 ```
 The scripts in this repository use relative paths; you may modify them according to your specific requirements.
 
-### 1. single mutation nomination
+### 1. Single mutation nomination
 Run the following script to nominate single mutations using a protein inverse folding model:
 ```
 bash ../scripts/01.single_mut_prediction.sh <scripts_dir> <input_folder> <beta> <gamma> [output_folder]
@@ -88,7 +88,7 @@ bash scripts/01.single_mut_Auto_prediction.sh <input_folder> [output_folder]
 ```
 Additionally, the scripts/inverse_MPNN.sh provides a ProteinMPNN-based inverse folding workflow. You can adjust parameters such as **num_seq_per_target** and **sampling_temp** to specify the number of output sequences and the sampling temperature.
 
-### 2-ld-matrix-construction
+### 2. LD matrix construction
 Construct the LD matrix based on the inverse folding output sequences:
 ```
 python ../scripts/02.caculated_ld.py <seq_dir> <output_ld_dir>
@@ -106,7 +106,7 @@ python ../scripts/02.caculated_ld.py ../output/ ../output
 ```
 For more details, please refer to the accompanying manuscript.
 
-### 3-sca-matrix-construction
+### 3. SCA matrix construction
 Generate the Statistical Coupling Analysis (SCA) matrix:
 ```
 bash ../scripts/03.caculated_sca.sh <script_dir> <input_dir> <output_dir>
