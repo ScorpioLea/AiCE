@@ -58,3 +58,20 @@ The DSSP algorithm is used to predict the protein secondary structure. The repos
 Plink is used to calculate the LD score. We provide a deployment workflow for plink version v1.9.0-b.7.7. Note that plink v2.0 is not compatible with our workflow by default; you may need to modify scripts/02.caculated_ld.py to use plink v2.0 or later.
 - **Evolutionary Coupling Analysis:**
 The repository contains a modified version of the pySCA module (originally from pySCA) to calculate amino acid evolutionary coupling effects.
+
+## Usage
+A demo notebook (AiCE_demo.ipynb) is provided for a simple demonstration. Change to the example directory to get started:
+```
+cd example/
+```
+The scripts in this repository use relative paths; you may modify them according to your specific requirements.
+
+###1-single-mutation-prediction
+Run the following script to nominate single mutations using a protein inverse folding model:
+```
+bash ../scripts/01.single_mut_prediction.sh <scripts_dir> <input_folder> <beta> <gamma> [output_folder]
+```
+- ** <scripts_dir>**: Directory containing the necessary sub-scripts (by default, the scripts folder).
+	•	<input_folder>: Folder containing input structure files (PDB/mmCIF). The script automatically searches for these files and outputs the nominated single mutations to [output_folder] using the same file prefix as the structure file.
+	•	<beta> and <gamma>: Screening thresholds for global occurrence and flexible region occurrence, respectively. We recommend 0.8 and 0.5 as general thresholds (AiCE filtering).
+	•	[output_folder]: (Optional) Folder for storing output results; the default is ../output.
