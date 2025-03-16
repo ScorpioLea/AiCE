@@ -71,7 +71,7 @@ Run the following script to nominate single mutations using a protein inverse fo
 ```
 bash ../scripts/01.single_mut_prediction.sh <scripts_dir> <input_folder> <beta> <gamma> [output_folder]
 ```
-- `<scripts_dir>`: Directory containing the necessary sub-scripts (by default, the scripts folder).
+- `<scripts_dir>`: Directory containing the necessary sub-scripts (by default, the `scripts` folder).
 - `<input_folder>`: Folder containing input structure files (`PDB/mmCIF file`). The script automatically searches for these files and outputs the nominated single mutations to \[output_folder] using the same file prefix as the structure file.
 - `\<beta>` and `\<gamma>`: Screening thresholds for global occurrence and flexible region occurrence, respectively. We recommend **0.8** and **0.5** as general thresholds ("AiCE filtering").
 - `[output_folder]`: (`Optional`) Folder for storing output results; the default is `../output`.
