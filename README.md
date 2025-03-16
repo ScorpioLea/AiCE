@@ -11,10 +11,10 @@ AiCE is an approach that optimizes protein function by incorporating structural 
 - [Installation](#installation)
 - [Optional Dependencies](#optional-dependencies)
 - [Usage](#usage)
-  - [1. Single mutation nomination](#1. Single mutation nomination)
-  - [2. LD matrix construction](#2-ld-matrix-construction)
-  - [3. SCA matrix construction](#3-sca-matrix-construction)
-  - [4. Multi-mutation prediction](#4-multi-mutation-prediction)
+  - [1. Single mutation nomination](#1.-Single-mutation-nomination)
+  - [2. LD matrix construction](#2.-LD-matrix-construction)
+  - [3. SCA matrix construction](#3.-SCA-matrix-construction)
+  - [4. Multi-mutation nomination](#4.-Multi-mutation-nomination)
 - [Citing This Work](#citing-this-work)
 - [Credits](#credits)
 </details>
@@ -112,5 +112,17 @@ Generate the Statistical Coupling Analysis (SCA) matrix:
 bash ../scripts/03.caculated_sca.sh <script_dir> <input_dir> <output_dir>
 ```
 - **<input_dir>**: Directory containing the inverse folding sequences with a **.fa** extension.
-- **<script_dir>**: Directory where the LD matrix files will be saved.
-- **<output_ld_dir>**: Directory where the LD matrix files will be saved.
+- **<script_dir>**: Directory containing the sub-scripts for generating the evolutionary coupling matrix.
+- **<output_ld_dir>**: Directory where the output files will be stored.
+
+The script automatically searches for **.fa** files in \<input_dir>, calls the necessary sub-scripts in \<script_dir>, and outputs the results with the same file prefix as the input. Output files include:
+- **.sca_matrix.tsv**: Amino acid evolutionary coupling matrix.
+- **.db**: Binary file.
+
+Example:
+```
+bash ../scripts/03.caculated_sca.sh ../scripts/pySCA/ ../output ../output
+```
+The folder ../scripts/pySCA/ contains the modified pySCA scripts.
+
+### 4. Multi mutation nomination
