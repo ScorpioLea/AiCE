@@ -7,6 +7,8 @@
 # Reynolds
 # This program is free software distributed under the BSD 3-clause
 # license, please see the file LICENSE for details.
+# 04.2024
+# Yunjia Li has modified this program to meet the needs of AiCE.
 #############################################################
 
 The current version of the Statistical Coupling Analysis (SCA)
