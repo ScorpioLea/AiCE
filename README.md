@@ -140,7 +140,7 @@ bash ../scripts/04.com_mut_prediction.sh <script_dir> <input_dir> <number-or-lis
 	
  	•	Positions are space-separated using 1-based indexing.
  
- 	•	Lines that are empty or contain unparseable non-integer characters will be skipped or marked as invalid (output as None\tNaN).
+ 	•	Lines that are empty or contain unparseable non-integer characters will be skipped or marked as invalid (output as `None	NaN`).
 
 The output file format is as follows:
 ```
