@@ -15,7 +15,7 @@ AiCE is an approach that optimizes protein function by incorporating structural 
   - [2. LD matrix construction](#2-ld-matrix-construction)
   - [3. SCA matrix construction](#3-sca-matrix-construction)
   - [4. Multi-mutation nomination](#4-multi-mutation-nomination)
-- [Citing This Work](#citing-this-work)
+- [Citing this work](#citing-this-work)
 - [Credits](#credits)
 </details>
 
