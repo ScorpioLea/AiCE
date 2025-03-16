@@ -66,12 +66,51 @@ cd example/
 ```
 The scripts in this repository use relative paths; you may modify them according to your specific requirements.
 
-###1-single-mutation-prediction
+### 1-single-mutation-prediction
 Run the following script to nominate single mutations using a protein inverse folding model:
 ```
 bash ../scripts/01.single_mut_prediction.sh <scripts_dir> <input_folder> <beta> <gamma> [output_folder]
 ```
-- ** <scripts_dir>**: Directory containing the necessary sub-scripts (by default, the scripts folder).
-	•	<input_folder>: Folder containing input structure files (PDB/mmCIF). The script automatically searches for these files and outputs the nominated single mutations to [output_folder] using the same file prefix as the structure file.
-	•	<beta> and <gamma>: Screening thresholds for global occurrence and flexible region occurrence, respectively. We recommend 0.8 and 0.5 as general thresholds (AiCE filtering).
-	•	[output_folder]: (Optional) Folder for storing output results; the default is ../output.
+- **<scripts_dir>**: Directory containing the necessary sub-scripts (by default, the scripts folder).
+- **<input_folder>**: Folder containing input structure files (PDB/mmCIF file). The script automatically searches for these files and outputs the nominated single mutations to \[output_folder] using the same file prefix as the structure file.
+- **\<beta>** and **\<gamma>**: Screening thresholds for global occurrence and flexible region occurrence, respectively. We recommend 0.8 and 0.5 as general thresholds (AiCE filtering).
+- **[output_folder]**: (Optional) Folder for storing output results; the default is ../output.
+
+Example:
+```
+bash ../scripts/01.single_mut_prediction.sh ../scripts ./ 0.8 0.5
+```
+**Note**: Use bash (not sh) to execute the script to avoid unnecessary errors.
+
+An alternative script automatically recommends <beta> and <gamma> values based on the input structure:
+```
+bash scripts/01.single_mut_Auto_prediction.sh <input_folder> [output_folder]
+```
+Additionally, the scripts/inverse_MPNN.sh provides a ProteinMPNN-based inverse folding workflow. You can adjust parameters such as **num_seq_per_target** and **sampling_temp** to specify the number of output sequences and the sampling temperature.
+
+### 2-ld-matrix-construction
+Construct the LD matrix based on the inverse folding output sequences:
+```
+python ../scripts/02.caculated_ld.py <seq_dir> <output_ld_dir>
+```
+- **<seq_dir>**: Directory containing the inverse folding sequences with a **.fa** extension.
+- **<output_ld_dir>**: Directory where the LD matrix files will be saved.
+
+The script automatically searches for **.fa** files in \<seq_dir>, predicts the LD matrix, and outputs files with the same prefix as the input. Output files include:
+- **.ld**: Linkage disequilibrium matrix (derived from pseudo-reverse translated sequences)
+- **,vcf**: File recording mutation information
+
+Example:
+```
+python ../scripts/02.caculated_ld.py ../output/ ../output
+```
+For more details, please refer to the accompanying manuscript.
+
+### 3-sca-matrix-construction
+Generate the Statistical Coupling Analysis (SCA) matrix:
+```
+bash ../scripts/03.caculated_sca.sh <script_dir> <input_dir> <output_dir>
+```
+- **<input_dir>**: Directory containing the inverse folding sequences with a **.fa** extension.
+- **<script_dir>**: Directory where the LD matrix files will be saved.
+- **<output_ld_dir>**: Directory where the LD matrix files will be saved.
