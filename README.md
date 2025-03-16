@@ -20,7 +20,7 @@ AiCE is an approach that optimizes protein function by incorporating structural 
 </details>
 
 ## Overview
-This method nominates mutations based on sampling inverse folding protein sequences. It works with common protein inverse folding models including ProteinMPNN, LigandMPNN, ESM-IF1, and SaProt. A demo based on AiCE-ProteinMPNN for nominating high-fitness mutations is provided in this repository.
+This method nominates mutations based on sampling inverse folding protein sequences. It works with common protein inverse folding models. A demo based on AiCE-ProteinMPNN for nominating HF mutations is provided in this repository.
 
 ## Requirements
 To run AiCE, you will need:
