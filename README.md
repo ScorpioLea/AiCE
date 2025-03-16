@@ -55,9 +55,9 @@ An inverse folding model is required to output structure-compatible sequences fr
 - **Secondary Structure Prediction:** 
 The DSSP algorithm is used to predict the protein secondary structure. The repository includes the mkdssp module (version 4.4.7).
 - **Linkage Disequilibrium (LD) Calculation:** 
-Plink is used to calculate the LD score. We provide a deployment workflow for plink version v1.9.0-b.7.7. Note that plink v2.0 is not compatible with our workflow by default; you may need to modify scripts/02.caculated_ld.py to use plink v2.0 or later.
+[Plink](https://www.cog-genomics.org/plink/) is used to calculate the LD score. We provide a deployment workflow for plink version v1.9.0-b.7.7. Note that plink v2.0 is not compatible with our workflow by default; you may need to modify scripts/02.caculated_ld.py to use plink v2.0 or later.
 - **Evolutionary Coupling Analysis:**
-The repository contains a modified version of the pySCA module (originally from pySCA) to calculate amino acid evolutionary coupling effects.
+The repository contains a modified version of the pySCA module (originally from [pySCA](https://github.com/reynoldsk/pySCA)) to calculate amino acid evolutionary coupling effects.
 
 ## Usage
 A demo notebook (AiCE_demo.ipynb) is provided for a simple demonstration. Change to the example directory to get started:
@@ -134,3 +134,40 @@ bash ../scripts/04.com_mut_prediction.sh <script_dir> <input_dir> <number-or-lis
 •	It outputs the SCA and LD scores for multi-mutations to files ending in **.sca.result** and **.ld.result**, respectively. The output file prefix will match the corresponding input file.
 
 - **<number-or-list>**:
+  •	If a number is provided, the script iterates over that many multi-mutation types.
+  •	If a list is provided (e.g., "1 3 5"), only the scores for the specified mutation combinations will be output.
+    •	Each line in the list represents a mutation combination.
+	  •	Positions are space-separated using 1-based indexing.
+	  •	Lines that are empty or contain unparseable non-integer characters will be skipped or marked as invalid (output as None\tNaN).
+
+The output file format is as follows:
+```
+Mutation Type    Mean Pairwise score: score    Log Mean Pairwise score: score    Logical Flag (0/1)
+```
+The fourth column indicates whether the mutation combination is recommended based on the screening thresholds (1 for recommended, 0 for not recommended). By default, the screening thresholds are set to 0.5 for LD scores and 0.9 for SCA scores. You can customize these thresholds by providing an additional -t parameter (see lines 106–124 in 04.com_mut_prediction.sh) or by modifying the structure file directly.
+
+Example:
+```
+bash ../scripts/04.com_mut_prediction.sh ../scripts ../output/ 2 ../output
+```
+
+This command will iterate over all double mutation combinations and nominate high-fitness mutations.
+
+## Citing this work
+If you use this code, please cite:
+```
+@article{Li2025AiCE,
+  title={Harnessing structural and evolutionary constraints to enhance protein evolution using inverse folding models},
+  author={Fei, Hongyuan and Li, Yunjia and Liu, Yijing and Wei, Jingjing and Chen, Aojie and Gao, Caixia},
+  journal={},
+  year={2025},
+  publisher={Cell press}
+```
+## Credits
+This repository incorporates code from:
+
+- **[ProteinMPNN](https://github.com/dauparas/ProteinMPNN)**
+- **[Plink](https://www.cog-genomics.org/plink/)**
+- **[pySCA](https://github.com/reynoldsk/pySCA)**
+
+
