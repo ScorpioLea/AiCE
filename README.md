@@ -98,7 +98,7 @@ python ../scripts/02.caculated_ld.py <seq_dir> <output_ld_dir>
 
 The script automatically searches for **.fa** files in `<seq_dir>`, predicts the LD matrix, and outputs files with the same prefix as the input. Output files include:
 - `.ld`: Linkage disequilibrium matrix (derived from pseudo-reverse translated sequences)
-- `,vcf`: File recording mutation information
+- `.vcf`: File recording mutation information
 
 Example:
 ```
