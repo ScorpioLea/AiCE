@@ -1,9 +1,11 @@
 # AiCE: High-fitness mutation prediction tool
 <img width="1433" alt="image" src="https://github.com/user-attachments/assets/abd98244-7e87-4ada-87e5-6e9d74387930" />
+The repository is an official implementation of Harnessing structural and evolutionary constraints to enhance protein evolution using inverse folding models.
 
 AiCE is an approach that optimizes protein function by incorporating structural and evolutionary constraints into the process of AI-assisted mutation nomination. It is compatible with widely used protein inverse folding models such as [ProteinMPNN](https://github.com/dauparas/ProteinMPNN), [LigandMPNN](https://github.com/dauparas/LigandMPNN), [ESM-IF1](https://github.com/facebookresearch/esm/tree/main/examples/inverse_folding), [SaProt](https://github.com/westlake-repl/SaProt), and others. A demo for nominating high-fitness mutations using AiCE-ProteinMPNN is provided in this repository.
 
-## Table of Contents
+<details open><summary><b>Table of contents</b></summary>
+  
 - [Overview](#overview)
 - [Requirements](#requirements)
 - [Installation](#installation)
@@ -15,6 +17,7 @@ AiCE is an approach that optimizes protein function by incorporating structural 
   - [4. Multi-mutation Prediction](#4-multi-mutation-prediction)
 - [Citing This Work](#citing-this-work)
 - [Credits](#credits)
+</details>
 
 ## Overview
 This method nominates mutations based on sampling inverse folding protein sequences. It works with common protein inverse folding models including ProteinMPNN, LigandMPNN, ESM-IF1, and SaProt. A demo based on AiCE-ProteinMPNN for nominating high-fitness mutations is provided in this repository.
