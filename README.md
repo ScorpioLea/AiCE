@@ -123,7 +123,7 @@ Example:
 ```
 bash ../scripts/03.caculated_sca.sh ../scripts/pySCA/ ../output ../output
 ```
-The folder ../scripts/pySCA/ contains the modified pySCA scripts.
+The folder `../scripts/pySCA/` contains the modified pySCA scripts.
 
 ### 4. Multi mutation nomination
 Nominate multi-mutations using the LD and SCA matrices:
