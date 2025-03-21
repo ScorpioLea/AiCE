@@ -173,4 +173,12 @@ This repository incorporates code from:
 - **[Plink](https://www.cog-genomics.org/plink/)**
 - **[pySCA](https://github.com/reynoldsk/pySCA)**
 
+## Patent Notice
 
+This project is licensed under the MIT License. Please note that portions of this project are covered by one or more patents. 
+
+Using this software for research or educational purposes is permitted under the MIT License.  
+However, **commercial use of the patented invention requires explicit permission from the patent holder**.  
+For licensing inquiries, please contact [cxgao@genetics.ac.cn].
+
+By using this software, you acknowledge and agree to comply with all applicable patent laws and regulations.
