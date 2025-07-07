@@ -162,9 +162,9 @@ If you use this code, please cite:
 @article{Li2025AiCE,
   title={Harnessing structural and evolutionary constraints to enhance protein evolution using inverse folding models},
   author={Fei, Hongyuan and Li, Yunjia and Liu, Yijing and Wei, Jingjing and Chen, Aojie and Gao, Caixia},
-  journal={},
-  year={},
-  publisher={}
+  journal={Cell},
+  year={2025},
+  publisher={Elsevier}
 ```
 ## Credits
 This repository incorporates code from:
