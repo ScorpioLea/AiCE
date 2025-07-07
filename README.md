@@ -164,7 +164,7 @@ If you use this code, please cite:
   author={Fei, Hongyuan and Li, Yunjia and Liu, Yijing and Wei, Jingjing and Chen, Aojie and Gao, Caixia},
   journal={Cell},
   year={2025},
-  publisher={Elsevier}
+  publisher={Cell Press}
 ```
 ## Credits
 This repository incorporates code from:
