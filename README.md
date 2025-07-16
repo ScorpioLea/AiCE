@@ -1,7 +1,7 @@
 # AiCE: High-fitness mutation prediction tool
 <img width="1433" alt="image" src="https://github.com/user-attachments/assets/abd98244-7e87-4ada-87e5-6e9d74387930" />
 
-The repository is an official implementation of **Harnessing structural and evolutionary constraints to enhance protein evolution using inverse folding models**.
+The repository is an official implementation of [Advancing protein evolution with inverse folding models integrating structural and evolutionary constraints](https://www.cell.com/cell/abstract/S0092-8674(25)00680-4?_returnURL=https%3A%2F%2Flinkinghub.elsevier.com%2Fretrieve%2Fpii%2FS0092867425006804%3Fshowall%3Dtrue).
 
 AiCE is an approach that optimizes protein function by incorporating structural and evolutionary constraints into the process of AI-assisted mutation nomination. It is compatible with widely used protein inverse folding models such as [ProteinMPNN](https://github.com/dauparas/ProteinMPNN), [LigandMPNN](https://github.com/dauparas/LigandMPNN), [ESM-IF1](https://github.com/facebookresearch/esm/tree/main/examples/inverse_folding), [SaProt](https://github.com/westlake-repl/SaProt), and others. A demo for nominating high-fitness (HF) mutations using AiCE-ProteinMPNN is provided in this repository.
 
@@ -21,7 +21,7 @@ AiCE is an approach that optimizes protein function by incorporating structural 
 </details>
 
 ## Overview
-This method nominates mutations based on sampling inverse folding protein sequences. It works with common protein inverse folding models. A demonstration using AiCE-ProteinMPNN for **monomeric** proteins is provided in this repository. For mutation prediction in protein complexes, the script can be modified or customized accordingly, as the underlying principle is similar. For detailed methodology, please refer to our paper [Advancing protein evolution with inverse folding models integrating structural and evolutionary constraints](https://www.cell.com/cell/abstract/S0092-8674(25)00680-4?_returnURL=https%3A%2F%2Flinkinghub.elsevier.com%2Fretrieve%2Fpii%2FS0092867425006804%3Fshowall%3Dtrue).
+This method nominates mutations based on sampling inverse folding protein sequences. It works with common protein inverse folding models. A demonstration using AiCE-ProteinMPNN for **monomeric** proteins is provided in this repository. For mutation prediction in protein complexes, the script can be modified or customized accordingly, as the underlying principle is similar. Alternatively, the complex structure can be decomposed into multiple substructures, and mutations can be predicted for each separately. This strategy effectively reduces computational demands. For detailed methodology, please refer to our paper.
 
 ## Requirements
 To run AiCE, you will need:
