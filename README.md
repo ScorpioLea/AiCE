@@ -47,6 +47,16 @@ pip3 install -r requirements.txt
 # Install mkdssp
 (The repository is pre-installed; Please make the mkdssp script executable by running:
 sudo chmod 755 scripts/mkdssp)
+**Note:** The `mkdssp` executable provided in the `AiCE/scripts/` directory may fail to run properly on certain systems due to compiler or library version mismatches.
+
+If this happens, please compile DSSP manually and create a symbolic link pointing to the compiled binary:
+
+git clone https://github.com/PDB-REDO/dssp.git
+cd dssp
+cmake -S . -B build
+cmake --build build
+cmake --install build
+ln -sf $(pwd)/src/mkdssp /path/to/AiCE/scripts/mkdssp
 
 # Install plink
 wget -c https://s3.amazonaws.com/plink1-assets/plink_linux_x86_64_20241022.zip
