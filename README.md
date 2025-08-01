@@ -33,29 +33,31 @@ To run AiCE, you will need:
 Dependencies can be installed directly using the provided `requirements.txt` file.
 
 ## Installation
-Clone the repository and set up your environment:
+### Clone the repository and set up your environment: 
 ```bash
 # Clone the AiCE repository
 git clone https://github.com/ScorpioLea/AiCE
 cd AiCE
-
-# Setup your conda environment
+```
+### Setup your conda environment
+```bash
 conda create -n AiCE python=3.11
 conda activate AiCE
 pip3 install -r requirements.txt
-
-# Installing mkdssp
+```
+### Installing mkdssp
 
 The `mkdssp` program is required for secondary structure annotation in AiCE.
 
-## ✅ Option 1: Use the pre-installed script (if available)
-
+✅ Option 1: Use the pre-installed script (if available)
 This repository includes a pre-downloaded `mkdssp` binary in the `scripts/` directory. To make it executable, run:
-
 ```bash
 sudo chmod 755 scripts/mkdssp
-# Note: The mkdssp executable provided in the `AiCE/scripts/` directory may fail to run properly on certain systems due to compiler or library version mismatches.
-## ✅ Option 2: Compile DSSP manually from source
+```
+`Note:` The mkdssp executable provided in the `AiCE/scripts/` directory may fail to run properly on certain systems due to compiler or library version mismatches.
+
+✅ Option 2: Compile DSSP manually from source
+```bash
 git clone https://github.com/PDB-REDO/dssp.git
 cd dssp
 cmake -S . -B build
@@ -63,12 +65,18 @@ cmake --build build
 cmake --install build
 rm scripts/mkdssp
 ln -sf $(pwd)/src/mkdssp scripts/mkdssp
-## ✅ Option 3: Install via Conda
-conda install conda-forge::dssp
-After installation, create a symbolic link from the conda-installed binary to the scripts/ directory:
-ln -sf ~/anaconda3/envs/AiCE/bin/mkdssp /path/to/AiCE/scripts/mkdssp
+```
 
-# Install plink
+✅ Option 3: Install via Conda
+```bash
+conda install conda-forge::dssp
+```
+After installation, create a symbolic link from the conda-installed binary to the scripts/ directory:
+```bash
+ln -sf ~/anaconda3/envs/AiCE/bin/mkdssp scripts/mkdssp
+```
+### Install plink
+```bash
 wget -c https://s3.amazonaws.com/plink1-assets/plink_linux_x86_64_20241022.zip
 unzip -d scripts/plink/ plink_linux_x86_64_20241022.zip
 rm plink_linux_x86_64_20241022.zip
