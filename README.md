@@ -94,7 +94,13 @@ The DSSP algorithm is used to predict the protein secondary structure. The repos
 The repository contains a modified version of the pySCA module (originally from [pySCA](https://github.com/reynoldsk/pySCA)) to calculate amino acid evolutionary coupling effects.
 
 ## Usage
-A demo notebook (`AiCE_demo.ipynb`) is provided for a simple demonstration. Change to the example directory to get started:
+A demo notebook (`AiCE_demo.ipynb`) is provided for a simple demonstration.
+
+Before running this demo, you need to convert your structure file to `.pdb` format if it is currently in `.cif` format. We provide a conversion tool at `scripts/cif2pdb.py`. You can run the following command to see more details:
+```bash
+python scripts/cif2pdb.py --help
+```
+Change to the example directory to get started:
 ```
 cd example/
 ```
