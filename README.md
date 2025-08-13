@@ -147,6 +147,8 @@ python ../scripts/02.caculated_ld.py ../output/ ../output
 For more details, please refer to the accompanying manuscript.
 
 ### 3. SCA matrix construction
+**Note**: We believe that current evaluations of combinations, whether in silico or in vivo, are limited in data volume. Moreover, the cases provided in this work also show that combination effects can be unstable. Therefore, we maintain a cautious yet positive attitude toward AiCE-multi. We are also actively developing an upgraded version to further improve the prediction accuracy and stability of combination designs.
+
 Generate the Statistical Coupling Analysis (SCA) matrix:
 ```
 bash ../scripts/03.caculated_sca.sh <script_dir> <input_dir> <output_dir>
