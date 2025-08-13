@@ -201,7 +201,7 @@ This command will iterate over all double mutation combinations and nominate HF 
 If you use this code, please cite:
 ```
 @article{Li2025AiCE,
-  title={Harnessing structural and evolutionary constraints to enhance protein evolution using inverse folding models},
+  title={Advancing protein evolution with inverse folding models integrating structural and evolutionary constraints},
   author={Fei, Hongyuan and Li, Yunjia and Liu, Yijing and Wei, Jingjing and Chen, Aojie and Gao, Caixia},
   journal={Cell},
   year={2025},
