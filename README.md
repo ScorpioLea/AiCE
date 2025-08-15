@@ -54,7 +54,8 @@ This repository includes a pre-downloaded `mkdssp` binary in the `scripts/` dire
 ```bash
 sudo chmod 755 scripts/mkdssp
 ```
-`Note:` The mkdssp executable provided in the `AiCE/scripts/` directory may fail to run properly on certain systems due to compiler or library version mismatches.
+> [!NOTE]
+> The mkdssp executable provided in the `AiCE/scripts/` directory may fail to run properly on certain systems due to compiler or library version mismatches.
 
 ✅ Option 2: Compile DSSP manually from source
 ```bash
@@ -121,7 +122,8 @@ Example:
 ```
 bash ../scripts/01.single_mut_prediction.sh ../scripts ./ 0.8 0.5
 ```
-**Note**: Use bash (not sh) to execute the script to avoid unnecessary errors.
+> [!NOTE]
+> Use bash (not sh) to execute the script to avoid unnecessary errors.
 
 An alternative script automatically recommends `<beta>` and `<gamma>` values based on the input structure:
 ```
@@ -130,7 +132,8 @@ bash scripts/01.single_mut_Auto_prediction.sh <input_folder> [output_folder]
 Additionally, the `scripts/inverse_MPNN.sh` provides a ProteinMPNN-based inverse folding workflow. You can adjust parameters such as **num_seq_per_target** and **sampling_temp** to specify the number of output sequences and the sampling temperature.
 
 ### 2. LD matrix construction
-**Note**: We believe that current evaluations of combinations, whether in silico or in vivo, are limited in data volume. Moreover, the cases provided in this work also show that combination effects can be unstable. Therefore, we maintain a cautious yet positive attitude toward AiCE-multi. We are also actively developing an upgraded version to further improve the prediction accuracy and stability of combination designs.
+> [!NOTE]
+> We believe that current evaluations of combinations, whether in silico or in vivo, are limited in data volume. Moreover, the cases provided in this work also show that combination effects can be unstable. Therefore, we maintain a cautious yet positive attitude toward AiCE-multi. We are also actively developing an upgraded version to further improve the prediction accuracy and stability of combination designs.
 
 Construct the LD matrix based on the inverse folding output sequences:
 ```
