@@ -64,7 +64,8 @@ cmake -S . -B build
 cmake --build build
 cmake --install build
 rm scripts/mkdssp
-ln -sf $(pwd)/src/mkdssp scripts/mkdssp
+ln -s $(pwd)/build/mkdssp scripts/mkdssp
+chmod +x build/mkdssp
 ```
 
 ✅ Option 3: Install via Conda
