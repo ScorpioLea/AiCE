@@ -129,7 +129,7 @@ An alternative script automatically recommends `<beta>` and `<gamma>` values bas
 ```
 bash scripts/01.single_mut_Auto_prediction.sh <input_folder> [output_folder]
 ```
-Additionally, the `scripts/inverse_MPNN.sh` provides a ProteinMPNN-based inverse folding workflow. You can adjust parameters such as **num_seq_per_target** and **sampling_temp** to specify the number of output sequences and the sampling temperature.
+Additionally, the `scripts/inverse_MPNN.sh` provides a ProteinMPNN-based inverse folding workflow. You can adjust parameters such as **num_seq_per_target** and **sampling_temp** to specify the number of output sequences and the sampling temperature. We also provide a script for converting multiple sequence alignments (MSA) into position-specific scoring matrices (PSSM). The script is located at `scripts/msa_to_pssm.py`. It should be run after completing the first step (01.single_mut_prediction.sh), using the generated `.fa` file as input.
 
 ### 2. LD matrix construction
 > [!NOTE]
